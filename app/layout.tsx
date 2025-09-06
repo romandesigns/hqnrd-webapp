@@ -3,11 +3,11 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import { ThemeProvider } from "../providers";
 
 import { ModeToggle } from "@/components/features";
-import './globals.css';
+import "./globals.css";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
-  weight: ["100", "200", "300","400", "500", "600", "700", "800", "900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const geistMono = Geist_Mono({
@@ -36,7 +36,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle/>
+          <ModeToggle />
           {children}
         </ThemeProvider>
       </body>

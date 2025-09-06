@@ -1,5 +1,5 @@
 // Imported Modules
-import {ModeToggle} from './ThemeToggle';
+import { ModeToggle } from "./ThemeToggle";
 
 // Exporting Modules
-export {ModeToggle};
+export { ModeToggle };
