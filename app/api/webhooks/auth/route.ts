@@ -1,37 +1,55 @@
 import { verifyWebhook } from "@clerk/nextjs/webhooks";
 import { NextRequest } from "next/server";
-import { api } from "@/convex/_generated/api";
 import { fetchMutation } from "convex/nextjs";
+import { api } from "@/convex/_generated/api";
+import { HQNRD } from "../../../../constants";
+import { Doc } from "@/convex/_generated/dataModel";
 
 export async function POST(req: NextRequest) {
   try {
-    const evt = await verifyWebhook(req, {
-      signingSecret: process.env.CLERK_WEBHOOK_SIGNING_SECRET!,
-    });
+    const evt = await verifyWebhook(req);
 
+    // Do something with payload
+    // For this guide, log payload to console
     const eventType = evt.type;
-
     switch (eventType) {
       case "user.created":
-        console.log("🎉 New user created:", evt.data.id);
+        const payload = {
+          firstName: evt.data.first_name ?? "",
+          lastName: evt.data.last_name ?? "",
+          username: evt.data.username ?? "",
+          banned: evt.data.banned ?? false,
+          createdAt: evt.data.created_at,
+          email: evt.data.email_addresses[0].email_address,
+          emailVerificationStatus:
+            evt.data.email_addresses[0]?.verification?.status ?? "unverified",
+          avatarUrl: evt.data.image_url ?? "",
+          phone: evt.data.phone_numbers?.[0]?.phone_number ?? "",
+          phoneVerificationStatus:
+            evt.data.phone_numbers?.[0]?.verification?.status ?? "unverified",
+          clerkId: evt.data.id,
+          locked: false,
+          status: "active",
+          role: HQNRD.ROLES.GUEST,
+        };
+        await fetchMutation(api.profiles.createProfile, payload);
+        console.log("User created:", evt.data);
         break;
-
       case "user.updated":
-        console.log("🔄 User updated:", evt.data.id);
+        console.log("User updated:", evt.data);
         break;
-
       case "user.deleted":
-        console.log("🗑️ User deleted:", evt.data.id);
+        console.log("User deleted:", evt.data);
         break;
-
       default:
-        console.log("ℹ️ Unhandled event type:", eventType);
-        break;
+        console.log(`Unhandled event type: ${eventType}`);
     }
-
+    // console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
+    // console.log('Webhook payload:', evt.data)
+    // console.log('Webhook email address payload:', evt.data?.email_addresses[0].verification)
     return new Response("Webhook received", { status: 200 });
   } catch (err) {
-    console.error("❌ Webhook verification failed:", err);
-    return new Response("Webhook verification failed", { status: 400 });
+    console.error("Error verifying webhook:", err);
+    return new Response("Error verifying webhook", { status: 400 });
   }
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
-import { ThemeProvider, ConvexClientProvider } from "../providers";
+import { ThemeProvider, ConvexProviderWithClerk } from "../providers";
+import { ClerkProvider } from "@clerk/nextjs";
+import { shadcn } from '@clerk/themes'
 
 import { ModeToggle } from "@/components/features";
 import "./globals.css";
@@ -30,17 +32,20 @@ export default function RootLayout({
       <body
         className={`${poppinsSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ConvexClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <ModeToggle />
-            {children}
-          </ThemeProvider>
-        </ConvexClientProvider>
+        <ClerkProvider   appearance={{
+    baseTheme: shadcn,
+  }} >
+          <ConvexProviderWithClerk>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </ConvexProviderWithClerk>
+        </ClerkProvider>
       </body>
     </html>
   );

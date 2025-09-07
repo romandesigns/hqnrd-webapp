@@ -1,24 +1,24 @@
-import { locales } from "@/constants/locales";
-import { branding } from "@/constants/branding";
-import { contact } from "@/constants/contact";
-import { social } from "@/constants/social";
-import { categories } from "@/constants/categories";
-import { currencies } from "@/constants/currencies";
-import { roles } from "@/constants/roles";
-import { languageTag } from "@/constants/languageTag";
-import { mimetypes } from "@/constants/mimetypes";
-import { orientation } from "@/constants/orientation";
+import { locales } from "./locales";
+import { branding } from "./branding";
+import { contact } from "./contact";
+import { social } from "./social";
+import { categories } from "./categories";
+import { currencies } from "./currencies";
+import { roles } from "./roles";
+import { languageTag } from "./languageTag";
+import { mimetypes } from "./mimetypes";
+import { orientation } from "./orientation";
 
 // Main object to be exported
-export const hqnrd = {
-  locales,
-  languageTag,
-  branding,
-  contact,
-  social,
-  categories,
-  currencies,
-  roles,
-  mimetypes,
-  orientation,
+export const HQNRD = {
+  LOCALES: locales,
+  LANGUAGETAG: languageTag,
+  BRANDING: branding,
+  CONTACT: contact,
+  SOCIAL: social,
+  CATEGORIES: categories,
+  CURRENCIES: currencies,
+  ROLES: roles,
+  MIMETYPE: mimetypes,
+  ORIENTATION: orientation,
 };

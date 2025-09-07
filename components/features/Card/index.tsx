@@ -22,12 +22,14 @@ export function CardComponent({
       {/* Card Body */}
       {children && (
         <div className="p-0.5">
-          <div className="bg-[var(--card-body)] shadow-sm dark:shadow-black dark:border-t rounded-md inset-shadow-md p-2 px-3">{children}</div>
+          <div className="bg-[var(--card-body)] shadow-sm dark:shadow-black dark:border-t rounded-md inset-shadow-md p-2 px-3">
+            {children}
+          </div>
         </div>
       )}
       {/* Card Footer */}
       {Footer && (
-        <div  className="p-0.5 px-1">
+        <div className="p-0.5 px-1">
           <Footer />
         </div>
       )}
