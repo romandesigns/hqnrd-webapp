@@ -76,6 +76,10 @@
   --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
+
+  --card-border: oklch(0.98 0.004 49.25);
+  --card: oklch(0.992 0 0);
+  --card-body: oklch(0.999 0 0);
 }
 
 .dark {
@@ -110,6 +114,10 @@
   --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.553 0.013 58.071);
+
+  --card-border: oklch(0.1 0.004 49.25);
+  --card: oklch(0.137 0.004 49.25);
+  --card-body: oklch(0.16 0.004 49.25);
 }
 
 @layer base {
