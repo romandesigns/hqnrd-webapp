@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
-import { ThemeProvider } from "../providers";
+import { ThemeProvider, ConvexClientProvider } from "../providers";
 
 import { ModeToggle } from "@/components/features";
 import "./globals.css";
@@ -30,15 +30,17 @@ export default function RootLayout({
       <body
         className={`${poppinsSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ModeToggle />
-          {children}
-        </ThemeProvider>
+        <ConvexClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ModeToggle />
+            {children}
+          </ThemeProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );
