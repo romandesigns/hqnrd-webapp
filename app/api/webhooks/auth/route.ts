@@ -9,45 +9,11 @@ export async function POST(req: NextRequest) {
       signingSecret: process.env.CLERK_WEBHOOK_SIGNING_SECRET!,
     });
 
-    const { id } = evt.data;
     const eventType = evt.type;
-
-    // console.log(`✅ Webhook received: ID ${id}, Type ${eventType}`)
-    // console.log('📦 Payload:', evt.data)
 
     switch (eventType) {
       case "user.created":
-        const user = evt.data;
-        // Get primary email and phone number
-        const primaryEmail =
-          user.email_addresses.find(
-            (email) => email.id === user.primary_email_address_id,
-          )?.email_address || "";
-
-        const primaryPhone =
-          user.phone_numbers.find(
-            (phone) => phone.id === user.primary_phone_number_id,
-          )?.phone_number || "";
-
-        const payload = {
-          clerkId: user.id,
-          imageUrl: user.image_url,
-          email: primaryEmail,
-          phoneNumber: primaryPhone,
-          username: user.username ?? "",
-          createdAt: user.created_at,
-        };
-        const newUser = await fetchMutation(api.users.create, payload);
-        await fetchMutation(api.users.createUserProfile, {
-          clerkId: newUser.clerkId,
-          createdAt: newUser.createdAt,
-          email: newUser.email,
-          imageUrl: newUser.imageUrl,
-          phoneNumber: newUser.phoneNumber,
-          username: newUser.username,
-          role: "guest",
-        });
-        console.log("🎉 New user created:", newUser);
+        console.log("🎉 New user created:", evt.data.id);
         break;
 
       case "user.updated":
