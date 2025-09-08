@@ -19,9 +19,9 @@
 
 [x] Clerk
 
-#### Auth
+#### Internationalization
 
-[x] Clerk
+[x] Internationalization
 
 #### Script to generate icons
 

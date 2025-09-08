@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
-import { ThemeProvider, ConvexProviderWithClerk } from "../providers";
+import { ThemeProvider, ConvexProviderWithClerk } from "../../providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 
 import { ModeToggle } from "@/components/features";
 import "./globals.css";
+import { i18n } from "@/i18n-config";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
@@ -16,6 +17,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export const metadata: Metadata = {
   title: "Create Next App",
