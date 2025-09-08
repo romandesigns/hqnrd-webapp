@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import { ThemeProvider, ConvexProviderWithClerk } from "../../providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
-import { esES, enUS } from '@clerk/localizations'
+import { esES, enUS } from "@clerk/localizations";
 
 import { ModeToggle } from "@/components/features";
 import "./globals.css";
@@ -42,7 +42,7 @@ export default async function RootLayout({
         className={`${poppinsSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClerkProvider
-          localization={lang === 'en' ? enUS : esES}
+          localization={lang === "en" ? enUS : esES}
           appearance={{
             baseTheme: shadcn,
             variables: {
