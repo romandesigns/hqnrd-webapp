@@ -4,7 +4,7 @@
 
 [x] NextJS v.15.5.2
 
-#### Aesthetic
+#### UI
 
 [x] Tailwind CSS v4
 [x] ShadCN
@@ -14,6 +14,10 @@
 #### Backend as a service
 
 [x] Convex BAAS
+
+#### Auth
+
+[x] Clerk
 
 #### Auth
 
