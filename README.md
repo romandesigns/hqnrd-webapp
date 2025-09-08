@@ -19,7 +19,6 @@
 
 [x] Clerk
 
-
 #### Script to generate icons
 
 ```
