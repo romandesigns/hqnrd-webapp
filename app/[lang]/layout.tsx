@@ -6,8 +6,10 @@ import { shadcn } from "@clerk/themes";
 import { esES, enUS } from "@clerk/localizations";
 
 import { ModeToggle } from "@/components/features";
-import "./globals.css";
+
 import { i18n, Locale } from "@/i18n-config";
+import { Navigation } from "@/components/layout";
+import "./globals.css";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
@@ -60,7 +62,7 @@ export default async function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              <ModeToggle />
+              <Navigation lang={lang} />
               {children}
             </ThemeProvider>
           </ConvexProviderWithClerk>
