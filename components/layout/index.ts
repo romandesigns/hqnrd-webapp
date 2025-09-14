@@ -1,2 +1,4 @@
 import { Navigation } from "./(site)/Navigation";
-export { Navigation };
+import { Footer } from "./(site)/Footer";
+import { Container } from "./(site)/Container";
+export { Navigation, Footer, Container };

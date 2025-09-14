@@ -32,7 +32,7 @@ export function Brand({
         alt={HQNRD.BRANDING.alt}
       />
       <div>
-        <HeadingTag className="font-bold uppercase text-[0.8rem] mt-0.5">
+        <HeadingTag className="font-black uppercase text-[0.8rem] mt-0.5">
           {HQNRD.BRANDING.LongName}
         </HeadingTag>
         <p className="text-[0.7rem] text-muted-foreground font-medium">

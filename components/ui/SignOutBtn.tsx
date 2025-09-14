@@ -1,19 +1,16 @@
 "use client";
 
 import { useClerk } from "@clerk/nextjs";
-import { Button } from "./button";
 import { Locale } from "@/i18n-config";
 
 export const SignOutButton = ({
   lang,
   children,
   className,
-  variant,
 }: {
   lang: Locale;
   children?: React.ReactNode;
   className?: string;
-  variant: "default" | "ghost" | "outline" | "link" | "destructive";
 }) => {
   const { signOut } = useClerk();
 

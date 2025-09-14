@@ -5,8 +5,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 import { esES, enUS } from "@clerk/localizations";
 
-import { ModeToggle } from "@/components/features";
-
 import { i18n, Locale } from "@/i18n-config";
 import { Navigation } from "@/components/layout";
 import "./globals.css";
