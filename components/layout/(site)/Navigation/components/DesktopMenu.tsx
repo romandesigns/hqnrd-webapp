@@ -25,89 +25,94 @@ export const DesktopMenu = ({
   className?: string;
 }) => {
   return (
-    <ul className={clsx(`flex items-center gap-6 text-sm w-full max-width mx-auto`, className )}>
-        <li>
-          <Button asChild variant="link" className="w-full">
-            <Link href={`/${lang}`} className="py-1">
-              Inicio
-            </Link>
-          </Button>
-        </li>
-        <li>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="link" className="p-0">
-                Habitaciones <IconChevronDown />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent
-              className="p-1 grid grid-cols-2 grid-rows-2 w-full max-w-[35rem]"
-              align="center"
-            >
-              {roomsMenuItems.map((item, index) => (
-                <RoomMenuItem
-                  key={index}
-                  title={item.title}
-                  href={item.href}
-                  description={item.description}
-                  lang={lang}
-                />
-              ))}
-            </PopoverContent>
-          </Popover>
-        </li>
-        <li>
-          <ModeToggle />
-        </li>
-        <li>
-          <Cart lang={lang} />
-        </li>
-        <li>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant={"outline"} className="text-md px-1">
-                <p className="bg-primary p-1 ml-0.5 rounded-sm text-background">
-                  <IconUser />
-                </p>
-                <span className="px-2 flex items-center gap-2">
-                  Usuario
-                  <span>
-                    <IconChevronDown />
-                  </span>
+    <ul
+      className={clsx(
+        `flex items-center gap-6 text-sm w-full max-width mx-auto`,
+        className,
+      )}
+    >
+      <li>
+        <Button asChild variant="link" className="w-full">
+          <Link href={`/${lang}`} className="py-1">
+            Inicio
+          </Link>
+        </Button>
+      </li>
+      <li>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="link" className="p-0">
+              Habitaciones <IconChevronDown />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent
+            className="p-1 grid grid-cols-2 grid-rows-2 w-full max-w-[35rem]"
+            align="center"
+          >
+            {roomsMenuItems.map((item, index) => (
+              <RoomMenuItem
+                key={index}
+                title={item.title}
+                href={item.href}
+                description={item.description}
+                lang={lang}
+              />
+            ))}
+          </PopoverContent>
+        </Popover>
+      </li>
+      <li>
+        <ModeToggle />
+      </li>
+      <li>
+        <Cart lang={lang} />
+      </li>
+      <li>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant={"outline"} className="flex justify-between text-md h-9 !px-1">
+              <p className="bg-primary p-1 mt-0.25 rounded-sm text-background">
+                <IconUser />
+              </p>
+              <span className="flex items-center gap-2">
+                Usuario
+                <span>
+                  <IconChevronDown />
                 </span>
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-42 p-1 shadow-xs" align="center">
-              <ul className="p-1 flex flex-col gap-2">
-                <li className="hover:bg-accent rounded-md p-1 px-2">
-                  <Link
-                    href={`/${lang}/iniciar-sesion`}
-                    className="py-1 flex items-center justify-start gap-2"
-                  >
-                    <LogIn size={20} />{" "}
-                    <span className="text-sm">Iniciar Sesión</span>
+              </span>
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-42 p-1 shadow-xs" align="center">
+            <ul className="p-1 flex flex-col gap-2">
+              <li className="hover:bg-accent rounded-md p-1 px-2">
+                <Link
+                  href={`/${lang}/iniciar-sesion`}
+                  className="py-1 flex items-center justify-start gap-2"
+                >
+                  <LogIn size={20} />{" "}
+                  <span className="text-sm">Iniciar Sesión</span>
+                </Link>
+              </li>
+              <li className="hover:bg-accent rounded-md p-1">
+                <SignOutButton
+                  lang={lang}
+                  className="w-full flex items-center justify-start gap-2 p-1"
+                >
+                  <LogOut size={20} />
+                  <span className="text-sm">Cerrar Sesión</span>
+                </SignOutButton>
+              </li>
+              <li className="">
+                <Button asChild variant="outline" className="w-full">
+                  <Link href={`/${lang}/crear-cuenta`} className="py-1">
+                    <LockIcon /> Crear Cuenta
                   </Link>
-                </li>
-                <li className="hover:bg-accent rounded-md p-1">
-                  <SignOutButton
-                    lang={lang}
-                    className="w-full flex items-center justify-start gap-2 p-1"
-                  >
-                    <LogOut size={20} />
-                    <span className="text-sm">Cerrar Sesión</span>
-                  </SignOutButton>
-                </li>
-                <li className="">
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href={`/${lang}/crear-cuenta`} className="py-1">
-                      <LockIcon /> Crear Cuenta
-                    </Link>
-                  </Button>
-                </li>
-              </ul>
-            </PopoverContent>
-          </Popover>
-        </li>
-      </ul>
+                </Button>
+              </li>
+            </ul>
+          </PopoverContent>
+        </Popover>
+      </li>
+    </ul>
   );
 };

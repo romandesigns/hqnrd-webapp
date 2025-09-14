@@ -1,20 +1,5 @@
-import { Brand, ModeToggle } from "@/components/features";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { SignOutButton } from "@/components/ui/SignOutBtn";
+import { Brand } from "@/components/features";
 import { Locale } from "@/i18n-config";
-import { IconChevronDown, IconUser } from "@tabler/icons-react";
-import { LockIcon, LogIn, LogOut } from "lucide-react";
-import Link from "next/link";
-
-import { RoomMenuItem } from "./components/RoomMenuItem";
-import { Cart } from "./components/Cart";
-import { roomsMenuItems } from "./data/menuItems";
 import clsx from "clsx";
 import { DesktopMenu } from "./components/DesktopMenu";
 import { MobileMenu } from "./components/MobileMenu";
@@ -34,10 +19,25 @@ export const Navigation = ({
       )}
     >
       <div className="grid grid-cols-[auto_1fr] w-full max-width md:mx-auto">
-        <Brand lang={lang} className="mr-auto"/>
-        <DesktopMenu lang={lang} className={clsx(`md:flex items-center justify-end p-0 md:py-2 hidden`, className)} />
-        <MobileMenu lang={lang} className={clsx(`flex items-center justify-end p-0 md:hidden`, className)} />
-     </div>
+        <Brand
+          lang={lang}
+          className="mr-auto max-md:[&_img]:max-w-[1.4rem]"
+        />
+        <DesktopMenu
+          lang={lang}
+          className={clsx(
+            `md:flex items-center justify-end p-0 md:py-2 hidden`,
+            className,
+          )}
+        />
+        <MobileMenu
+          lang={lang}
+          className={clsx(
+            `flex items-center justify-end p-0 md:hidden`,
+            className,
+          )}
+        />
+      </div>
     </nav>
   );
 };
