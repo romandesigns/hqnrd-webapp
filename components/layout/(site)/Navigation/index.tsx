@@ -19,10 +19,7 @@ export const Navigation = ({
       )}
     >
       <div className="grid grid-cols-[auto_1fr] w-full max-width md:mx-auto">
-        <Brand
-          lang={lang}
-          className="mr-auto max-md:[&_img]:max-w-[1.4rem]"
-        />
+        <Brand lang={lang} className="mr-auto max-md:[&_img]:max-w-[1.4rem]" />
         <DesktopMenu
           lang={lang}
           className={clsx(

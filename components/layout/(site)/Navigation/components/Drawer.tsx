@@ -7,7 +7,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger
+  DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Locale } from "@/i18n-config";
 import { IconCheckupList } from "@tabler/icons-react";

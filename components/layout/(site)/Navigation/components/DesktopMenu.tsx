@@ -70,7 +70,10 @@ export const DesktopMenu = ({
       <li>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant={"outline"} className="flex justify-between text-md h-9 !px-1">
+            <Button
+              variant={"outline"}
+              className="flex justify-between text-md h-9 !px-1"
+            >
               <p className="bg-primary p-1 mt-0.25 rounded-sm text-background">
                 <IconUser />
               </p>
