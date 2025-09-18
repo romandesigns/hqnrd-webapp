@@ -63,7 +63,18 @@ export function DrawerMenu({ lang }: { lang: Locale }) {
                 </Link>
               </DrawerClose>
             </li>
-
+            <li>
+              <DrawerClose className="w-full" asChild>
+                <Link
+                  href={`/${lang}/playground`}
+                  className={clsx(
+                    buttonVariants({ variant: "outline", size: "block" }),
+                  )}
+                >
+                  Playground
+                </Link>
+              </DrawerClose>
+            </li>
             <li className="py-4">
               <ContactWidget lang={lang} btnVariant={"bordered"} />
             </li>

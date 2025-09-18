@@ -19,5 +19,5 @@ export {
   LocaleDialog,
   LocaleSwitcher,
   ExternalLink,
-  Carousel
+  Carousel,
 };

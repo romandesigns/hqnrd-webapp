@@ -11,10 +11,12 @@ export default async function PlaygroundPage({
 
   return (
     <Container lang={lang} showNavBar showFooter>
-      <div className="font-sans w-full items-center justify-center min-h-screen gap-16">
-        <h2 className=" ">Playground</h2>
-        <Carousel/>
-      </div>
+      <main className="font-sans w-full items-center justify-center min-h-screen gap-16 pt-0">
+        <div className="max-width bg-red-500 mx-auto center h-[80vh] !p-20">
+          <h2 className=" ">Playground</h2>
+          <Carousel />
+        </div>
+      </main>
     </Container>
   );
 }

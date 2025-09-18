@@ -20,7 +20,7 @@ export function RoomMenuItem({
       <figure className="relative h-22 w-full bg-red-500 rounded-sm" />
       <div className="h-full flex flex-col justify-start w-full">
         {/* title */}
-        <p className="font-black text-xs uppercase">{title[lang]}</p>
+        <p className="font-bold text-xs uppercase">{title[lang]}</p>
         {/* description */}
         <p className="text-xs text-muted-foreground mt-1 font-normal leading-relaxed">
           {description[lang]}
