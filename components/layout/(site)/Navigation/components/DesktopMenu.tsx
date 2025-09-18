@@ -74,7 +74,7 @@ export const DesktopMenu = ({
               variant={"outline"}
               className="flex justify-between text-md h-9 !px-1"
             >
-              <p className="bg-primary p-1 mt-0.25 rounded-sm text-background">
+              <p className="bg-primary p-1 rounded-sm text-background">
                 <IconUser />
               </p>
               <span className="flex items-center gap-2">

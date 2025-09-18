@@ -1,7 +1,18 @@
-export default function RoomsPage() {
+import { Container } from "@/components/layout";
+import Image from "next/image";
+import { Locale } from "@/i18n-config";
+
+export default async function HabitacionesPage({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}) {
+  const { lang } = await params;
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <h2 className="uppercase font-black">Rooms Page</h2>
-    </div>
+    <Container lang={lang} showNavBar showFooter>
+      <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+        Habitaciones Page
+      </div>
+    </Container>
   );
 }

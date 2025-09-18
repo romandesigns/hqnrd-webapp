@@ -1,4 +1,5 @@
 import { locales } from "./locales";
+import { flags } from "./flags";
 import { branding } from "./branding";
 import { contact } from "./contact";
 import { social } from "./social";
@@ -12,6 +13,7 @@ import { orientation } from "./orientation";
 // Main object to be exported
 export const HQNRD = {
   LOCALES: locales,
+  LOCALEFLAGS: flags,
   LANGUAGETAG: languageTag,
   BRANDING: branding,
   CONTACT: contact,

@@ -1,29 +1,5 @@
-import { Brand } from "@/components/features";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { SignOutButton } from "@/components/ui/SignOutBtn";
+import { Container } from "@/components/layout";
 import { Locale } from "@/i18n-config";
-import {
-  IconCheckupList,
-  IconChevronDown,
-  IconUser,
-} from "@tabler/icons-react";
-import { LockIcon, LogIn, LogOut } from "lucide-react";
-import Link from "next/link";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Container, Navigation } from "@/components/layout";
 
 export default async function PlaygroundPage({
   params,
