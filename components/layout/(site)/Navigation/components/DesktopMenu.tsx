@@ -1,5 +1,4 @@
-import { Brand, ModeToggle } from "@/components/features";
-import { Badge } from "@/components/ui/badge";
+import { ModeToggle } from "@/components/features";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -12,10 +11,10 @@ import { IconChevronDown, IconUser } from "@tabler/icons-react";
 import { LockIcon, LogIn, LogOut } from "lucide-react";
 import Link from "next/link";
 
-import { RoomMenuItem } from "./RoomMenuItem";
-import { Cart } from "./Cart";
-import { roomsMenuItems } from "../data/menuItems";
 import clsx from "clsx";
+import { roomsMenuItems } from "../data/menuItems";
+import { Cart } from "./Cart";
+import { RoomMenuItem } from "./RoomMenuItem";
 
 export const DesktopMenu = ({
   lang,
@@ -25,7 +24,8 @@ export const DesktopMenu = ({
   className?: string;
 }) => {
   return (
-    <ul
+    <>
+        <ul
       className={clsx(
         `flex items-center gap-6 text-sm w-full max-width mx-auto`,
         className,
@@ -46,7 +46,7 @@ export const DesktopMenu = ({
             </Button>
           </PopoverTrigger>
           <PopoverContent
-            className="p-1 grid grid-cols-2 grid-rows-2 w-full max-w-[35rem]"
+            className="p-2 grid grid-cols-2 grid-rows-[1fr_1fr_auto] w-full max-w-[35rem]"
             align="center"
           >
             {roomsMenuItems.map((item, index) => (
@@ -58,6 +58,9 @@ export const DesktopMenu = ({
                 lang={lang}
               />
             ))}
+              <div className="p-2 w-full col-span-full">
+                <Button size={'block'} variant={'outline'} className="cursor-pointer">View All</Button>
+              </div>
           </PopoverContent>
         </Popover>
       </li>
@@ -112,10 +115,14 @@ export const DesktopMenu = ({
                   </Link>
                 </Button>
               </li>
-            </ul>
+              </ul>
+              
           </PopoverContent>
         </Popover>
-      </li>
+        </li>
+  
     </ul>
+
+    </>
   );
 };

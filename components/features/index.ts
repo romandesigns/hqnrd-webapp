@@ -7,6 +7,7 @@ import { LocaleDialog } from "./LocaleDialog";
 import { ExternalLink } from "./ExternalLink";
 import { ContactWidget } from "./ContactWidget";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { Carousel } from "./Carousel";
 
 // Exporting Modules
 export {
@@ -18,4 +19,5 @@ export {
   LocaleDialog,
   LocaleSwitcher,
   ExternalLink,
+  Carousel
 };

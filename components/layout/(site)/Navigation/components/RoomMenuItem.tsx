@@ -15,7 +15,7 @@ export function RoomMenuItem({
   return (
     <Link
       href={href}
-      className="flex gap-2 p-2 font-sans hover:bg-accent m-1 rounded-md"
+      className="flex gap-2 p-2 font-sans hover:bg-accent m-2 rounded-md"
     >
       <figure className="relative h-22 w-full bg-red-500 rounded-sm" />
       <div className="h-full flex flex-col justify-start w-full">
