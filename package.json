@@ -24,7 +24,7 @@
     "@tabler/icons-react": "^3.35.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "convex": "^1.27.0",
+    "convex": "^1.27.1",
     "keen-slider": "^6.8.6",
     "lucide-react": "^0.544.0",
     "next": "15.5.3",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
     "@tailwindcss/postcss": "^4.1.13",
-    "@types/node": "^24.5.1",
+    "@types/node": "^24.5.2",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "eslint": "^9.35.0",
