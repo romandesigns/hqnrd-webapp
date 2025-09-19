@@ -6,8 +6,8 @@ import { Locale } from "@/i18n-config";
 import clsx from "clsx";
 
 export function Brand({
-  width = 25,
-  height = 25,
+  width = 20,
+  height = 20,
   lang = "en",
   headingLevel = "h1",
   className = "",
@@ -32,10 +32,10 @@ export function Brand({
         alt={HQNRD.BRANDING.alt}
       />
       <div>
-        <HeadingTag className="font-black uppercase text-[0.8rem] mt-0.5">
+        <HeadingTag className="font-black uppercase text-[0.7rem] pt-1">
           {HQNRD.BRANDING.LongName}
         </HeadingTag>
-        <p className="text-[0.7rem] text-muted-foreground font-medium">
+        <p className="text-[0.65rem] text-muted-foreground font-medium">
           {HQNRD.BRANDING.slogan}
         </p>
       </div>

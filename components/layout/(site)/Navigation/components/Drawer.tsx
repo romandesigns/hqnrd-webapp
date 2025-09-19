@@ -83,6 +83,11 @@ export function DrawerMenu({ lang }: { lang: Locale }) {
               <Button size="block">Iniciar Sesion</Button>
               {/* </DrawerClose> */}
             </li>
+            <li>
+              {/* <DrawerClose className="w-full"> */}
+              <Button size="block" asChild variant={'link'} className="text-xs font-normal"><Link href={`/${lang}/crear-cuenta`}>No tienes cuenta aun? <span className="underline font-semibold">Registrate</span></Link></Button>
+              {/* </DrawerClose> */}
+            </li>
           </ul>
         </DrawerFooter>
       </DrawerContent>
