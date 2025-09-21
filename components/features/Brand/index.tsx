@@ -6,8 +6,8 @@ import { Locale } from "@/i18n-config";
 import clsx from "clsx";
 
 export function Brand({
-  width = 20,
-  height = 20,
+  width = 26,
+  height = 26,
   lang = "en",
   headingLevel = "h1",
   className = "",
