@@ -38,6 +38,25 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} suppressHydrationWarning>
+            <head>
+        {/* iOS splash screens */}
+        <link
+          rel="apple-touch-startup-image"
+          href="/splash/splash-1125x2436.png"
+          media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/splash/splash-750x1334.png"
+          media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/splash/splash-1242x2208.png"
+          media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)"
+        />
+        {/* Add the rest of your splash images here with correct media queries */}
+      </head>
       <body
         className={`${poppinsSans.variable} ${geistMono.variable} antialiased`}
       >
