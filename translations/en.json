@@ -1,3 +1,14 @@
 {
-  "greeting": "Hello world"
+  "home_page": {
+    "pretitle": [
+      "In the heart of Cibao",
+      "— Salcedo, Hermanas Mirabal Province"
+    ],
+    "title": "SERENITY, COMFORT & CLEANLINESS — ALL IN ONE PLACE",
+    "subtitle": "Whether you’re traveling or visiting with friends, our units are fully equipped to offer you an unforgettable stay.",
+    "buttons": {
+      "primary": "Book Now",
+      "secondary": "View Rooms"
+    }
+  }
 }

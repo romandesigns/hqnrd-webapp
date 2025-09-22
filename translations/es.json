@@ -1,3 +1,14 @@
 {
-  "greeting": "Hola mundo"
+  "home_page": {
+    "pretitle": [
+      "En el corazón del Cibao",
+      "— Salcedo, Provincia Hermanas Mirabal"
+    ],
+    "title": "SERENIDAD, COMODIDAD E HIGIENE — TODO EN UN MISMO LUGAR",
+    "subtitle": "Vengas de viaje o de paseo con amistades, nuestras unidades están equipadas para brindarte una experiencia inolvidable.",
+    "buttons": {
+      "primary": "Reservar ahora",
+      "secondary": "Ver habitaciones"
+    }
+  }
 }
