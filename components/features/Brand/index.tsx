@@ -23,7 +23,7 @@ export function Brand({
   return (
     <Link
       href={`/${lang}`}
-      className={clsx("flex items-center space-x-2", className)}
+      className={clsx("flex items-center space-x-2 font-sans", className)}
     >
       <Image
         width={width}
@@ -35,7 +35,7 @@ export function Brand({
         <HeadingTag className="font-black uppercase text-[0.6rem] pt-1">
           {HQNRD.BRANDING.LongName}
         </HeadingTag>
-        <p className="text-[0.60rem] text-muted-foreground font-medium">
+        <p className="text-[0.60rem] text-muted-foreground font-normal">
           {HQNRD.BRANDING.slogan}
         </p>
       </div>
