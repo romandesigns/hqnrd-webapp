@@ -22,7 +22,6 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -155,7 +154,6 @@ export const metadata: Metadata = {
   classification: "Hotel & Lodging",
 };
 
-
 export default async function RootLayout({
   children,
   params,
@@ -163,7 +161,6 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ lang: Locale }>;
 }>) {
-
   const { lang } = await params;
   return (
     <html lang={lang} suppressHydrationWarning>
