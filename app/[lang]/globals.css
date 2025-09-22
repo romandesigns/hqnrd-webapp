@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@clerk/themes/shadcn.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -150,7 +151,7 @@
     -webkit-backdrop-filter: saturate(180%) blur(20px);
   }
   .max-width {
-    max-width: 123rem;
+    max-width: 100rem;
   }
   .center {
     margin-left: auto;
