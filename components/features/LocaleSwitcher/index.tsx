@@ -24,15 +24,17 @@ export function LocaleSwitcher({ lang }: { lang: string }) {
           <li
             key={locale}
             className={twMerge(
-              `w-full`,
+              `w-full h-full rounded-md hover:border`,
               clsx({
-                "text-blue-500": locale === lang,
+                "text-[var(--brand-primary)]": locale === lang,
+                "border border-[var(--brand-primary)] bg-[var(--brand-primary)]/10":
+                  locale === lang,
               }),
             )}
           >
             <Link href={redirectedPathName(locale, pathName)}>
-              <div className="flex w-full flex-col space-y-2.5 items-center justify-center">
-                <div className="flex flex-col w-full border border-transparent hover:ring-2 transition-all duration-200 ease-in-out p-6 px-4 rounded-md items-center justify-center bg-secondary/20">
+              <div className="font-sans flex w-full h-full flex-col space-y-2.5 items-center justify-center">
+                <div className="flex flex-col w-full border border-transparent transition-all duration-200 ease-in-out  px-4 rounded-md items-center justify-center">
                   <Image
                     src={`/${HQNRD.LOCALEFLAGS}/${
                       locale === "en" ? "us" : "do"

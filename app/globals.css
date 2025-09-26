@@ -55,7 +55,8 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  /* --radius: 0.625rem; */
+  --radius: 0.5rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -86,6 +87,7 @@
   /* Functional */
   --brand-warning: oklab(72.176% -0.01329 0.13066);
   --brand-primary: oklab(61.425% -0.06266 -0.09226);
+  --brand-primary-shade: oklab(53.596999999999994% -0.05337 -0.11243);
 
   /* SIDEBAR */
 

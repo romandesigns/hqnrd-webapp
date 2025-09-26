@@ -23,7 +23,7 @@ export function LocaleDialog({
 }) {
   return (
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger asChild className="font-sans">
         <Button variant={btnVariant} size="icon" className={cx(className)}>
           <Languages />
         </Button>
