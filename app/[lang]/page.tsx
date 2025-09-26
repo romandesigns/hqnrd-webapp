@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/(site)/page/Home/Header";
+import { RoomsFilter } from "@/components/features";
 
 export default async function Home({
   params,
@@ -13,6 +14,7 @@ export default async function Home({
   return (
     <Container lang={lang} showNavBar showFooter>
       <Header lang={lang} />
+      <RoomsFilter lang={lang} />
     </Container>
   );
 }

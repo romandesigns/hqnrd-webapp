@@ -9,6 +9,7 @@ import { ContactWidget } from "./ContactWidget";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { Carousel } from "./Carousel";
 import { StarsRating } from "./StarsRating";
+import { RoomsFilter } from "./RoomsFilter";
 
 // Exporting Modules
 export {
@@ -22,4 +23,5 @@ export {
   ExternalLink,
   Carousel,
   StarsRating,
+  RoomsFilter,
 };

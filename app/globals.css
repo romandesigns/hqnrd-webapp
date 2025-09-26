@@ -152,6 +152,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  .section-padding {
+    @apply py-20 lg:py-40;
+  }
 }
 
 @layer utilities {
@@ -166,7 +169,7 @@
     -webkit-backdrop-filter: saturate(180%) blur(20px);
   }
   .max-width {
-    max-width: 100rem;
+    max-width: 95rem;
   }
   .center {
     margin-left: auto;

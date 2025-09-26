@@ -1,35 +1,52 @@
+import React from "react";
+import { cn } from "@/lib/utils";
+
+interface CardProps {
+  Header?: React.ReactNode;
+  children: React.ReactNode;
+  Footer?: React.ReactNode;
+  className?: string;
+  headerClassName?: string;
+  footerClassName?: string;
+  bodyClassName?: string;
+}
+
+function isHeaderVisible(Header: React.ReactNode) {
+  // Only filter out null, undefined, or false
+  return Header !== null && Header !== undefined && Header !== false;
+}
+
 export function Card({
   Header,
-  Footer,
   children,
-}: {
-  Header?: React.FC;
-  Footer?: React.FC;
-  children: React.ReactNode;
-}) {
+  Footer,
+  className,
+  headerClassName,
+  footerClassName,
+  bodyClassName,
+}: CardProps) {
   return (
-    // Card Container
-    <div className="bg-[var(--card-container)] rounded-md w-full max-w-md border border-[var(--card-border)] p-0.5">
-      {/* Card Header */}
-      {Header && (
-        <div className="p-2">
-          <Header />
-        </div>
+    <section
+      className={cn("bg-sidebar p-1 rounded-lg overflow-hidden", className)}
+    >
+      {isHeaderVisible(Header) && (
+        <header className={cn("p-2", headerClassName)}>{Header}</header>
       )}
-      {/* Card Body */}
-      {children && (
-        <div className="rounded-sm bg-[var(--card-body)] p-0.5 shadow-md shadow-black/10 dark:shadow-black">
-          <div className="bg-[var(--card-body-inner)] rounded-sm">
-            {children}
-          </div>
-        </div>
-      )}
-      {/* Card Footer */}
+      <article
+        className={cn(
+          "p-4 bg-background rounded-lg text-foreground border-b-[.10rem] border-border/70 inset-ring-[0.025rem] inset-ring-border",
+          bodyClassName,
+        )}
+      >
+        {children}
+      </article>
       {Footer && (
-        <div className="p-2">
-          <Footer />
-        </div>
+        <footer
+          className={cn("text-muted-foreground text-xs", footerClassName)}
+        >
+          {Footer}
+        </footer>
       )}
-    </div>
+    </section>
   );
 }
