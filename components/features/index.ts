@@ -8,6 +8,7 @@ import { ExternalLink } from "./ExternalLink";
 import { ContactWidget } from "./ContactWidget";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { Carousel } from "./Carousel";
+import { StarsRating } from "./StarsRating";
 
 // Exporting Modules
 export {
@@ -20,4 +21,5 @@ export {
   LocaleSwitcher,
   ExternalLink,
   Carousel,
+  StarsRating,
 };

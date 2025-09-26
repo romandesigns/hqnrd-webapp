@@ -1,26 +1,33 @@
-import { ContactWidget } from "@/components/features";
+import { ContactWidget, StarsRating } from "@/components/features";
 import LottiePlayer from "@/components/features/Lottie";
 import { Button } from "@/components/ui/button";
 import { Locale } from "@/i18n-config";
-import {heatBurts, googleSquare} from "@/public/assets/animated";
+import { heatBurts, googleSquare } from "@/public/assets/animated";
 import { Highlighter } from "@/components/ui/highlighter";
+import { NumberTicker } from "@/components/ui/number-ticker";
 
 export function Copy({ lang }: { lang: Locale }) {
   return (
     <div className="text-center lg:text-left flex flex-col space-y-3 lg:items-start justify-center items-center">
-      <div className="flex items-center justify-center lg:justify-start  lg:-ml-4 p-1 border">
-        <div className="flex items-center justify-start">
-          <div>
+      <div className="flex items-center justify-center lg:justify-start  lg:-ml-4 p-1">
+        <div className="flex items-end justify-start">
+          <div className="-translate-y-2">
             <LottiePlayer
-            item={googleSquare}
-            loop
-            autoplay
-            className="w-16 h-16"
-          />
+              item={googleSquare}
+              loop
+              autoplay
+              className="w-14 h-14"
+            />
           </div>
           <div>
-            <div>120 Reviews</div>
-            <div>4.5 Rating</div>
+            <div>
+              <NumberTicker
+                value={4.5}
+                decimalPlaces={2}
+                className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-black dark:text-white"
+              />
+              <StarsRating rating={4.5} />
+            </div>
           </div>
         </div>
       </div>
@@ -37,7 +44,6 @@ export function Copy({ lang }: { lang: Locale }) {
         del Cibao —{" "}
         <b className="font-bold">Salcedo, Provincia Hermanas Mirabal</b>
       </div>
-
       <h2 className="uppercase font-black text-2xl sm:text-4xl text-center lg:text-left leading-snug">
         Serenidad, comodidad e higiene —{" "}
         <Highlighter action="highlight" color="red">
@@ -45,12 +51,10 @@ export function Copy({ lang }: { lang: Locale }) {
         </Highlighter>{" "}
         en un mismo lugar
       </h2>
-
       <p className="text-[.7rem] sm:text-sm lg:text-sm text-muted-foreground italic lg:max-w-lg lg:mr-auto">
         De viaje o de paseo, nuestras unidades cuentan con todo lo necesario
         para ofrecerte una experiencia única.
       </p>
-
       <div className="flex justify-center space-x-4 mt-4 lg:mr-auto">
         <Button>Accede a tu cuenta</Button>
         <Button variant="bordered" className="!py-3">
@@ -65,23 +69,5 @@ export function Copy({ lang }: { lang: Locale }) {
         />
       </div>
     </div>
-
-    // <div>
-    //   <p className="py-4 text-sm text-center text-muted-foreground">
-    //     En el corazón del Cibao —{" "}
-    //     <b className="font-bold">Salcedo, Provincia Hermanas Mirabal</b>
-    //   </p>
-    //   <h2 className="uppercase font-black text-4xl py-2 max-w-2xl text-center leading-snug mx-auto">
-    //     Serenidad, comodidad e higiene — todo en un mismo lugar
-    //   </h2>
-    //   <p className="py-4 text-sm text-center max-w-lg mx-auto text-muted-foreground italic">
-    //     De viaje o de paseo, nuestras unidades cuentan con todo lo necesario
-    //     para ofrecerte una experiencia única.
-    //   </p>
-    //   <div className="flex justify-center space-x-4 mt-4">
-    //     <Button>Accede a tu cuenta</Button>
-    //     <Button variant={"secondary"}>Ver habitaciones</Button>
-    //   </div>
-    // </div>
   );
 }
