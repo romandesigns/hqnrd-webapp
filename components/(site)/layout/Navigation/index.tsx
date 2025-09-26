@@ -14,7 +14,7 @@ export const Navigation = ({
   return (
     <nav
       className={clsx(
-        `w-full flex items-center justify-between font-sans sticky top-0 bg-background shadow-sm dark:shadow-black p-2 py-0 z-1`,
+        `w-full flex items-center justify-between font-sans sticky top-0 bg-background shadow-sm dark:shadow-black p-2 py-1 z-1`,
         className,
       )}
     >
