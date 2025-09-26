@@ -11,10 +11,7 @@ export function Copy({ lang }: { lang: Locale }) {
       <div className="flex items-center justify-center lg:justify-start lg:-ml-4 p-1">
         <div className="flex items-end justify-start">
           <div className="translate-y-2">
-            <LottiePlayer
-              item={googleSquare}
-              className="w-10 h-10"
-            />
+            <LottiePlayer item={googleSquare} className="w-10 h-10" />
           </div>
           <div>
             <div className="flex items-center justify-center gap-2">
