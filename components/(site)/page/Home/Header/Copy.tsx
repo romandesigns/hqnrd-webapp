@@ -2,15 +2,22 @@ import { ContactWidget } from "@/components/features";
 import LottiePlayer from "@/components/features/Lottie";
 import { Button } from "@/components/ui/button";
 import { Locale } from "@/i18n-config";
-import heartBurst from "@/public/assets/animated/heart-burst.json";
+import {heatBurts, googleSquare} from "@/public/assets/animated";
 import { Highlighter } from "@/components/ui/highlighter";
 
 export function Copy({ lang }: { lang: Locale }) {
   return (
-    <div className="text-center lg:text-left flex flex-col space-y-3 justify-center items-center">
-      <div className="flex items-center justify-center lg:justify-start w-full">
+    <div className="text-center lg:text-left flex flex-col space-y-3 lg:items-start justify-center items-center">
+      <div className="flex items-center justify-center lg:justify-start  lg:-ml-4 p-1 border">
         <div className="flex items-center justify-start">
-          <div>Google</div>
+          <div>
+            <LottiePlayer
+            item={googleSquare}
+            loop
+            autoplay
+            className="w-16 h-16"
+          />
+          </div>
           <div>
             <div>120 Reviews</div>
             <div>4.5 Rating</div>
@@ -21,7 +28,7 @@ export function Copy({ lang }: { lang: Locale }) {
         En el{" "}
         <span className="inline-flex items-center w-14 h-14 -mx-4 align-text-bottom translate-y-5">
           <LottiePlayer
-            item={heartBurst}
+            item={heatBurts}
             loop
             autoplay
             className="w-full h-full"
