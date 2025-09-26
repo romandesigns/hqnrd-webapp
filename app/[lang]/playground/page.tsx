@@ -1,5 +1,5 @@
 import { Carousel } from "@/components/features";
-import { Container } from "@/components/layout";
+import { Container } from "@/components/(site)/layout";
 import { Locale } from "@/i18n-config";
 
 export default async function PlaygroundPage({

@@ -1,6 +1,6 @@
 import React from "react";
-import { Navigation } from "../..";
-import { Footer } from "../..";
+import { Navigation } from "..";
+import { Footer } from "..";
 import { Locale } from "@/i18n-config";
 
 interface ContainerProps {

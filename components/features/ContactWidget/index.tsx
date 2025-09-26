@@ -28,7 +28,7 @@ export function ContactWidget({
       {showBorders && <div className="h-0.5 w-full bg-secondary" />}
       <ul
         className={cn(
-          `flex items-center justify-center gap-2 space-x-0.5 px-2 ${
+          `flex items-center justify-center gap-2 space-x-0.5 ${
             direction === "horizontal" ? "flex-row" : "flex-col"
           }`,
         )}

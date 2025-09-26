@@ -1,4 +1,4 @@
-import { Container } from "@/components/layout";
+import { Container } from "@/components/(site)/layout";
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 
