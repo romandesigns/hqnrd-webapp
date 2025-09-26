@@ -45,19 +45,16 @@ export function Copy({ lang }: { lang: Locale }) {
         <b className="font-bold">Salcedo, Provincia Hermanas Mirabal</b>
       </div>
       <h2 className="uppercase font-black text-2xl sm:text-4xl text-center lg:text-left leading-snug">
-        Serenidad, comodidad e higiene —{" "}
-        <Highlighter action="highlight" color="red">
-          todo
-        </Highlighter>{" "}
-        en un mismo lugar
+        Serenidad, comodidad e higiene <br /> —{" "}
+          todo en un mismo lugar
       </h2>
       <p className="text-[.7rem] sm:text-sm lg:text-sm text-muted-foreground italic lg:max-w-lg lg:mr-auto">
         De viaje o de paseo, nuestras unidades cuentan con todo lo necesario
         para ofrecerte una experiencia única.
       </p>
       <div className="flex justify-center space-x-4 mt-4 lg:mr-auto">
-        <Button>Accede a tu cuenta</Button>
-        <Button variant="bordered" className="!py-3">
+        <Button size={'lg'} variant="primary">Accede a tu cuenta</Button>
+        <Button variant="bordered"  size={'lg'}>
           Ver habitaciones
         </Button>
       </div>

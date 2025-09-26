@@ -38,13 +38,13 @@ export const DesktopMenu = ({
             </Link>
           </Button>
         </li>
-        <li>
+        {/* <li>
           <Button asChild variant="link" className="w-full">
             <Link href={`/${lang}/playground`} className="py-1">
               Playground
             </Link>
           </Button>
-        </li>
+        </li> */}
         <li>
           <Popover>
             <PopoverTrigger asChild>

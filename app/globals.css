@@ -83,6 +83,10 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
 
+  /* Functional */
+  --brand-warning: oklab(72.176% -0.01329 0.13066);
+  --brand-primary: oklab(61.425% -0.06266 -0.09226);
+
   /* SIDEBAR */
 
   --sidebar-foreground: oklch(0.141 0.005 285.823);

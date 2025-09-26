@@ -63,7 +63,7 @@ export function DrawerMenu({ lang }: { lang: Locale }) {
                 </Link>
               </DrawerClose>
             </li>
-            <li>
+            {/* <li>
               <DrawerClose className="w-full" asChild>
                 <Link
                   href={`/${lang}/playground`}
@@ -74,7 +74,7 @@ export function DrawerMenu({ lang }: { lang: Locale }) {
                   Playground
                 </Link>
               </DrawerClose>
-            </li>
+            </li> */}
             <li className="py-4">
               <ContactWidget lang={lang} btnVariant={"bordered"} />
             </li>
