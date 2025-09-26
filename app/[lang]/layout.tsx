@@ -6,7 +6,7 @@ import { shadcn } from "@clerk/themes";
 import { esES, enUS } from "@clerk/localizations";
 
 import { i18n, Locale } from "@/i18n-config";
-import "./globals.css";
+import "../globals.css";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
@@ -187,6 +187,12 @@ export default async function RootLayout({
               disableTransitionOnChange
             >
               {children}
+              {/* <div className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+                <div className="opacity-5">
+                  <div className="absolute top-0 bottom-0 left-0 right-0 backdrop-blur-[5rem]"/>
+                   <div className="h-[60vh] translate-x-[20vw] -z-1 w-[10vw] absolute bg-red-500 top-0 rotate-45 rounded-full"/>
+               </div>
+              </div> */}
             </ThemeProvider>
           </ConvexProviderWithClerk>
         </ClerkProvider>

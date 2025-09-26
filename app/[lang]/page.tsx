@@ -12,7 +12,7 @@ export default async function Home({
   const { lang } = await params;
   return (
     <Container lang={lang} showNavBar showFooter>
-      <Header />
+      <Header lang={lang} />
     </Container>
   );
 }

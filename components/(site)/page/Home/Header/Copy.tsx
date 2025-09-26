@@ -3,10 +3,20 @@ import LottiePlayer from "@/components/features/Lottie";
 import { Button } from "@/components/ui/button";
 import { Locale } from "@/i18n-config";
 import heartBurst from "@/public/assets/animated/heart-burst.json";
+import { Highlighter } from "@/components/ui/highlighter";
 
 export function Copy({ lang }: { lang: Locale }) {
   return (
     <div className="text-center lg:text-left flex flex-col space-y-3 justify-center items-center">
+      <div className="flex items-center justify-center lg:justify-start w-full">
+              <div className="flex items-center justify-start">
+        <div>Google</div>
+        <div>
+          <div>120 Reviews</div>
+          <div>4.5 Rating</div>
+        </div>
+      </div>
+      </div>
       <div className="text-sm text-muted-foreground lg:mr-auto">
         En el{" "}
         <span className="inline-flex items-center w-14 h-14 -mx-4 align-text-bottom translate-y-5">
@@ -22,7 +32,11 @@ export function Copy({ lang }: { lang: Locale }) {
       </div>
 
       <h2 className="uppercase font-black text-2xl sm:text-4xl text-center lg:text-left leading-snug">
-        Serenidad, comodidad e higiene — todo en un mismo lugar
+        Serenidad, comodidad e higiene —{" "}
+        <Highlighter action="highlight" color="red">
+          todo
+        </Highlighter>{" "}
+        en un mismo lugar
       </h2>
 
       <p className="text-[.7rem] sm:text-sm lg:text-sm text-muted-foreground italic lg:max-w-lg lg:mr-auto">
