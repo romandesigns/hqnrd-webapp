@@ -9,13 +9,13 @@ export function Copy({ lang }: { lang: Locale }) {
   return (
     <div className="text-center lg:text-left flex flex-col space-y-3 justify-center items-center">
       <div className="flex items-center justify-center lg:justify-start w-full">
-              <div className="flex items-center justify-start">
-        <div>Google</div>
-        <div>
-          <div>120 Reviews</div>
-          <div>4.5 Rating</div>
+        <div className="flex items-center justify-start">
+          <div>Google</div>
+          <div>
+            <div>120 Reviews</div>
+            <div>4.5 Rating</div>
+          </div>
         </div>
-      </div>
       </div>
       <div className="text-sm text-muted-foreground lg:mr-auto">
         En el{" "}
