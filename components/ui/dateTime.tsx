@@ -273,7 +273,7 @@ function parseTimeProp(
   return null;
 }
 // ---------- utils end ----------
-// @ts-expect-error
+// @ts-ignore
 function Calendar({
   className,
   classNames,
