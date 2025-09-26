@@ -13,8 +13,6 @@ export function Copy({ lang }: { lang: Locale }) {
           <div className="translate-y-2">
             <LottiePlayer
               item={googleSquare}
-              loop
-              autoplay
               className="w-10 h-10"
             />
           </div>
