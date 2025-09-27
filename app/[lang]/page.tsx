@@ -1,9 +1,7 @@
 import { Container } from "@/components/(site)/layout";
-import Image from "next/image";
-import { Locale } from "@/i18n-config";
-import { Button } from "@/components/ui/button";
 import { Header } from "@/components/(site)/page/Home/Header";
 import { RoomsFilter } from "@/components/features";
+import { Locale } from "@/i18n-config";
 
 export default async function Home({
   params,
@@ -12,8 +10,7 @@ export default async function Home({
 }) {
   const { lang } = await params;
   return (
-    <Container lang={lang} showNavBar showFooter>
-      <Header lang={lang} />
+    <Container lang={lang} showNavBar showFooter Header={Header}>
       <RoomsFilter lang={lang} />
     </Container>
   );

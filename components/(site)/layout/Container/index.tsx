@@ -10,6 +10,7 @@ interface ContainerProps {
   lang: Locale;
   navClassNames?: string;
   footerClassNames?: string;
+  Header?: React.ComponentType<{ lang: Locale }>;
 }
 
 export function Container({
@@ -19,11 +20,13 @@ export function Container({
   lang = "en",
   navClassNames,
   footerClassNames,
+  Header,
 }: ContainerProps) {
   return (
     <>
       {showNavBar && <Navigation lang={lang} className={navClassNames} />}
-      {children && children}
+      {Header && <Header lang={lang} />}
+      {children && <main>{children}</main>}
       {showFooter && <Footer lang={lang} className={footerClassNames} />}
     </>
   );
