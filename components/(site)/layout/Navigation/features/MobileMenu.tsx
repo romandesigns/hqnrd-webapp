@@ -1,8 +1,8 @@
 import { ModeToggle } from "@/components/features";
 import { Locale } from "@/i18n-config";
 import clsx from "clsx";
-import { Cart } from "./Cart";
-import { DrawerMenu } from "./Drawer";
+import { Cart } from "../components/Cart";
+import { DrawerMenu } from "../components/Drawer";
 
 export const MobileMenu = ({
   lang,

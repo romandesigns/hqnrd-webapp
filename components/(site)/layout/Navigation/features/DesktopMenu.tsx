@@ -10,11 +10,10 @@ import { Locale } from "@/i18n-config";
 import { IconChevronDown, IconUser } from "@tabler/icons-react";
 import { LockIcon, LogIn, LogOut } from "lucide-react";
 import Link from "next/link";
-
 import clsx from "clsx";
 import { roomsMenuItems } from "../data/menuItems";
-import { Cart } from "./Cart";
-import { RoomMenuItem } from "./RoomMenuItem";
+import { Cart } from "../components/Cart";
+import { RoomMenuItem } from "../components/RoomMenuItem";
 
 export const DesktopMenu = ({
   lang,
@@ -38,13 +37,13 @@ export const DesktopMenu = ({
             </Link>
           </Button>
         </li>
-        {/* <li>
+        <li>
           <Button asChild variant="link" className="w-full">
             <Link href={`/${lang}/playground`} className="py-1">
               Playground
             </Link>
           </Button>
-        </li> */}
+        </li>
         <li>
           <Popover>
             <PopoverTrigger asChild>

@@ -34,7 +34,7 @@ export function Card({
       )}
       <article
         className={cn(
-          "p-4 bg-background rounded-lg text-foreground border-b-[.10rem] border-border/70 inset-ring-[0.025rem] inset-ring-border",
+          "p-4 bg-background/80 rounded-lg text-foreground border-b-[.10rem] border-border/70 inset-ring-[0.025rem] inset-ring-border",
           bodyClassName,
         )}
       >

@@ -3,11 +3,9 @@ import clsx from "clsx";
 import React from "react";
 
 export const Content = ({
-  lang,
   children,
   className,
 }: {
-  lang: Locale;
   children?: React.ReactNode;
   className?: string;
 }) => {

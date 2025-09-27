@@ -1,5 +1,5 @@
 import { Container } from "@/components/(site)/layout";
-import { Header } from "@/components/(site)/page/Home/Header";
+import { Header } from "@/components/(site)/page/home/Header";
 import { RoomsFilter } from "@/components/features";
 import { Locale } from "@/i18n-config";
 
