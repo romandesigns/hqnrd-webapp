@@ -15,7 +15,7 @@ export function RoomsFilter({ lang }: { lang: Locale }) {
   );
 
   return (
-    <Content lang={lang} className="py-20 lg:py-0">
+    <Content className="py-20 lg:py-0">
       <Card
         className="pb-1 max-w-2xl mx-auto font-sans"
         Header={<CardHeader />}
