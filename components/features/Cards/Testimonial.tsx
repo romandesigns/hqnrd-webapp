@@ -1,15 +1,9 @@
-import { Content } from "@/components/(site)/layout";
 import { Card } from "./Default";
-import { Carousel, ExternalLink, StarsRating } from "@/components/features";
+import { ExternalLink, StarsRating } from "@/components/features";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { SectionHeading } from "../Heading";
 
-const options = {
-  slides: { perView: 4, spacing: 10 },
-};
-
-export function TestimonialItems() {
+export function Testimonial() {
   return (
     <Card
       className="keen-slider__slide"
@@ -84,24 +78,5 @@ export function TestimonialItems() {
         </ExternalLink>
       </div>
     </Card>
-  );
-}
-
-export function Testimonials() {
-  return (
-    <section>
-      <Content className="!max-w-[77rem]">
-        <SectionHeading
-          title="Recent Testimonials"
-          className="lg:my-10"
-          showBorders
-        />
-        <Carousel options={options} showDots>
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
-            <TestimonialItems key={index} />
-          ))}
-        </Carousel>
-      </Content>
-    </section>
   );
 }

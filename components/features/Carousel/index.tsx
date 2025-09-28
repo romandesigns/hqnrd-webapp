@@ -45,7 +45,7 @@ export const Carousel = ({
           slides: { perView: 2, spacing: 5 },
         },
         "(min-width: 1000px)": {
-          slides: { perView: 4, spacing: 20},
+          slides: { perView: 4, spacing: 20 },
         },
       },
       ...options,
