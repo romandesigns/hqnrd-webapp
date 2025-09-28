@@ -15,7 +15,7 @@ export function RoomsFilter({ lang }: { lang: Locale }) {
   );
 
   return (
-    <Content className="py-20 lg:py-0">
+    <Content className="py-10 pb-5 lg:py-0">
       <Card
         className="pb-1 max-w-2xl mx-auto font-sans"
         Header={<CardHeader />}
@@ -52,6 +52,7 @@ export function RoomsFilter({ lang }: { lang: Locale }) {
             <Button
               className="mt-5 p-5 lg:p-4.25 sm:hidden lg:flex"
               type="submit"
+              variant="primary"
             >
               Search
             </Button>

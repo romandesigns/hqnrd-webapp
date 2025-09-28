@@ -90,7 +90,7 @@ export function TestimonialItems() {
 export function Testimonials() {
   return (
     <section>
-      <Content className="my-0 lg:my-20">
+      <Content className="!max-w-[77rem]">
         <SectionHeading
           title="Recent Testimonials"
           className="lg:my-10"

@@ -7,7 +7,7 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 
 export function Copy({ lang }: { lang: Locale }) {
   return (
-    <div className="pt-8 text-center lg:text-left flex flex-col space-y-3 lg:items-start justify-center items-center px-3">
+    <div className="pt-8 lg:pt-0 text-center lg:text-left flex flex-col space-y-3 lg:items-start justify-center items-center px-3">
       <div className="flex items-center justify-center lg:justify-start lg:-ml-4 p-1">
         <div className="flex items-end justify-start">
           <div className="translate-y-2">
