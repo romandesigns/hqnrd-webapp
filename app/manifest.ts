@@ -15,7 +15,7 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "en",
     orientation: "portrait",
     background_color: "#ffffff",
-    theme_color: "#000000",
+    theme_color: "#0b0b0e",
     categories: ["hotel", "hospitality", "travel", "vacation", "tourism"],
 
     icons: [
