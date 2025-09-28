@@ -38,7 +38,7 @@ export const Carousel = ({
         setLoaded(true);
       },
       breakpoints: {
-        "(min-width: 300px)": {
+        "(min-width: 385px)": {
           slides: { perView: 1, spacing: 5 },
         },
         "(min-width: 400px)": {
