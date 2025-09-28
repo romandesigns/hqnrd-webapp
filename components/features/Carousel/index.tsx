@@ -38,14 +38,14 @@ export const Carousel = ({
         setLoaded(true);
       },
       breakpoints: {
-        "(min-width: 385px)": {
+        "(max-width: 579px)": {
           slides: { perView: 1, spacing: 5 },
         },
-        "(min-width: 400px)": {
+        "(min-width: 580px) and (max-width: 999px)": {
           slides: { perView: 2, spacing: 5 },
         },
         "(min-width: 1000px)": {
-          slides: { perView: 3, spacing: 10 },
+          slides: { perView: 3, spacing: 5 },
         },
       },
       ...options,
