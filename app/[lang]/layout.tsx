@@ -159,7 +159,9 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body className={`${poppinsSans.variable} antialiased scroll-smooth`}>
+      <body
+        className={`${poppinsSans.variable} antialiased scroll-smooth overscroll-contain`}
+      >
         <ClerkProvider
           localization={lang === "en" ? enUS : esES}
           appearance={{

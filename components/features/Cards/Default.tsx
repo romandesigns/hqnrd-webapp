@@ -27,14 +27,17 @@ export function Card({
 }: CardProps) {
   return (
     <section
-      className={cn("bg-sidebar p-1 rounded-lg overflow-hidden", className)}
+      className={cn(
+        "bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden",
+        className,
+      )}
     >
       {isHeaderVisible(Header) && (
         <header className={cn("p-2", headerClassName)}>{Header}</header>
       )}
       <article
         className={cn(
-          "p-4 bg-background/80 rounded-lg text-foreground border-b-[.10rem] border-border/70 inset-ring-[0.025rem] inset-ring-border",
+          "p-4 bg-background/80 dark:bg-card dark:shadow-black dark:shadow-sm rounded-sm text-foreground shadow border-border/70 inset-ring-[0.025rem] inset-ring-border  dark:border-t dark:border-t-neutral-800",
           bodyClassName,
         )}
       >

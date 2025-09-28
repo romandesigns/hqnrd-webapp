@@ -1,6 +1,6 @@
 // Imported Modules
 import { ModeToggle } from "./ThemeToggle";
-import { Card } from "./Card";
+import { Card } from "./Cards";
 import { Brand } from "./Brand";
 import { MenuItem } from "./Menu";
 import { LocaleDialog } from "./LocaleDialog";

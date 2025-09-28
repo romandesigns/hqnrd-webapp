@@ -85,7 +85,7 @@
   --sidebar: oklch(0.985 0 0);
 
   /* Functional */
-  --brand-warning: oklab(72.176% -0.01329 0.13066);
+  --brand-warning: oklch(0.769 0.188 70.08);
   --brand-primary: oklab(61.425% -0.06266 -0.09226);
   --brand-primary-shade: oklab(53.596999999999994% -0.05337 -0.11243);
 
@@ -190,5 +190,11 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0 calc(0.25rem * 4);
+  }
+  .shape {
+    /* clip-path: circle(25% at 100px 100px); */
+    /* clip-path: ellipse(30% 40% at 40% 50%); */
+    /* clip-path: inset(10px 10px 10px round 50px 0);  */
+    clip-path: polygon(10px 10px 10px round 50px 0);
   }
 }
