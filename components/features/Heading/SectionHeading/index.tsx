@@ -27,23 +27,26 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex w-full flex-col items-center justify-center py-4 pb-8 font-sans",
+        "flex w-full flex-col items-center justify-center py-14 pt-4 lg:py-16 font-sans",
         className,
       )}
     >
-      <div className="mb-3 flex w-full items-center justify-center">
-        {showBorders && <div className="h-[0.15rem] w-1/5 bg-muted/25" />}
-        <div>
-          <div className="mx-2 rounded-full bg-muted/90 px-6 py-1 text-primary-muted">
-            <p className="text-[0.73rem] lg:text-sm font-bold">{title}</p>
+      {title && (
+        <div className="flex w-full items-center justify-center">
+          {showBorders && <div className="h-[0.15rem] w-1/5 bg-muted/25" />}
+          <div>
+            <div className="mx-2 rounded-full bg-muted/90 px-6 py-1 text-primary-muted">
+              <p className="text-[0.73rem] lg:text-sm font-bold">{title}</p>
+            </div>
           </div>
+          {showBorders && <div className="h-[0.15rem] w-1/5 bg-muted/25" />}
         </div>
-        {showBorders && <div className="h-[0.15rem] w-1/5 bg-muted/25" />}
-      </div>
+      )}
+
       {description && (
         <small
           className={cn(
-            `md:text-sm post_title text-center text-xs font-medium`,
+            `md:text-sm post_title text-center text-xs font-medium mt-3`,
             postTitleClassName,
           )}
         >

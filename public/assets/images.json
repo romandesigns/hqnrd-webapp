@@ -1,3 +1,25 @@
 {
-  "hotel_logo": "../assets/brand/site/HQNRD-logo.svg"
+  "hotel_logo": "/assets/brand/site/HQNRD-logo.svg",
+  "images": [
+    "/assets/placeholders/img-1.webp",
+    "/assets/placeholders/img-2.webp",
+    "/assets/placeholders/img-3.webp",
+    "/assets/placeholders/img-4.webp",
+    "/assets/placeholders/img-5.webp",
+    "/assets/placeholders/img-6.webp",
+    "/assets/placeholders/img-7.webp",
+    "/assets/placeholders/img-8.webp",
+    "/assets/placeholders/img-9.webp",
+    "/assets/placeholders/img-10.webp",
+    "/assets/placeholders/img-11.webp",
+    "/assets/placeholders/img-12.webp",
+    "/assets/placeholders/img-13.webp",
+    "/assets/placeholders/img-14.webp",
+    "/assets/placeholders/img-15.webp",
+    "/assets/placeholders/img-16.webp",
+    "/assets/placeholders/img-17.webp",
+    "/assets/placeholders/img-18.webp",
+    "/assets/placeholders/img-19.webp",
+    "/assets/placeholders/img-20.webp"
+  ]
 }

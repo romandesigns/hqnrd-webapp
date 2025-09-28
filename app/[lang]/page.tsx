@@ -1,7 +1,10 @@
 import { Container } from "@/components/(site)/layout";
-import { Header } from "@/components/(site)/page/home/Header";
+import {
+  Header,
+  Testimonials,
+  Categories,
+} from "@/components/(site)/page/home";
 import { RoomsFilter } from "@/components/features";
-import { Testimonials } from "@/components/features/Cards";
 import { Locale } from "@/i18n-config";
 
 export default async function Home({
@@ -14,6 +17,7 @@ export default async function Home({
     <Container lang={lang} showNavBar showFooter Header={Header}>
       <RoomsFilter lang={lang} />
       <Testimonials />
+      <Categories lang={lang} />
     </Container>
   );
 }

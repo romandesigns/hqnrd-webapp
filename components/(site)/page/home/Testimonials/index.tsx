@@ -11,11 +11,7 @@ export function Testimonials() {
   return (
     <section>
       <Content className="!max-w-[77rem]">
-        <SectionHeading
-          title="Recent Testimonials"
-          className="lg:my-10"
-          showBorders
-        />
+        <SectionHeading title="Recent Testimonials" className="" showBorders />
         <Carousel options={options} showDots>
           {[1, 2, 3, 4, 5, 6].map((item, index) => (
             <Testimonial key={index} />

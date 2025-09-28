@@ -1,4 +1,5 @@
 import { Card } from "./Default";
-import { Testimonials } from "./Testimonial";
+import { Testimonial } from "./Testimonial";
+import { Category } from "./Category";
 
-export { Card, Testimonials };
+export { Card, Testimonial, Category };
