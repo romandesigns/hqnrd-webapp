@@ -90,8 +90,12 @@ export function TestimonialItems() {
 export function Testimonials() {
   return (
     <section>
-      <Content className="my-0 lg:my-20" >
-        <SectionHeading title="Recent Testimonials" className="lg:my-10" showBorders />
+      <Content className="my-0 lg:my-20">
+        <SectionHeading
+          title="Recent Testimonials"
+          className="lg:my-10"
+          showBorders
+        />
         <Carousel options={options} showDots>
           {[1, 2, 3, 4, 5, 6].map((item, index) => (
             <TestimonialItems key={index} />

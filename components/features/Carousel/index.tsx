@@ -79,7 +79,7 @@ export const Carousel = ({
         slider.on("animationEnded", nextTimeout);
         slider.on("updated", nextTimeout);
       },
-    ]
+    ],
   );
 
   return (
@@ -120,9 +120,7 @@ export const Carousel = ({
                   instanceRef.current?.moveToIdx(idx);
                 }}
                 className={`dot w-3 h-3 rounded-full ${
-                  currentSlide === idx
-                    ? "bg-primary"
-                    : "bg-muted-foreground/40"
+                  currentSlide === idx ? "bg-primary" : "bg-muted-foreground/40"
                 }`}
               />
             );
