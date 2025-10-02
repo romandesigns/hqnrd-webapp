@@ -26,9 +26,9 @@ export function Card({
   bodyClassName,
 }: CardProps) {
   return (
-    <section
+    <div
       className={cn(
-        "bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden",
+        "bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1",
         className,
       )}
     >
@@ -50,6 +50,6 @@ export function Card({
           {Footer}
         </footer>
       )}
-    </section>
+    </div>
   );
 }
