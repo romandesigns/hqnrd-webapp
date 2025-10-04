@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/features/Heading";
 import { Content } from "@/components/(site)/layout";
 import { Locale } from "@/i18n-config";
 import { JSX } from "react";
+
 /**
  * The `ScenicSpaces` component renders a section showcasing various scenic spaces.
  * It includes a heading section and a grid layout of images with descriptive overlays.
@@ -26,12 +27,12 @@ function Heading({
   description: string;
 }) {
   return (
-    <div className="text-md overflow-hidden rounded-br-md rounded-tl-md p-1 px-5 text-primary-foreground backdrop-blur-md">
-      <h3 className="-mb-1 text-lg text-foreground font-bold uppercase">
-        Rooms
+    <div className="text-md overflow-hidden rounded-br-md rounded-tl-md font-sans text-primary-foreground backdrop-blur-md">
+      <h3 className="-mb-1 text-md text-foreground font-bold uppercase">
+        {title}
       </h3>
-      <p className="lg:text-md text-sm font-normal text-destructive">
-        Interior
+      <p className="text-xs font-normal text-[var(--brand-warning)]">
+        {description}
       </p>
     </div>
   );
@@ -47,82 +48,81 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
           description="Click the images to learn more"
         />
       </Content>
-      <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-2 !max-w-7xl flex-1 ">
+      <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-1 !max-w-7xl flex-1 ">
         {/* Rooms Section */}
         <Card
-          bodyClassName={"h-full p-0"}
-          className={"h-full row-span-2"}
+          bodyClassName={"flex-1 p-0"}
+          className={"h-full row-span-2 flex flex-col"}
           Header={<Heading title="Rooms" description="Interior" />}
         >
-          <figure className="w-full  relative overflow-hidden rounded-md bg-pink-500 block h-full">
-            <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
-            <Image
-              src={images["images"][0]}
-              alt="Rooms Interior"
-              className="object-cover"
-              fill={true}
-            />
-          </figure>
+          <div className="p-1 h-full">
+            <figure className="w-full  relative overflow-hidden rounded-md block h-full aspect-square">
+              <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
+              <Image
+                src={images["images"][0]}
+                alt="Rooms Interior"
+                className="object-cover rounded-md"
+                fill={true}
+              />
+            </figure>
+          </div>
         </Card>
 
         {/* Rooftop Section */}
         <Card
-          bodyClassName={""}
-          className={""}
+          bodyClassName={"flex-1 p-0 pr-1 overflow-hidden"}
+          className={" flex flex-col"}
           Header={<Heading title="Rooms" description="Interior" />}
         >
-          <figure className="relative  overflow-hidden rounded-md bg-green-500 ">
-            <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
-            <Image
-              src={images["images"][1]}
-              alt="Rooms Interior"
-              fill={true}
-              className="object-cover"
-            />
-          </figure>
+          <div className="p-1 h-full overflow-hidden">
+            <figure className="relative  overflow-hidden rounded-md aspect-square h-full">
+              <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
+              <Image
+                src={images["images"][1]}
+                alt="Rooms Interior"
+                fill={true}
+                className="object-cover rounded-md"
+              />
+            </figure>
+          </div>
         </Card>
 
         {/* Hallways Section */}
         <Card
-          className={""}
-          bodyClassName={""}
-          Footer={<Heading title="Rooms" description="Interior" />}
+          bodyClassName={"flex-1 p-0 pr-1 overflow-hidden"}
+          className={" flex flex-col"}
+          Header={<Heading title="Rooms" description="Interior" />}
         >
-          <figure className="relative overflow-hidden  rounded-md bg-yellow-500">
-            <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-start bg-black/25" />
-            <Image
-              src={images["images"][1]}
-              alt="Rooms Interior"
-              fill={true}
-              className="object-cover"
-            />
-          </figure>
+          <div className="p-1 h-full overflow-hidden">
+            <figure className="relative  overflow-hidden rounded-md aspect-square h-full">
+              <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
+              <Image
+                src={images["images"][1]}
+                alt="Rooms Interior"
+                fill={true}
+                className="object-cover"
+              />
+            </figure>
+          </div>
         </Card>
 
         {/* Exterior Section */}
         <Card
-          className={"col-start-2 col-end-4"}
-          bodyClassName={""}
-          Footer={
-            <div className="text-md overflow-hidden rounded-br-md rounded-tl-md text-primary-foreground">
-              <h3 className="-mb-1 text-lg text-foreground font-bold uppercase">
-                Hallways
-              </h3>
-              <p className="lg:text-md text-sm font-normal text-destructive">
-                Interior
-              </p>
-            </div>
-          }
+          bodyClassName={"flex-1 p-0"}
+          className={"col-start-2 col-end-4  flex flex-col"}
+          Header={<Heading title="Hallways" description="Interior" />}
         >
-          <figure className="relative overflow-hidden rounded-md bg-yellow-500">
-            <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-start bg-black/25" />
-            <Image
-              src={images["images"][1]}
-              alt="Rooms Interior"
-              fill={true}
-              className="object-cover"
-            />
-          </figure>
+          <div className="p-1 h-full overflow-hidden">
+            <figure className="relative overflow-hidden rounded-md aspect-video h-full">
+              <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-start bg-black/25" />
+              <Image
+                src={images["images"][1]}
+                alt="Rooms Interior"
+                fill={true}
+                className="object-cover"
+              />
+            </figure>
+          </div>
         </Card>
       </Content>
     </section>
