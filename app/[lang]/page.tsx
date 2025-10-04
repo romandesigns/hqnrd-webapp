@@ -4,9 +4,9 @@ import {
   Testimonials,
   Categories,
   ScenicSpaces,
+  Trending,
 } from "@/components/(site)/page/home";
 import { RoomsFilter } from "@/components/features";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Locale } from "@/i18n-config";
 
 export default async function Home({
@@ -38,6 +38,7 @@ export default async function Home({
       <Testimonials />
       <Categories lang={lang} />
       <ScenicSpaces lang={lang} />
+      <Trending lang={lang} />
     </Container>
   );
 }
