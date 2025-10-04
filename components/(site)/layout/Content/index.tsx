@@ -10,6 +10,8 @@ export const Content = ({
   className?: string;
 }) => {
   return (
-    <div className={clsx(`max-width mx-auto p-2`, className)}>{children}</div>
+    <div className={clsx(`max-width mx-auto p-2 my-20 md:px-10`, className)}>
+      {children}
+    </div>
   );
 };

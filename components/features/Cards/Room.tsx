@@ -46,10 +46,10 @@ function CategoryFooter() {
     <>
       <div className=" flex flex-col relative gap-1 z-[2] pb-2">
         <div className="flex items-center justify-between">
-          <h3 className="z-[2] text-lg uppercase font-bold  flex flex-col text-[var(--brand-warning)]">
+          <h3 className="z-[2] text-md lg:text-sm uppercase font-bold  flex flex-col text-[var(--brand-warning)]">
             Deluxe Room
           </h3>
-          <p className="font-bold text-lg">$35,500/Night</p>
+          <p className="font-bold text-sm lg:text-sm">$35,500/Night</p>
         </div>
         <ul className="flex gap-2">
           <li className="">
@@ -81,19 +81,19 @@ function CategoryFooter() {
           </li>
         </ul>
         <ul className="text-[0.60rem] flex gap-1">
-          <li className="p-0.5 px-2 bg-muted backdrop-blur-2xl rounded-full">
+          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
             Private Bathroom
           </li>
-          <li className="p-0.5 px-2 bg-muted backdrop-blur-2xl rounded-full">
+          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
             Intercom
           </li>
-          <li className="p-0.5 px-2 bg-muted backdrop-blur-2xl rounded-full">
+          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
             Kitchen
           </li>
-          <li className="p-0.5 px-2 bg-muted backdrop-blur-2xl rounded-full">
+          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
             24.50 SQF
           </li>
-          <li className="p-0.5 px-2 bg-muted backdrop-blur-2xl rounded-full">
+          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
             Balcony
           </li>
         </ul>
@@ -113,8 +113,8 @@ function CategoryFooter() {
 export function Room() {
   return (
     <Card
-      bodyClassName="p-0.5  overflow-hidden"
-      className="font-sans"
+      bodyClassName="p-0.5 overflow-hidden"
+      className="font-sans keen-slider__slide"
       Footer={
         <>
           <CategoryHeader /> <CategoryFooter />
@@ -125,7 +125,11 @@ export function Room() {
       <div>
         <figure className="relative h-52 rounded-sm overflow-hidden flex items-end justify-start">
           <div className="absolute inset-0 bg-linear-0 from-neutral-950/85 via-neutral-950/50 to-neutral-950/20 z-1" />
-          <Button size={"icon"} className="absolute top-2 right-2 z-10  shadow" variant={'outline'}>
+          <Button
+            size={"icon"}
+            className="absolute top-2 right-2 z-10  shadow"
+            variant={"outline"}
+          >
             <IconShare size={18} className="text-white" />
           </Button>
           <Image

@@ -17,7 +17,7 @@ export const Footer = ({
   return (
     <footer className={clsx(`py-10 pb-2 px-2`, className)}>
       <Card
-        className="max-w-[85rem] mx-auto"
+        className="max-w-[95rem] mx-auto"
         Header={
           <div className="flex justify-start items-center p-2 lg:px-12">
             <Brand lang={lang} />

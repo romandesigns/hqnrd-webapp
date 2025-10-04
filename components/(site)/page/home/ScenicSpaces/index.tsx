@@ -48,7 +48,7 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
           description="Click the images to learn more"
         />
       </Content>
-      <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-1 !max-w-7xl flex-1 ">
+      <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-1  flex-1 ">
         {/* Rooms Section */}
         <Card
           headerClassName="p-1 lg:p-2"

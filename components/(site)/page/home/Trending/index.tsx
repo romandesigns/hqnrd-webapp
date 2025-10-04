@@ -2,25 +2,33 @@ import { Content } from "@/components/(site)/layout";
 import { Carousel } from "@/components/features";
 import { Room as RoomCard } from "@/components/features/Cards";
 import { SectionHeading } from "@/components/features/Heading";
+import { Locale } from "@/i18n-config";
 
 const options = {
   slides: { perView: 4, spacing: 10 },
+  breakpoints: {
+    "(max-width: 579px)": {
+      slides: { perView: 1, spacing: 5 },
+    },
+    "(min-width: 580px) and (max-width: 999px)": {
+      slides: { perView: 3, spacing: 5 },
+    },
+    "(min-width: 1000px)": {
+      slides: { perView: 4, spacing: 10 },
+    },
+  },
 };
 
-export function Trending() {
+export function Trending({ lang }: { lang?: Locale }) {
   return (
     <section>
-      <Content className="mx-auto">
+      <Content>
         <SectionHeading title="Trending" showBorders />
-        {/* <Carousel options={options} showDots>
-          {[1, 2, 3, 4, 5, 6].map((item, index) => ( */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-        <RoomCard />
-        <RoomCard />
-        <RoomCard />
-    </div>
-        {/* ))} */}
-        {/* </Carousel> */}
+        <Carousel options={options} showDots>
+          {[1, 2, 3, 4, 5].map((item, index) => (
+            <RoomCard key={index} />
+          ))}
+        </Carousel>
       </Content>
     </section>
   );
