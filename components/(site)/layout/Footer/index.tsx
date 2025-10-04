@@ -33,9 +33,9 @@ export const Footer = ({
           <Details />
           <div>
             <Social />
-          <Others />
+            <Others />
           </div>
-            <Affiliates className="mt-4" />
+          <Affiliates className="mt-4" />
           <Map />
         </div>
       </Card>
