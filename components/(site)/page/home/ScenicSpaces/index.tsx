@@ -27,11 +27,11 @@ function Heading({
   description: string;
 }) {
   return (
-    <div className="text-md overflow-hidden rounded-br-md rounded-tl-md font-sans text-primary-foreground backdrop-blur-md">
-      <h3 className="-mb-1 text-md text-foreground font-bold uppercase">
+    <div className="overflow-hidden rounded-br-md rounded-tl-md font-sans text-primary-foreground backdrop-blur-md">
+      <h3 className="-mb-1 text-[0.7rem] md:text-lg text-foreground font-bold uppercase">
         {title}
       </h3>
-      <p className="text-xs font-normal text-[var(--brand-warning)]">
+      <p className="text-[0.65rem] md:text-xs font-normal text-[var(--brand-warning)]">
         {description}
       </p>
     </div>
@@ -51,11 +51,12 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
       <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-1 !max-w-7xl flex-1 ">
         {/* Rooms Section */}
         <Card
+          headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0"}
           className={"h-full row-span-2 flex flex-col"}
           Header={<Heading title="Rooms" description="Interior" />}
         >
-          <div className="p-1 h-full">
+          <div className="!p-0  lg:p-1 h-full">
             <figure className="w-full  relative overflow-hidden rounded-md block h-full aspect-square">
               <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
               <Image
@@ -70,11 +71,12 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
 
         {/* Rooftop Section */}
         <Card
+          headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0 pr-1 overflow-hidden"}
           className={" flex flex-col"}
           Header={<Heading title="Rooms" description="Interior" />}
         >
-          <div className="p-1 h-full overflow-hidden">
+          <div className="!p-0  lg:p-1 h-full overflow-hidden">
             <figure className="relative  overflow-hidden rounded-md aspect-square h-full">
               <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
               <Image
@@ -89,11 +91,12 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
 
         {/* Hallways Section */}
         <Card
+          headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0 pr-1 overflow-hidden"}
           className={" flex flex-col"}
           Header={<Heading title="Rooms" description="Interior" />}
         >
-          <div className="p-1 h-full overflow-hidden">
+          <div className="!p-0  lg:p-1 h-full overflow-hidden">
             <figure className="relative  overflow-hidden rounded-md aspect-square h-full">
               <div className="absolute inset-0 z-10 flex h-full w-full bg-black/25" />
               <Image
@@ -108,11 +111,12 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
 
         {/* Exterior Section */}
         <Card
+          headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0"}
           className={"col-start-2 col-end-4  flex flex-col"}
           Header={<Heading title="Hallways" description="Interior" />}
         >
-          <div className="p-1 h-full overflow-hidden">
+          <div className="!p-0  lg:p-1 h-full overflow-hidden">
             <figure className="relative overflow-hidden rounded-md aspect-video h-full">
               <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-start bg-black/25" />
               <Image
