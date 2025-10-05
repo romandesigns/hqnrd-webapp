@@ -18,8 +18,8 @@ export function SectionHeading({
   className,
   postTitleClassName,
 }: {
-  title?: string;
-  description?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   showBorders?: boolean;
   className?: string;
   postTitleClassName?: string;
@@ -27,7 +27,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex w-full flex-col items-center justify-center py-14 pt-4 lg:py-16 font-sans",
+        "flex w-full flex-col items-center justify-center pb-20 font-sans",
         className,
       )}
     >
@@ -46,7 +46,7 @@ export function SectionHeading({
       {description && (
         <small
           className={cn(
-            `md:text-sm post_title text-center text-xs font-medium mt-3`,
+            `text-sm post_title text-center text-muted-foreground font-medium mt-3`,
             postTitleClassName,
           )}
         >

@@ -11,6 +11,7 @@ import { Carousel } from "./Carousel";
 import { StarsRating } from "./StarsRating";
 import { RoomsFilter } from "./RoomsFilter";
 import { ShareBtn } from "./ShareBtn";
+import * as Heading from "./Heading";
 
 // Exporting Modules
 export {
@@ -26,4 +27,5 @@ export {
   StarsRating,
   RoomsFilter,
   ShareBtn,
+  Heading,
 };

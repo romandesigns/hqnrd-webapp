@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Card } from "@/components/features";
 import images from "@/public/assets/images.json";
 import { SectionHeading } from "@/components/features/Heading";
-import { Content } from "@/components/(site)/layout";
+import { Content, Section } from "@/components/(site)/layout";
 import { Locale } from "@/i18n-config";
 import { JSX } from "react";
 
@@ -40,7 +40,7 @@ function Heading({
 
 export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
   return (
-    <section>
+    <Section>
       <Content className="flex justify-center w-full !max-w-7xl">
         <SectionHeading
           showBorders
@@ -129,6 +129,6 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
           </div>
         </Card>
       </Content>
-    </section>
+    </Section>
   );
 }

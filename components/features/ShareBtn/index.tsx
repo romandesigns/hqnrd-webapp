@@ -1,12 +1,11 @@
 import { IconShare } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import clsx from "clsx";
 
-export function ShareBtn() {
+export function ShareBtn({ className }: { className?: string }) {
   return (
-    <div className="flex w-full items-center justify-start pt-3">
-      <Button size="icon" variant="outline">
-        <IconShare />
-      </Button>
-    </div>
+    <Button size="icon" variant="link" className={clsx("", className)}>
+      <IconShare />
+    </Button>
   );
 }

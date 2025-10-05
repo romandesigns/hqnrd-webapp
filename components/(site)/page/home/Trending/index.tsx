@@ -1,4 +1,4 @@
-import { Content } from "@/components/(site)/layout";
+import { Content, Section } from "@/components/(site)/layout";
 import { Carousel } from "@/components/features";
 import { Room as RoomCard } from "@/components/features/Cards";
 import { SectionHeading } from "@/components/features/Heading";
@@ -21,15 +21,15 @@ const options = {
 
 export function Trending({ lang }: { lang?: Locale }) {
   return (
-    <section>
+    <Section>
       <Content>
-        <SectionHeading title="Trending" showBorders />
+        <SectionHeading title="Trending" showBorders  description="Experience our most loved stays this week"/>
         <Carousel options={options} showDots>
           {[1, 2, 3, 4, 5].map((item, index) => (
             <RoomCard key={index} />
           ))}
         </Carousel>
       </Content>
-    </section>
+    </Section>
   );
 }

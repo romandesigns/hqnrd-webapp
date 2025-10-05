@@ -15,6 +15,7 @@ import {
   IconShare,
 } from "@/components/icons";
 import Link from "next/link";
+import { ShareBtn } from "../ShareBtn";
 
 function ItemsCounter({ count, label }: { count?: number; label?: string }) {
   return (
@@ -29,16 +30,6 @@ function ItemsCounter({ count, label }: { count?: number; label?: string }) {
       </div>
     </div>
   );
-}
-
-function CategoryHeader() {
-  return "";
-  //   return; (
-  //     <div className="flex items-center justify-start gap-4">
-  //       <ItemsCounter count={4} label="Units Available" />
-  //       <ItemsCounter count={2} label="Max Guests per Unit" />
-  //     </div>
-  //   )
 }
 
 function CategoryFooter() {
@@ -115,23 +106,13 @@ export function Room() {
     <Card
       bodyClassName="p-0.5 overflow-hidden"
       className="font-sans keen-slider__slide"
-      Footer={
-        <>
-          <CategoryHeader /> <CategoryFooter />
-        </>
-      }
+      Footer={<CategoryFooter />}
       footerClassName="p-2"
     >
       <div>
         <figure className="relative h-52 rounded-sm overflow-hidden flex items-end justify-start">
           <div className="absolute inset-0 bg-linear-0 from-neutral-950/85 via-neutral-950/50 to-neutral-950/20 z-1" />
-          <Button
-            size={"icon"}
-            className="absolute top-2 right-2 z-10  shadow"
-            variant={"outline"}
-          >
-            <IconShare size={18} className="text-white" />
-          </Button>
+          <ShareBtn className="absolute text-primary-foreground top-2 right-2 z-10 hover:bg-white/20 dark:text-primary" />
           <Image
             src={images["images"][0]}
             alt="Category"
