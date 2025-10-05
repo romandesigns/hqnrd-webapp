@@ -5,7 +5,7 @@ import { Details } from "./Details";
 import { Social } from "./Social";
 import { Affiliates } from "./Affiliates";
 import { Map } from "./Map";
-import { Others } from "./Others";
+import { Help } from "./Help";
 
 export const Footer = ({
   lang,
@@ -33,7 +33,7 @@ export const Footer = ({
           <Details />
           <div>
             <Social />
-            <Others />
+            <Help />
           </div>
           <Affiliates className="mt-4" />
           <Map />
