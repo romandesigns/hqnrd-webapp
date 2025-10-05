@@ -13,7 +13,7 @@ import {
   IconSunElectricity,
   IconPropeller,
   IconShare,
-} from "@tabler/icons-react";
+} from "@/components/icons";
 import Link from "next/link";
 
 function ItemsCounter({ count, label }: { count?: number; label?: string }) {

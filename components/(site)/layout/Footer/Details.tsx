@@ -1,10 +1,10 @@
-import React from "react";
 import {
-  IconMail,
   IconBrandWhatsapp,
+  IconMail,
   IconMapPin,
   IconWorldWww,
-} from "@tabler/icons-react";
+} from "@/components/icons";
+import React from "react";
 
 export function Details() {
   return (

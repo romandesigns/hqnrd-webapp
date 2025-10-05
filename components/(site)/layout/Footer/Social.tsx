@@ -1,4 +1,4 @@
-import { IconBrandFacebook, IconBrandInstagram } from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandInstagram } from "@/components/icons";
 
 export function Social() {
   return (

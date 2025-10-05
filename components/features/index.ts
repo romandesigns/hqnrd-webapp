@@ -10,6 +10,7 @@ import { LocaleSwitcher } from "./LocaleSwitcher";
 import { Carousel } from "./Carousel";
 import { StarsRating } from "./StarsRating";
 import { RoomsFilter } from "./RoomsFilter";
+import { ShareBtn } from "./ShareBtn";
 
 // Exporting Modules
 export {
@@ -24,4 +25,5 @@ export {
   Carousel,
   StarsRating,
   RoomsFilter,
+  ShareBtn,
 };

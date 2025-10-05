@@ -1,4 +1,4 @@
-import { IconBrandAirbnb, IconBuildingSkyscraper } from "@tabler/icons-react";
+import { IconBrandAirbnb, IconBuildingSkyscraper } from "@/components/icons";
 
 export function Affiliates({ className }: { className?: string }) {
   return (

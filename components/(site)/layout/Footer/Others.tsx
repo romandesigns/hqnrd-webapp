@@ -1,4 +1,4 @@
-import { IconZoomQuestion } from "@tabler/icons-react";
+import { IconZoomQuestion } from "@/components/icons";
 
 export function Others() {
   return (
