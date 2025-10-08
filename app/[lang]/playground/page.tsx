@@ -1,6 +1,8 @@
-import { Container } from "@/components/(site)/layout";
+import { Container, Content, Section } from "@/components/(site)/layout";
 import { Locale } from "@/i18n-config";
 import { Carousel } from "@/components/features";
+import images from "@/public/assets/images.json";
+import { Category, Room, Testimonial } from "@/components/features/Cards";
 
 export default async function PlaygroundPage({
   params,
@@ -8,6 +10,10 @@ export default async function PlaygroundPage({
   params: Promise<{ lang: Locale }>;
 }>) {
   const { lang } = await params;
+
+  function Heading({label}: { label?: string }) { 
+    return <h3 className="text-lg  font-bold uppercase">{label}</h3>;
+  }
 
   return (
     <Container lang={lang} showNavBar showFooter>
@@ -17,16 +23,28 @@ export default async function PlaygroundPage({
           {/* <Carousel /> */}
         </div>
 
-        <h2>Thsi is a test</h2>
+              <Heading label="Cards"/>
+        {/* ========== Cards ==========  */}
+        <Section>
+          <Content className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Category />
+            <Room />
+            <Testimonial />
+          </Content>
+        </Section>
 
-        <div className="flex flex-wrap gap-4">
-          <div className="w-40 h-40 bg-[var(--sidebar-accent)]" />
-          <div className="w-40 h-40 bg-[var(--sidebar)]" />
-          <div className="w-40 h-40 bg-[var(--secondary)]" />
-          <div className="w-40 h-40 bg-[var(--muted)]" />
-          <div className="w-40 h-40 bg-[var(--card)]" />
-          <div className="w-40 h-40 bg-[var(--popover)]" />
-        </div>
+        {/* ========== Color Palette ==========  */}
+        <Heading label="color palette"/>
+        <Section>
+          <div className="flex flex-wrap gap-4">
+            <div className="w-40 h-40 bg-[var(--sidebar-accent)]" />
+            <div className="w-40 h-40 bg-[var(--sidebar)]" />
+            <div className="w-40 h-40 bg-[var(--secondary)]" />
+            <div className="w-40 h-40 bg-[var(--muted)]" />
+            <div className="w-40 h-40 bg-[var(--card)]" />
+            <div className="w-40 h-40 bg-[var(--popover)]" />
+          </div>
+        </Section>
       </main>
     </Container>
   );

@@ -9,6 +9,8 @@ interface CardProps {
   headerClassName?: string;
   footerClassName?: string;
   bodyClassName?: string;
+  horizontalPadding?: boolean;
+  aroundPadding?: boolean;
 }
 
 function isHeaderVisible(Header: React.ReactNode) {
@@ -24,11 +26,13 @@ export function Card({
   headerClassName,
   footerClassName,
   bodyClassName,
+  horizontalPadding = false,
+  aroundPadding = false,
 }: CardProps) {
   return (
     <div
       className={cn(
-        "bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1",
+        `bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1  ${horizontalPadding ? "px-1" : ""} ${aroundPadding ? "p-1" : ""}`,
         className,
       )}
     >
@@ -37,7 +41,7 @@ export function Card({
       )}
       <article
         className={cn(
-          "p-4 bg-background/80 dark:bg-card dark:shadow-black dark:shadow-sm rounded-md text-foreground shadow border-border/70 inset-ring-[0.025rem] inset-ring-border dark:border-t dark:border-t-neutral-800",
+          `p-4 bg-background/80 dark:bg-card dark:shadow-black dark:shadow-sm rounded-md text-foreground shadow border-border/70 inset-ring-[0.025rem] inset-ring-border dark:border-t dark:border-t-neutral-800}`,
           bodyClassName,
         )}
       >

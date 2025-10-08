@@ -13,12 +13,12 @@ export function Testimonial() {
             <p className="font-bold text-sm">5.0</p>
             <StarsRating rating={4.5} />
           </div>
-          <div className="flex justify-start gap-4 items-center  font-sans pt-1">
+          <div className="font-sans flex justify-start gap-4 items-center pt-1">
             <div className="flex gap-2 text-xs">
               <span className="p-0.5 px-0 text-[var(--brand-warning)] font-bold">
                 5.0
               </span>
-              <span className="p-0.5 px-2 rounded-full bg-[var(--brand-warning)]/10 inline-block text-primary">
+              <span className="p-0.5 px-2 rounded-full bg-[var(--brand-warning)]/10 inline-block text-primary font-semibold text-[0.70rem]">
                 Price
               </span>
             </div>

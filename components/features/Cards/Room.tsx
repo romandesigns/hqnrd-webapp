@@ -104,10 +104,11 @@ function CategoryFooter() {
 export function Room() {
   return (
     <Card
-      bodyClassName="p-0.5 overflow-hidden"
+      bodyClassName="p-0 overflow-hidden"
       className="font-sans keen-slider__slide"
       Footer={<CategoryFooter />}
       footerClassName="p-2"
+      aroundPadding
     >
       <div>
         <figure className="relative h-52 rounded-sm overflow-hidden flex items-end justify-start">

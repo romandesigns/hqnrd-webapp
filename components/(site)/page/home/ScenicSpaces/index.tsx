@@ -51,6 +51,7 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
       <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-1  flex-1 ">
         {/* Rooms Section */}
         <Card
+          aroundPadding
           headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0"}
           className={"h-full row-span-2 flex flex-col"}
@@ -71,6 +72,7 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
 
         {/* Rooftop Section */}
         <Card
+          aroundPadding
           headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0 pr-1 overflow-hidden"}
           className={" flex flex-col"}
@@ -91,6 +93,8 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
 
         {/* Hallways Section */}
         <Card
+          
+          aroundPadding
           headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0 pr-1 overflow-hidden"}
           className={" flex flex-col"}
@@ -111,6 +115,7 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
 
         {/* Exterior Section */}
         <Card
+          aroundPadding
           headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0"}
           className={"col-start-2 col-end-4  flex flex-col"}

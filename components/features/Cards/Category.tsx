@@ -45,10 +45,11 @@ function CategoryFooter() {
 export function Category() {
   return (
     <Card
-      bodyClassName="p-0.5  overflow-hidden"
+      bodyClassName="p-0 overflow-hidden"
       className="font-sans"
       Header={<CategoryHeader />}
       Footer={<CategoryFooter />}
+      aroundPadding
       footerClassName="p-4"
     >
       <figure className="relative h-52 rounded-md overflow-hidden flex items-center justify-center">

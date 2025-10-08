@@ -23,7 +23,11 @@ export function Trending({ lang }: { lang?: Locale }) {
   return (
     <Section>
       <Content>
-        <SectionHeading title="Trending" showBorders  description="Experience our most loved stays this week"/>
+        <SectionHeading
+          title="Trending"
+          showBorders
+          description="Experience our most loved stays this week"
+        />
         <Carousel options={options} showDots>
           {[1, 2, 3, 4, 5].map((item, index) => (
             <RoomCard key={index} />

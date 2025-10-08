@@ -18,6 +18,7 @@ export function RoomsFilter({ lang }: { lang: Locale }) {
     <Section className="py-20 !lg:py-0">
       <Content className="">
         <Card
+          aroundPadding
           className="pb-1 max-w-2xl mx-auto font-sans"
           Header={<CardHeader />}
         >

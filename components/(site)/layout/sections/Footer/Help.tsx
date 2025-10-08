@@ -1,4 +1,4 @@
-import { IconZoomQuestion } from "@/components/icons";
+import { IconZoomQuestion,IconDeviceMobile } from "@/components/icons";
 
 export function Help() {
   return (
@@ -13,7 +13,7 @@ export function Help() {
         </li>
         <li className="flex items-center justify-start gap-2">
           <span className="icon-highlight w-5">
-            <IconZoomQuestion size={20} />
+            <IconDeviceMobile size={20} />
           </span>
           <span className="footer-link">Download Mobile Version</span>
         </li>
