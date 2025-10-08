@@ -93,7 +93,6 @@ export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
 
         {/* Hallways Section */}
         <Card
-          
           aroundPadding
           headerClassName="p-1 lg:p-2"
           bodyClassName={"flex-1 p-0 pr-1 overflow-hidden"}

@@ -18,7 +18,7 @@ import {
   IconSunElectricity,
   IconPropeller,
   IconShare,
-  IconDeviceMobile
+  IconDeviceMobile,
 } from "@tabler/icons-react";
 
 export {
@@ -41,5 +41,5 @@ export {
   IconSunElectricity,
   IconPropeller,
   IconShare,
-  IconDeviceMobile
+  IconDeviceMobile,
 };

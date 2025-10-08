@@ -1,4 +1,4 @@
-import { IconZoomQuestion,IconDeviceMobile } from "@/components/icons";
+import { IconZoomQuestion, IconDeviceMobile } from "@/components/icons";
 
 export function Help() {
   return (

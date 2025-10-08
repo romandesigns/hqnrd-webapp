@@ -11,7 +11,7 @@ export default async function PlaygroundPage({
 }>) {
   const { lang } = await params;
 
-  function Heading({label}: { label?: string }) { 
+  function Heading({ label }: { label?: string }) {
     return <h3 className="text-lg  font-bold uppercase">{label}</h3>;
   }
 
@@ -23,7 +23,7 @@ export default async function PlaygroundPage({
           {/* <Carousel /> */}
         </div>
 
-              <Heading label="Cards"/>
+        <Heading label="Cards" />
         {/* ========== Cards ==========  */}
         <Section>
           <Content className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -34,7 +34,7 @@ export default async function PlaygroundPage({
         </Section>
 
         {/* ========== Color Palette ==========  */}
-        <Heading label="color palette"/>
+        <Heading label="color palette" />
         <Section>
           <div className="flex flex-wrap gap-4">
             <div className="w-40 h-40 bg-[var(--sidebar-accent)]" />
