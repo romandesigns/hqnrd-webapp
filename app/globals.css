@@ -86,7 +86,7 @@
 
   /* Functional */
   --brand-warning: oklch(0.769 0.188 70.08);
-  --brand-primary: oklab(62.492000000000004% -0.06212 -0.13418);
+  --brand-primary: oklab(65.57300000000001% -0.06575 -0.13841);
   --brand-primary-shade: oklab(53.596999999999994% -0.05337 -0.11243);
 
   /* SIDEBAR */
@@ -191,8 +191,10 @@
     @apply text-sm md:text-sm text-muted-foreground hover:text-foreground transition-all;
   }
 
-  div[data-slot="sheet-overlay"][data-state="open"] {
+  div[data-slot="sheet-overlay"][data-state="open"],
+  div[data-slot="dialog-overlay"][data-state="open"] {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
+    transition: filter 0.3s ease;
   }
 }

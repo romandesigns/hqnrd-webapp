@@ -1,21 +1,22 @@
-import { Card } from "./Default";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import images from "@/public/assets/images.json";
+import Link from "next/link";
+import { FeaturedList } from "@/components/(site)/layout";
 import {
-  IconWifi,
-  IconBrandNetflix,
-  IconParkingCircle,
-  IconWheelchair,
-  IconBrandYoutube,
-  IconTeapot,
   IconAirConditioningDisabled,
-  IconSunElectricity,
+  IconBrandNetflix,
+  IconBrandYoutube,
+  IconParkingCircle,
   IconPropeller,
   IconShare,
+  IconSunElectricity,
+  IconTeapot,
+  IconWheelchair,
+  IconWifi,
 } from "@/components/icons";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import images from "@/public/assets/images.json";
 import { ShareBtn } from "../ShareBtn";
+import { Card } from "./Default";
 
 function ItemsCounter({ count, label }: { count?: number; label?: string }) {
   return (
@@ -33,6 +34,72 @@ function ItemsCounter({ count, label }: { count?: number; label?: string }) {
 }
 
 function CategoryFooter() {
+  const amenities = [
+    {
+      Icon: IconWifi,
+      iconSize: 15,
+      label: "WiFi",
+    },
+    {
+      Icon: IconBrandNetflix,
+      iconSize: 15,
+      label: "NetFlix",
+    },
+    {
+      Icon: IconParkingCircle,
+      iconSize: 15,
+      label: "Parking",
+    },
+    {
+      Icon: IconWheelchair,
+      iconSize: 15,
+      label: "Wheelchair",
+    },
+    {
+      Icon: IconBrandYoutube,
+      iconSize: 15,
+      label: "YouTube",
+    },
+    {
+      Icon: IconTeapot,
+      iconSize: 15,
+      label: "Coffee Maker",
+    },
+    {
+      Icon: IconAirConditioningDisabled,
+      iconSize: 15,
+      label: "Air Conditioning",
+    },
+    {
+      Icon: IconSunElectricity,
+      iconSize: 15,
+      label: "Electricity 24/7",
+    },
+    {
+      Icon: IconPropeller,
+      iconSize: 15,
+      label: "Fan",
+    },
+  ];
+
+  const features = [
+    {
+      label: "Private Bathroom",
+    },
+    {
+      label: "Intercom",
+    },
+    {
+      label: "Kitchen",
+    },
+    {
+      label: "24.50 SQF",
+    },
+    {
+      label: "Balcony",
+    },
+  ];
+
   return (
     <>
       <div className=" flex flex-col relative gap-1 z-[2] pb-2">
@@ -40,54 +107,20 @@ function CategoryFooter() {
           <h3 className="z-[2] text-md lg:text-sm uppercase font-bold  flex flex-col text-[var(--brand-warning)]">
             Deluxe Room
           </h3>
-          <p className="font-bold text-sm lg:text-sm">$35,500/Night</p>
+          <p className="font-bold text-sm lg:text-xs text-primary">$3,500/Night</p>
         </div>
-        <ul className="flex gap-2">
-          <li className="">
-            <IconWifi size={15} />
-          </li>
-          <li className="">
-            <IconBrandNetflix size={15} />
-          </li>
-          <li className="">
-            <IconParkingCircle size={15} />
-          </li>
-          <li className="">
-            <IconWheelchair size={15} />
-          </li>
-          <li className="">
-            <IconBrandYoutube size={15} />
-          </li>
-          <li className="">
-            <IconTeapot size={15} />
-          </li>
-          <li className="">
-            <IconAirConditioningDisabled size={15} />
-          </li>
-          <li className="flex items-center justify-center">
-            <IconSunElectricity size={16} />
-          </li>
-          <li className="flex items-center justify-center">
-            <IconPropeller size={16} />
-          </li>
-        </ul>
-        <ul className="text-[0.60rem] flex gap-1">
-          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
-            Private Bathroom
-          </li>
-          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
-            Intercom
-          </li>
-          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
-            Kitchen
-          </li>
-          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
-            24.50 SQF
-          </li>
-          <li className="p-0.5 px-1  bg-muted backdrop-blur-2xl rounded-full">
-            Balcony
-          </li>
-        </ul>
+        <div className="flex items-center gap-2">
+          <FeaturedList items={amenities} />
+          <span className="font-semibold inline-block">..15 +</span>
+        </div>
+        <FeaturedList
+          gap={1}
+          theme="label-badge"
+          accent="muted"
+          items={features}
+          showLabel
+          itemClassName="p-0.5 px-1.5 [&_span[data-label]]:text-[0.6rem] bg-muted backdrop-blur-2xl rounded-full"
+        />
       </div>
       <Button
         variant={"secondary"}

@@ -1,7 +1,7 @@
-import { Card } from "./Default";
+import Image from "next/image";
 import { ExternalLink, StarsRating } from "@/components/features";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { Card } from "./Default";
 
 export function Testimonial() {
   return (

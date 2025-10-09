@@ -1,5 +1,6 @@
 import { Container } from "./core/Container";
 import { Content } from "./core/Content";
+import { FeaturedList } from "./core/FeaturedList";
 import { MenuList } from "./core/MenuList";
 import { Footer } from "./sections/Footer";
 import { Header } from "./sections/Header";
@@ -16,4 +17,5 @@ export {
   Header,
   Section,
   MenuList,
+  FeaturedList,
 };

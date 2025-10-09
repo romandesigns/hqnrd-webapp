@@ -1,9 +1,8 @@
-import { Card } from "./Default";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import images from "@/public/assets/images.json";
-import { IconUsers } from "@tabler/icons-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import images from "@/public/assets/images.json";
+import { Card } from "./Default";
 
 function ItemsCounter({ count, label }: { count?: number; label?: string }) {
   return (
