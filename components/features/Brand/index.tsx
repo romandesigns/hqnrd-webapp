@@ -1,9 +1,9 @@
-import Image from "next/image";
-import images from "@/public/assets/images.json";
-import { HQNRD } from "@/constants";
-import Link from "next/link";
-import { Locale } from "@/i18n-config";
 import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import { HQNRD } from "@/constants";
+import type { Locale } from "@/i18n-config";
+import images from "@/public/assets/images.json";
 
 export function Brand({
   width = 26,
@@ -35,7 +35,7 @@ export function Brand({
         <HeadingTag className="font-black uppercase text-[0.6rem] pt-1">
           {HQNRD.BRANDING.LongName}
         </HeadingTag>
-        <p className="text-[0.60rem] text-muted-foreground font-normal">
+        <p className="text-[0.65rem] text-muted-foreground font-normal">
           {HQNRD.BRANDING.slogan}
         </p>
       </div>

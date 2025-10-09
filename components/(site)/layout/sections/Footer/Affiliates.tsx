@@ -1,23 +1,26 @@
 import { IconBrandAirbnb, IconBuildingSkyscraper } from "@/components/icons";
+import { MenuList } from "../..";
 
 export function Affiliates({ className }: { className?: string }) {
+  const items = [
+    {
+      href: "#",
+      label: "Hotel Quinto Nivel RD - AirB&B",
+      isExternal: true,
+      Icon: IconBrandAirbnb,
+      iconSize: 20,
+    },
+    {
+      href: "https://www.airbnb.com/rooms/plus/23068908",
+      label: "Hotel Quinto Nivel RD - Expedia",
+      isExternal: true,
+      Icon: IconBuildingSkyscraper,
+      iconSize: 20,
+    },
+  ];
   return (
-    <div className={className}>
-      <h3 className="uppercase text-xs font-bold">Affiliates</h3>
-      <ul className="space-y-6 py-4  md:py-10 text-muted-foreground [&>li]:hover:text-foreground cursor-pointer">
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-5">
-            <IconBrandAirbnb size={18} />
-          </span>
-          <span className="footer-link">Hotel Quinto Nivel RD - AirB&B</span>
-        </li>
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-5">
-            <IconBuildingSkyscraper size={20} />
-          </span>
-          <span className="footer-link">Hotel Quinto Nivel RD - Expedia</span>
-        </li>
-      </ul>
-    </div>
+    <article className={className}>
+      <MenuList items={items} heading="Affiliates" />
+    </article>
   );
 }

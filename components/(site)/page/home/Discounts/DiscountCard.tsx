@@ -17,6 +17,7 @@ export default function DiscountCard({
 }) {
   return (
     <Card
+      aroundPadding
       Header={
         <h3 className="uppercase font-black text-center !text-sm p-4 py-2">
           Discount Available
@@ -30,13 +31,11 @@ export default function DiscountCard({
       bodyClassName="p-0"
       className="max-w-lg w-full"
     >
-      <div className="relative flex-1">
-        <div className="absolute rounded-md inset-4 flex items-center justify-center bg-background/40 z-[2] backdrop-blur-xl overflow-hidden">
-          <p className="relative z-[1] text-9xl font-black">
-            {discountPercent ?? 0}%
-          </p>
+      <div className="relative flex-1 aspect-square">
+        <div className="w-full h-full rounded-md inset-4 flex items-center justify-center bg-background/40 z-[2] backdrop-blur-xl overflow-hidden">
+          <p className="z-[1] text-9xl font-black">{discountPercent ?? 0}%</p>
           <FlickeringGrid
-            className="absolute bottom-0 top-0 left-0 right-0 w-full h-full z-0 [mask-image:radial-gradient(450px_circle_at_center,white,transparent)] opacity-50"
+            className="w-full h-full z-0 [mask-image:radial-gradient(450px_circle_at_center,white,transparent)] opacity-50"
             squareSize={4}
             gridGap={6}
             color="white"
@@ -46,8 +45,7 @@ export default function DiscountCard({
         </div>
         <Image
           src={src}
-          width={500}
-          height={500}
+          fill
           alt={`${HQNRD.BRANDING.LongName}-Discount`}
           className="rounded-md z-1 relative"
           placeholder={blurDataURL ? "blur" : "empty"}

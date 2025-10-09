@@ -1,43 +1,34 @@
-import {
-  IconBrandWhatsapp,
-  IconMail,
-  IconMapPin,
-  IconWorldWww,
-} from "@/components/icons";
-import React from "react";
+import { IconBrandWhatsapp, IconMail, IconMapPin } from "@/components/icons";
+import { HQNRD } from "@/constants";
+import { MenuList } from "../..";
 
-export function Details() {
+export function Details({ className }: { className?: string }) {
+  const items = [
+    {
+      href: HQNRD.CONTACT.whatsapp,
+      label: "+1809-753-7500",
+      isExternal: true,
+      Icon: IconBrandWhatsapp,
+      iconSize: 20,
+    },
+    {
+      href: HQNRD.CONTACT.email,
+      label: "hotelquintonivelrd@gmail.com",
+      isExternal: true,
+      Icon: IconMail,
+      iconSize: 20,
+    },
+    {
+      href: HQNRD.CONTACT.googleMap,
+      label: "Calle de la Mujer #2, Urb, Salcedo 34000, RD",
+      isExternal: true,
+      Icon: IconMapPin,
+      iconSize: 20,
+    },
+  ];
   return (
-    <div>
-      <h3 className="uppercase text-xs font-bold">Contact</h3>
-      <ul className="space-y-6 py-4  md:py-10  text-muted-foreground [&>li]:hover:text-foreground cursor-pointer">
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-6">
-            <IconBrandWhatsapp size={21} />
-          </span>
-          <span className="footer-link">+1809-753-7500</span>
-        </li>
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-6">
-            <IconMail size={20} />
-          </span>
-          <span className="footer-link">hotelquintonivelrd@gmail.com</span>
-        </li>
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-6">
-            <IconMapPin size={20} />
-          </span>
-          <span className="footer-link">
-            Calle de la Mujer #2, Urb, Salcedo 34000, RD
-          </span>
-        </li>
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-6">
-            <IconWorldWww size={20} />
-          </span>
-          <span className="footer-link">https://hotelquintonivelrd.com</span>
-        </li>
-      </ul>
-    </div>
+    <article className={className}>
+      <MenuList items={items} heading="Contact" />
+    </article>
   );
 }

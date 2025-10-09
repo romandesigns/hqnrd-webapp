@@ -1,23 +1,26 @@
-import { IconZoomQuestion, IconDeviceMobile } from "@/components/icons";
+import { IconDeviceMobile, IconZoomQuestion } from "@/components/icons";
+import { MenuList } from "../..";
 
-export function Help() {
+export function Help({ className }: { className?: string }) {
+  const items = [
+    {
+      href: "#",
+      label: "Frequently Asked Questions",
+      isExternal: true,
+      Icon: IconZoomQuestion,
+      iconSize: 20,
+    },
+    {
+      href: "#",
+      label: "Download Mobile Version",
+      isExternal: true,
+      Icon: IconDeviceMobile,
+      iconSize: 20,
+    },
+  ];
   return (
-    <div>
-      <h3 className="uppercase text-xs font-bold">Help</h3>
-      <ul className="space-y-6 py-4 md:py-10  text-muted-foreground [&>li]:hover:text-foreground cursor-pointer">
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-5">
-            <IconZoomQuestion size={20} />
-          </span>
-          <span className="footer-link">Frequently Asked Questions</span>
-        </li>
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-5">
-            <IconDeviceMobile size={20} />
-          </span>
-          <span className="footer-link">Download Mobile Version</span>
-        </li>
-      </ul>
-    </div>
+    <article className={className}>
+      <MenuList items={items} heading="Help" />
+    </article>
   );
 }

@@ -3,6 +3,7 @@ import { Locale } from "@/i18n-config";
 import { Carousel } from "@/components/features";
 import images from "@/public/assets/images.json";
 import { Category, Room, Testimonial } from "@/components/features/Cards";
+import { CardDemo } from "./components";
 
 export default async function PlaygroundPage({
   params,
@@ -30,6 +31,7 @@ export default async function PlaygroundPage({
             <Category />
             <Room />
             <Testimonial />
+            <CardDemo />
           </Content>
         </Section>
 

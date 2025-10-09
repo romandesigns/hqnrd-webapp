@@ -6,6 +6,7 @@ import Image from "next/image";
 export function Testimonial() {
   return (
     <Card
+      aroundPadding
       className="keen-slider__slide"
       Footer={
         <div>

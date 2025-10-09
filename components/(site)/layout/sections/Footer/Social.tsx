@@ -1,23 +1,26 @@
 import { IconBrandFacebook, IconBrandInstagram } from "@/components/icons";
+import { MenuList } from "../..";
 
-export function Social() {
+export function Social({ className }: { className?: string }) {
+  const items = [
+    {
+      href: "#",
+      label: "Facebook",
+      isExternal: true,
+      Icon: IconBrandFacebook,
+      iconSize: 20,
+    },
+    {
+      href: "https://www.airbnb.com/rooms/plus/23068908",
+      label: "Instagram",
+      isExternal: true,
+      Icon: IconBrandInstagram,
+      iconSize: 20,
+    },
+  ];
   return (
-    <div>
-      <h3 className="uppercase text-xs font-bold">Social</h3>
-      <ul className="space-y-6 py-4 md:py-10  text-muted-foreground [&>li]:hover:text-foreground cursor-pointer">
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-5">
-            <IconBrandFacebook size={20} />
-          </span>
-          <span className="footer-link">Facebook</span>
-        </li>
-        <li className="flex items-center justify-start gap-2">
-          <span className="icon-highlight w-5">
-            <IconBrandInstagram size={20} />
-          </span>
-          <span className="footer-link">Instagram</span>
-        </li>
-      </ul>
-    </div>
+    <article className={className}>
+      <MenuList items={items} heading="Social" />
+    </article>
   );
 }
