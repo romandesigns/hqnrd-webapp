@@ -107,7 +107,9 @@ function CategoryFooter() {
           <h3 className="z-[2] text-md lg:text-sm uppercase font-bold  flex flex-col text-[var(--brand-warning)]">
             Deluxe Room
           </h3>
-          <p className="font-bold text-sm lg:text-xs text-primary">$3,500/Night</p>
+          <p className="font-bold text-sm lg:text-xs text-primary">
+            $3,500/Night
+          </p>
         </div>
         <div className="flex items-center gap-2">
           <FeaturedList items={amenities} />

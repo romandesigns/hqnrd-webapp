@@ -34,7 +34,7 @@ export function Card({
   return (
     <div
       className={cn(
-        `bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1  ${horizontalPadding ? `px-${PADDING_RATIO}`: ""} ${aroundPadding ? `p-${PADDING_RATIO}` : ""}`,
+        `bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1  ${horizontalPadding ? `px-${PADDING_RATIO}` : ""} ${aroundPadding ? `p-${PADDING_RATIO}` : ""}`,
         className,
       )}
     >

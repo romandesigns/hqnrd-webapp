@@ -1,6 +1,6 @@
-import React from "react";
-import { Navigation, Footer } from "../..";
-import { Locale } from "@/i18n-config";
+import type React from "react";
+import type { Locale } from "@/i18n-config";
+import { Footer, Navigation } from "../..";
 
 interface ContainerProps {
   showNavBar?: boolean;

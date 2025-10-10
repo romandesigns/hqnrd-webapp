@@ -1,8 +1,9 @@
+import clsx from "clsx";
 import { Content, Section } from "@/components/(site)/layout";
 import { Carousel } from "@/components/features";
 import { Room as RoomCard } from "@/components/features/Cards";
 import { SectionHeading } from "@/components/features/Heading";
-import { Locale } from "@/i18n-config";
+import type { Locale } from "@/i18n-config";
 
 const options = {
   slides: { perView: 4, spacing: 10 },
@@ -19,9 +20,15 @@ const options = {
   },
 };
 
-export function Trending({ lang }: { lang?: Locale }) {
+export function Trending({
+  lang,
+  className,
+}: {
+  lang?: Locale;
+  className?: string;
+}) {
   return (
-    <Section>
+    <Section className={clsx("", className)}>
       <Content>
         <SectionHeading
           title="Trending"

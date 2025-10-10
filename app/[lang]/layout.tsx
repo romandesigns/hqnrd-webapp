@@ -1,12 +1,12 @@
-import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Poppins } from "next/font/google";
-import { ThemeProvider, ConvexProviderWithClerk } from "../../providers";
+import { enUS, esES } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
-import { esES, enUS } from "@clerk/localizations";
-
-import { i18n, Locale } from "@/i18n-config";
+import type { Metadata, Viewport } from "next";
+import {  Poppins } from "next/font/google";
+import { i18n, type Locale } from "@/i18n-config";
+import { ConvexProviderWithClerk, ThemeProvider } from "../../providers";
 import "../globals.css";
+import { InstallPrompt } from "@/components/features";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
@@ -185,6 +185,7 @@ export default async function RootLayout({
             </ThemeProvider>
           </ConvexProviderWithClerk>
         </ClerkProvider>
+        <InstallPrompt />
       </body>
     </html>
   );

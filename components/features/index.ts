@@ -1,17 +1,19 @@
 // Imported Modules
-import { ModeToggle } from "./ThemeToggle";
-import { Card } from "./Cards";
+
 import { Brand } from "./Brand";
-import { MenuItem } from "./Menu";
-import { LocaleDialog } from "./LocaleDialog";
-import { ExternalLink } from "./ExternalLink";
-import { ContactWidget } from "./ContactWidget";
-import { LocaleSwitcher } from "./LocaleSwitcher";
+import { Card } from "./Cards";
 import { Carousel } from "./Carousel";
-import { StarsRating } from "./StarsRating";
+import { ContactWidget } from "./ContactWidget";
+import { ExternalLink } from "./ExternalLink";
+import * as Heading from "./Heading";
+import InstallPrompt from "./InstallPrompt";
+import { LocaleDialog } from "./LocaleDialog";
+import { LocaleSwitcher } from "./LocaleSwitcher";
+import { MenuItem } from "./Menu";
 import { RoomsFilter } from "./RoomsFilter";
 import { ShareBtn } from "./ShareBtn";
-import * as Heading from "./Heading";
+import { StarsRating } from "./StarsRating";
+import { ModeToggle } from "./ThemeToggle";
 
 // Exporting Modules
 export {
@@ -28,4 +30,5 @@ export {
   RoomsFilter,
   ShareBtn,
   Heading,
+   InstallPrompt,
 };

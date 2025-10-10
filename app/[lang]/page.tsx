@@ -1,15 +1,15 @@
 import { Container, Main } from "@/components/(site)/layout";
 import {
-  Header,
-  Testimonials,
   Categories,
-  ScenicSpaces,
-  Trending,
   Discounts,
+  Header,
+  ScenicSpaces,
+  Testimonials,
+  Trending,
 } from "@/components/(site)/page/home";
 import { RoomsFilter } from "@/components/features";
 import { BackgroundGradient } from "@/components/ui/bgGradient";
-import { Locale } from "@/i18n-config";
+import type { Locale } from "@/i18n-config";
 
 export default async function Home({
   params,
