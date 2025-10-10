@@ -1,5 +1,7 @@
-import React from "react";
+import type React from "react";
 import { cn } from "@/lib/utils";
+
+const PADDING_RATIO = 1.5;
 
 interface CardProps {
   Header?: React.ReactNode;
@@ -32,7 +34,7 @@ export function Card({
   return (
     <div
       className={cn(
-        `bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1  ${horizontalPadding ? "px-1" : ""} ${aroundPadding ? "p-1" : ""}`,
+        `bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1  ${horizontalPadding ? `px-${PADDING_RATIO}`: ""} ${aroundPadding ? `p-${PADDING_RATIO}` : ""}`,
         className,
       )}
     >

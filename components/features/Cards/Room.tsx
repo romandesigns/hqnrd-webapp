@@ -123,12 +123,12 @@ function CategoryFooter() {
         />
       </div>
       <Button
-        variant={"secondary"}
+        variant={"primary"}
         size={"block"}
         asChild
         className="border-brand-primary font-sans uppercase font-bold shadow"
       >
-        <Link href="#">Select</Link>
+        <Link href="#">Explore</Link>
       </Button>
     </>
   );

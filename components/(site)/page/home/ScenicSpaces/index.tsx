@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { Card } from "@/components/features";
-import images from "@/public/assets/images.json";
-import { SectionHeading } from "@/components/features/Heading";
+import type { JSX } from "react";
 import { Content, Section } from "@/components/(site)/layout";
-import { Locale } from "@/i18n-config";
-import { JSX } from "react";
+import { Card } from "@/components/features";
+import { SectionHeading } from "@/components/features/Heading";
+import type { Locale } from "@/i18n-config";
+import images from "@/public/assets/images.json";
 
 /**
  * The `ScenicSpaces` component renders a section showcasing various scenic spaces.
@@ -31,7 +31,7 @@ function Heading({
       <h3 className="-mb-1 text-[0.7rem] md:text-lg text-foreground font-bold uppercase">
         {title}
       </h3>
-      <p className="text-[0.65rem] md:text-xs font-normal text-[var(--brand-warning)]">
+      <p className="text-[0.65rem] md:text-xs font-semibold text-[var(--brand-warning)]">
         {description}
       </p>
     </div>

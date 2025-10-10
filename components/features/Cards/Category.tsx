@@ -8,10 +8,10 @@ function ItemsCounter({ count, label }: { count?: number; label?: string }) {
   return (
     <div className="flex gap-2 text-xs font-sans items-center justify-between">
       <div className="flex text-[0.6rem]">
-        <span className="text-[var(--brand-warning)] font-bold rounded-full bg-[var(--brand-warning)]/6 w-7 h-7 flex items-center justify-center">
+        <span className="text-muted-foreground dark:text-[var(--brand-warning)] font-bold rounded-full bg-muted dark:bg-[var(--brand-warning)]/6 w-7 h-7 flex items-center justify-center">
           {count}
         </span>
-        <span className="p-0.5 px-2 rounded-full bg-[var(--brand-warning)]/4 text-[var(--brand-warning)] font-semibold flex items-center">
+        <span className="p-0.5 px-2 rounded-full bg-muted dark:bg-[var(--brand-warning)]/6 text-muted-foreground dark:text-[var(--brand-warning)] font-semibold flex items-center">
           {label}
         </span>
       </div>
@@ -31,7 +31,7 @@ function CategoryHeader() {
 function CategoryFooter() {
   return (
     <Button
-      variant={"secondary"}
+      variant={"primary"}
       size={"block"}
       asChild
       className="border-brand-primary font-sans uppercase font-bold shadow"
