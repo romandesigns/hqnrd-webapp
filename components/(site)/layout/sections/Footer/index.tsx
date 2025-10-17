@@ -31,12 +31,14 @@ export const Footer = ({
           </div>
         }
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-14 lg:px-10 py-8 pb-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-14 lg:px-10 py-8 pb-0">
           <Details />
           <Social />
           <Help />
           <Affiliates />
-          <GoogleMap />
+        </div>
+        <div className="gap-y-14 lg:px-10 py-8 pb-0">
+          <GoogleMap className="w-full md:max-w-md"/>
         </div>
       </Card>
     </footer>
