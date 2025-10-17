@@ -1,6 +1,6 @@
-import { Brand } from "@/components/features";
-import { Locale } from "@/i18n-config";
 import clsx from "clsx";
+import { Brand } from "@/components/features";
+import type { Locale } from "@/i18n-config";
 import { DesktopMenu, MobileMenu } from "./features";
 
 export const Navigation = ({

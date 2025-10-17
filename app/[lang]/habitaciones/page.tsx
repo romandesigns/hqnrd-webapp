@@ -26,7 +26,7 @@ export default async function HabitacionesPage({
             )}
           </ul>
         </Content>
-        <Trending lang={lang} className="!py-20"/>
+        <Trending lang={lang} className="!py-20" />
       </Main>
     </Container>
   );

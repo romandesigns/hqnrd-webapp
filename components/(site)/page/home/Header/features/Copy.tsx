@@ -1,9 +1,9 @@
 import { ContactWidget, StarsRating } from "@/components/features";
 import LottiePlayer from "@/components/features/Lottie";
 import { Button } from "@/components/ui/button";
-import { Locale } from "@/i18n-config";
-import { heatBurts, googleSquare } from "@/public/assets/animated";
 import { NumberTicker } from "@/components/ui/number-ticker";
+import type { Locale } from "@/i18n-config";
+import { googleSquare, heatBurts } from "@/public/assets/animated";
 
 export function Copy({ lang }: { lang: Locale }) {
   return (

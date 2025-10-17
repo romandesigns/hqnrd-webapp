@@ -2,7 +2,7 @@ import { enUS, esES } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 import type { Metadata, Viewport } from "next";
-import {  Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { i18n, type Locale } from "@/i18n-config";
 import { ConvexProviderWithClerk, ThemeProvider } from "../../providers";
 import "../globals.css";

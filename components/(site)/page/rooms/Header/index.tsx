@@ -23,7 +23,7 @@ export function Header({ lang }: { lang: Locale }) {
             Choose From Our Catalog
           </h2>
           <p className="text-sm text-center text-muted-foreground">
-              Every unit offers the same premium quality
+            Every unit offers the same premium quality
           </p>
         </div>
         <Select>
@@ -40,7 +40,11 @@ export function Header({ lang }: { lang: Locale }) {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <ContactWidget lang={lang} btnVariant={"bordered"} className="hidden md:flex"/>
+        <ContactWidget
+          lang={lang}
+          btnVariant={"bordered"}
+          className="hidden md:flex"
+        />
         <div className="text-xs font-medium text-muted-foreground text-center lg:text-left w-full">
           Showing{" "}
           <span className="p-0.5 bg-[var(--brand-primary)]/6 text-[var(--brand-primary)] px-2 rounded-md mx-2 font-bold">

@@ -30,5 +30,5 @@ export {
   RoomsFilter,
   ShareBtn,
   Heading,
-   InstallPrompt,
+  InstallPrompt,
 };
