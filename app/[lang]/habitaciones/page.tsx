@@ -12,8 +12,7 @@ export default async function HabitacionesPage({
 }) {
   const { lang } = await params;
   return (
-    <Container lang={lang} showNavBar showFooter>
-      <Header lang={lang} />
+    <Container lang={lang} showNavBar showFooter Header={Header}>
       <Main>
         <Content>
           <ul className="grid grid-cols-1  sm:grid-cols-2 sm:gap-1 md:gap-2 lg:gap-6 md:grid-cols-2 lg:grid-cols-3 p-2">

@@ -13,7 +13,7 @@ import type { Locale } from "@/i18n-config";
 
 export function Header({ lang }: { lang: Locale }) {
   return (
-    <HeaderSection className="py-10 lg:py-30 lg:pb-5 p-2">
+    <HeaderSection className="py-10 pb-5 lg:py-30 lg:pb-5 p-2  sticky -top-10 z-[30] bg-background/95 backdrop-blur-sm">
       <Content className="flex flex-col items-center justify-center gap-6">
         <div>
           <h2 className="uppercase font-bold text-lg text-center md:block hidden">
@@ -47,7 +47,7 @@ export function Header({ lang }: { lang: Locale }) {
         />
         <div className="text-xs font-medium text-muted-foreground text-center lg:text-left w-full">
           Showing{" "}
-          <span className="p-0.5 bg-[var(--brand-primary)]/6 text-[var(--brand-primary)] px-2 rounded-md mx-2 font-bold">
+          <span className="p-0.5 bg-[var(--brand-warning)]/6 text-[var(--brand-warning)] px-2 rounded-md mx-2 font-bold">
             4
           </span>{" "}
           Basic rooms

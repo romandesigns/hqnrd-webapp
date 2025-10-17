@@ -38,12 +38,12 @@ export default function InstallPrompt() {
       <DialogContent className="w-11/12 h-11/12 p-4 flex items-center justify-center flex-col">
         <DialogHeader className="flex-1 flex items-center justify-center">
           <div className="p-2  rounded-md dark:shadow-black shadow-md bg-background">
-                      <Image
-            width={50}
-            height={50}
-            src={images.hotel_logo}
-            alt={HQNRD.BRANDING.alt}
-          />
+            <Image
+              width={50}
+              height={50}
+              src={images.hotel_logo}
+              alt={HQNRD.BRANDING.alt}
+            />
           </div>
           <DialogTitle className="text-md font-bold text-primary">
             HQNRD App Installation
@@ -54,7 +54,11 @@ export default function InstallPrompt() {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex flex-row mt-auto w-full gap-2">
-          <Button className="flex-1 h-10" onClick={handleInstall} variant={'primary'}>
+          <Button
+            className="flex-1 h-10"
+            onClick={handleInstall}
+            variant={"primary"}
+          >
             Install
           </Button>
           <Button
