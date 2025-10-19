@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FeaturedList } from "@/components/(site)/layout";
 import {
   IconAirConditioningDisabled,
   IconBrandNetflix,
@@ -13,6 +12,7 @@ import {
   IconWheelchair,
   IconWifi,
 } from "@/components/icons";
+import { FeaturedList } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import images from "@/public/assets/images.json";
 import { ShareBtn } from "../ShareBtn";

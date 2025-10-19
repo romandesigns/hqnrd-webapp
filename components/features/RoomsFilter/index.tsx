@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { DateAndTimePicker } from "@/components/ui/DateTimePicker";
-import { Locale } from "@/i18n-config";
 import { Search } from "lucide-react";
 import Form from "next/form";
 import { Card } from "@/components/features";
+import { Content, Section } from "@/components/layout";
+import { Button } from "@/components/ui/button";
+import { DateAndTimePicker } from "@/components/ui/DateTimePicker";
 import { InputNumber } from "@/components/ui/InputNumber";
-import { Content, Section } from "@/components/(site)/layout";
+import type { Locale } from "@/i18n-config";
 
 export function RoomsFilter({ lang }: { lang: Locale }) {
   const CardHeader = () => (

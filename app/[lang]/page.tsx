@@ -1,4 +1,5 @@
-import { Container, Main } from "@/components/(site)/layout";
+import { RoomsFilter } from "@/components/features";
+import { Container, Main } from "@/components/layout";
 import {
   Categories,
   Discounts,
@@ -6,8 +7,7 @@ import {
   ScenicSpaces,
   Testimonials,
   Trending,
-} from "@/components/(site)/page/home";
-import { RoomsFilter } from "@/components/features";
+} from "@/components/page/home";
 import { BackgroundGradient } from "@/components/ui/bgGradient";
 import type { Locale } from "@/i18n-config";
 
