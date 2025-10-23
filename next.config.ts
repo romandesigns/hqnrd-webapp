@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
+
 /** @type {*} */
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["lh3.googleusercontent.com"],
+    remotePatterns: [{ hostname: "lh3.googleusercontent.com" }],
   },
 };
 

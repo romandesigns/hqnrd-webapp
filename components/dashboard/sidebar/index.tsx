@@ -11,7 +11,7 @@ import Header from "./Header";
 
 export function AppSidebar({ lang }: { lang: Locale }) {
   return (
-    <Sidebar>
+    <Sidebar variant="inset" collapsible="icon">
       <SidebarHeader>
         <Header lang={lang} />
       </SidebarHeader>
