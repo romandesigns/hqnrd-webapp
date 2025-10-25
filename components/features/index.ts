@@ -1,6 +1,5 @@
 // Imported Modules
 
-import { Brand } from "./Brand";
 import { Card } from "./Cards";
 import { Carousel } from "./Carousel";
 import { ContactWidget } from "./ContactWidget";
@@ -14,12 +13,13 @@ import { RoomsFilter } from "./RoomsFilter";
 import { ShareBtn } from "./ShareBtn";
 import { StarsRating } from "./StarsRating";
 import { ModeToggle } from "./ThemeToggle";
-
+import { DashboardBrand, Brand } from "./Brand";
 // Exporting Modules
 export {
   ModeToggle,
   Card,
   Brand,
+  DashboardBrand,
   ContactWidget,
   MenuItem,
   LocaleDialog,

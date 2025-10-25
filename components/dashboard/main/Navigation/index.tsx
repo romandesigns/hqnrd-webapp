@@ -22,7 +22,7 @@ export function Navigation({
           <SidebarTrigger />
         </li>
         <li className="block md:hidden">
-          <DrawerMenu lang={lang} className="!max-h-screen" />
+          <DrawerMenu lang={lang}  />
         </li>
       </ul>
     </nav>

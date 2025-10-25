@@ -19,6 +19,11 @@ import {
   IconPropeller,
   IconShare,
   IconDeviceMobile,
+  IconCirclePlusFilled,
+  IconTagFilled,
+  IconCircleKeyFilled,
+  IconBedFilled,
+  IconDeviceFloppy
 } from "@tabler/icons-react";
 
 export {
@@ -42,4 +47,9 @@ export {
   IconPropeller,
   IconShare,
   IconDeviceMobile,
+  IconCirclePlusFilled,
+  IconTagFilled,
+  IconCircleKeyFilled,
+  IconBedFilled,
+  IconDeviceFloppy
 };
