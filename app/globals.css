@@ -167,6 +167,12 @@
   .section-padding {
     @apply py-20 lg:py-40;
   }
+  .elevated-surface {
+    @apply p-4 bg-background/80 dark:bg-card dark:shadow-black dark:shadow-sm rounded-md text-foreground shadow border-border/70 inset-ring-[0.025rem] inset-ring-border dark:border-t dark:border-t-neutral-800;
+  }
+  .sunken-surface {
+    @apply bg-background/90 p-4 rounded-md inset-shadow-sm dark:inset-shadow-black inset-shadow-background border-b;
+  }
 }
 
 @layer utilities {

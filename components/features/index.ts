@@ -10,7 +10,7 @@ import { LocaleDialog } from "./LocaleDialog";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MenuItem } from "./Menu";
 import { RoomsFilter } from "./RoomsFilter";
-import { ShareBtn } from "./ShareBtn";
+import { Share, Edit, Delete, Submit } from "./Buttons";
 import { StarsRating } from "./StarsRating";
 import { ModeToggle } from "./ThemeToggle";
 import { DashboardBrand, Brand } from "./Brand";
@@ -28,7 +28,10 @@ export {
   Carousel,
   StarsRating,
   RoomsFilter,
-  ShareBtn,
+  Share,
+  Edit,
+  Delete,
   Heading,
   InstallPrompt,
+  Submit
 };

@@ -1,2 +1,4 @@
 import { ProfileFields } from "./profile";
-export { ProfileFields };
+import { CategoryFields } from "./category";
+
+export { ProfileFields, CategoryFields };

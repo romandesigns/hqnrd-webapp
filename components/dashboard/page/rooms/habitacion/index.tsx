@@ -25,23 +25,26 @@ export function Habitacion({ lang }: { lang: Locale }) {
           <BreadcrumbList>
             <BreadcrumbItem className='hidden md:block'>
               <Link
-                href={`/${lang}/dashboard/habitactiones`}
+                href={`/${lang}/dashboard/habitaciones`}
                 className='text-xs'
               >
-                Habitaciones
+                <BreadcrumbPage>Habitaciones</BreadcrumbPage>
               </Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator className='hidden md:block' />
-            <BreadcrumbItem className='text-xs'>
-              <BreadcrumbPage>Categorias</BreadcrumbPage>
-            </BreadcrumbItem>
+            <Link
+              href={`/${lang}/dashboard/habitaciones/crear`}
+              className='text-xs'
+            >
+              Crear
+            </Link>
           </BreadcrumbList>
         </Breadcrumb>
         <div className='block md:hidden'>
           <DrawerMenu lang={lang} className='ml-auto' />
         </div>
       </nav>
-      <section className='p-2'>Crear Habitacion</section>
+      <section className='p-2'>Habitaciones</section>
     </>
   )
 }

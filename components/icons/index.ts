@@ -23,7 +23,11 @@ import {
   IconTagFilled,
   IconCircleKeyFilled,
   IconBedFilled,
-  IconDeviceFloppy
+  IconDeviceFloppy,
+  IconEdit,
+  IconTrash,
+  IconLoader,
+  IconTagOff
 } from "@tabler/icons-react";
 
 export {
@@ -51,5 +55,9 @@ export {
   IconTagFilled,
   IconCircleKeyFilled,
   IconBedFilled,
-  IconDeviceFloppy
+  IconDeviceFloppy,
+  IconEdit,
+  IconTrash,
+  IconLoader,
+  IconTagOff
 };

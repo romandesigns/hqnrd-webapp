@@ -1,23 +1,24 @@
-import type React from "react";
-import { cn } from "@/lib/utils";
+import type React from 'react'
+import { cn } from '@/lib/utils'
 
-const PADDING_RATIO = 1.5;
+const PADDING_RATIO = 1.5
 
 interface CardProps {
-  Header?: React.ReactNode;
-  children: React.ReactNode;
-  Footer?: React.ReactNode;
-  className?: string;
-  headerClassName?: string;
-  footerClassName?: string;
-  bodyClassName?: string;
-  horizontalPadding?: boolean;
-  aroundPadding?: boolean;
+  Header?: React.ReactNode
+  children: React.ReactNode
+  Footer?: React.ReactNode
+  className?: string
+  headerClassName?: string
+  footerClassName?: string
+  bodyClassName?: string
+  horizontalPadding?: boolean
+  aroundPadding?: boolean
+  showElevatedSurface?: boolean
 }
 
 function isHeaderVisible(Header: React.ReactNode) {
   // Only filter out null, undefined, or false
-  return Header !== null && Header !== undefined && Header !== false;
+  return Header !== null && Header !== undefined && Header !== false
 }
 
 export function Card({
@@ -30,20 +31,21 @@ export function Card({
   bodyClassName,
   horizontalPadding = false,
   aroundPadding = false,
+  showElevatedSurface = true,
 }: CardProps) {
   return (
     <div
       className={cn(
-        `bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1  ${horizontalPadding ? `px-${PADDING_RATIO}` : ""} ${aroundPadding ? `p-${PADDING_RATIO}` : ""}`,
+        `bg-sidebar/80 dark:bg-popover p-0.5 rounded-lg overflow-hidden flex-1  ${horizontalPadding ? `px-${PADDING_RATIO}` : ''} ${aroundPadding ? `p-${PADDING_RATIO}` : ''}`,
         className,
       )}
     >
       {isHeaderVisible(Header) && (
-        <header className={cn("p-2", headerClassName)}>{Header}</header>
+        <header className={cn('p-2', headerClassName)}>{Header}</header>
       )}
       <article
         className={cn(
-          `p-4 bg-background/80 dark:bg-card dark:shadow-black dark:shadow-sm rounded-md text-foreground shadow border-border/70 inset-ring-[0.025rem] inset-ring-border dark:border-t dark:border-t-neutral-800}`,
+          `${showElevatedSurface ? 'elevated-surface' : ''}`,
           bodyClassName,
         )}
       >
@@ -51,11 +53,11 @@ export function Card({
       </article>
       {Footer && (
         <footer
-          className={cn("text-muted-foreground text-xs", footerClassName)}
+          className={cn('text-muted-foreground text-xs', footerClassName)}
         >
           {Footer}
         </footer>
       )}
     </div>
-  );
+  )
 }
