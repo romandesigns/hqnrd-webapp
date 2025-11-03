@@ -1,12 +1,10 @@
 'use server'
-import { stringFormatter } from '@/utils/stringFromatter'
+import { fetchMutation } from 'convex/nextjs'
 import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 import { api } from '@/convex/_generated/api'
-import { ConvexHttpClient } from 'convex/browser'
-import { fetchMutation, fetchQuery } from 'convex/nextjs'
-import { Id } from '@/convex/_generated/dataModel'
-
-const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
+import type { Id } from '@/convex/_generated/dataModel'
+import { stringFormatter } from '@/utils/stringFromatter'
 
 const formatCategoryStr = (
   str: string,
@@ -24,21 +22,21 @@ const formatCategoryStr = (
 // Creating  Category
 export async function createCategory(formData: FormData) {
   const clientData = {
-    category_name: formData.get('category_name') as string,
-    max_guest: Number(formData.get('max_guest') as string),
+    categoryName: formData.get('categoryName') as string,
+    maxGuests: Number(formData.get('maxGuests') as string),
     lang: formData.get('lang') as string,
   }
   const convexPayload = {
-    max_guests: clientData.max_guest,
+    maxGuests: clientData.maxGuests,
     labels: {
       title: {
-        plural: formatCategoryStr(clientData.category_name, 'title', true),
-        singular: formatCategoryStr(clientData.category_name, 'title', false),
+        plural: formatCategoryStr(clientData.categoryName, 'title', true),
+        singular: formatCategoryStr(clientData.categoryName, 'title', false),
       },
     },
     slugs: {
-      plural: formatCategoryStr(clientData.category_name, 'kebab', true),
-      singular: formatCategoryStr(clientData.category_name, 'kebab', false),
+      plural: formatCategoryStr(clientData.categoryName, 'kebab', true),
+      singular: formatCategoryStr(clientData.categoryName, 'kebab', false),
     },
   }
   await fetchMutation(api.categories.createCategoryAction, convexPayload)
@@ -46,6 +44,36 @@ export async function createCategory(formData: FormData) {
     `/${clientData.lang}/dashboard/habitaciones/categoria`,
     'layout',
   )
+}
+
+// Update  Category
+export async function updateCategory(formData: FormData) {
+  const clientData = {
+    categoryName: formData.get('categoryName') as string,
+    maxGuests: Number(formData.get('maxGuests') as string),
+    lang: formData.get('lang') as string,
+    categoryId: formData.get('categoryId') as Id<'categories'>,
+  }
+  const convexPayload = {
+    categoryId: formData.get('categoryId') as Id<'categories'>,
+    maxGuests: clientData.maxGuests,
+    labels: {
+      title: {
+        plural: formatCategoryStr(clientData.categoryName, 'title', true),
+        singular: formatCategoryStr(clientData.categoryName, 'title', false),
+      },
+    },
+    slugs: {
+      plural: formatCategoryStr(clientData.categoryName, 'kebab', true),
+      singular: formatCategoryStr(clientData.categoryName, 'kebab', false),
+    },
+  }
+  await fetchMutation(api.categories.updateCategoryAction, { ...convexPayload })
+  revalidatePath(
+    `/${clientData.lang}/dashboard/habitaciones/categoria`,
+    'layout',
+  )
+  redirect(`/${clientData.lang}/dashboard/habitaciones/categoria`)
 }
 
 // Deleting Single Category

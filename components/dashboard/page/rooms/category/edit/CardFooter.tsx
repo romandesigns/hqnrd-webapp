@@ -1,44 +1,52 @@
-import { Locale } from '@/i18n-config'
+import { Submit } from '@/components/features'
 import { HiddenInput } from '@/components/features/Form'
-import { IconDeviceFloppy } from '@/components/icons'
+import { IconRotateClockwise2 } from '@/components/icons'
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { createCategory } from '@/utils/actions'
-import { Submit } from '@/components/features'
+import type { Id } from '@/convex/_generated/dataModel'
+import type { Locale } from '@/i18n-config'
+import { updateCategory } from '@/utils/actions'
 
-export function CardFooter({ lang }: { lang: Locale }) {
+export function CardFooter({
+  lang,
+  categoryId,
+}: {
+  lang: Locale
+  categoryId: Id<'categories'>
+}) {
   return (
     <form className='flex flex-col gap-4 mt-8 carved'>
       <FieldGroup className='flex-row gap-2'>
         <Field>
-          <FieldLabel htmlFor='category_name'>Enter Category Name</FieldLabel>
+          <FieldLabel htmlFor='categoryName'>Enter Category Name</FieldLabel>
           <Input
             required
             placeholder='Name'
             className='peer w-full'
             type='text'
-            id='category_name'
-            name='category_name'
+            id='categoryName'
+            name='categoryName'
           />
           <HiddenInput name='lang' defaultValue={lang} />
         </Field>
         <Field>
-          <FieldLabel htmlFor='max_guest'>Max Guest</FieldLabel>
+          <FieldLabel htmlFor='maxGuests'>Max Guest</FieldLabel>
           <Input
             required
             min={1}
             placeholder='0'
             className='peer w-full'
             type='number'
-            id='max_guest'
-            name='max_guest'
+            id='maxGuests'
+            name='maxGuests'
           />
         </Field>
+        <HiddenInput defaultValue={categoryId} name='categoryId' />
       </FieldGroup>
       <Submit
-        formAction={createCategory}
-        Icon={IconDeviceFloppy}
-        label='Save'
+        formAction={updateCategory}
+        Icon={IconRotateClockwise2}
+        label={'Update'}
         variant='primary'
         type='submit'
         size='block'

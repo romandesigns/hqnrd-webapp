@@ -1,7 +1,7 @@
-import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
+import { revalidatePath } from "next/cache";
+import { mutation, query } from "./_generated/server";
 import { CategoryFields } from "./fields";
-import { revalidatePath } from 'next/cache'
 
 export const createCategoryAction = mutation({
   args: CategoryFields,
@@ -16,11 +16,11 @@ export const createCategoryAction = mutation({
 });
 
 export const getCategoriesAction = query({
-    args: {},
-    handler: async (ctx) => {
-        const categories = await ctx.db.query("categories").collect();
-        return categories || [];
-    }
+  args: {},
+  handler: async (ctx) => {
+    const categories = await ctx.db.query("categories").collect();
+    return categories || [];
+  },
 });
 
 export const getCategoryByIdAction = query({
@@ -30,6 +30,30 @@ export const getCategoryByIdAction = query({
   handler: async (ctx, args) => {
     const category = await ctx.db.get(args.categoryId);
     return category || null;
+  },
+});
+
+export const updateCategoryAction = mutation({
+  args: {
+    categoryId: v.id("categories"),
+    maxGuests: v.number(),
+    labels: v.object({
+      title: v.object({
+        plural: v.string(),
+        singular: v.string(),
+      }),
+    }),
+    slugs: v.object({
+      plural: v.string(),
+      singular: v.string(),
+    }),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.categoryId, {
+      maxGuests: args.maxGuests,
+      labels: args.labels,
+      slugs: args.slugs,
+    });
   },
 });
 

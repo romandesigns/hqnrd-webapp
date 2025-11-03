@@ -1,2 +1,3 @@
-import { RoomsGroup } from "./Rooms";
+import { RoomsGroup } from "./RoomsGroup";
+
 export { RoomsGroup };

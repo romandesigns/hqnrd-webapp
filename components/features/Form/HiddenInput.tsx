@@ -9,6 +9,7 @@ export function HiddenInput({
 }) {
   return (
     <Input
+      readOnly
       className='hidden'
       type='text'
       name={name}

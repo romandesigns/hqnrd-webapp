@@ -1,5 +1,5 @@
+import { Main } from '@/components/layout'
 import type { Locale } from '@/i18n-config'
-import { Habitacion } from '@/components/dashboard/page/rooms'
 
 export default async function Page({
   params,
@@ -7,5 +7,6 @@ export default async function Page({
   params: Promise<{ lang: Locale }>
 }) {
   const { lang } = await params
-  return <p>Crear Nueva</p>
+
+  return <Main className='flex-1 flex flex-col'>Crear Habitacion</Main>
 }

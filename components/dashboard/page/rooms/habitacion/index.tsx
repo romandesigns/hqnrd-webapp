@@ -1,4 +1,9 @@
-import type { Locale } from '@/i18n-config'
+import { fetchQuery } from 'convex/nextjs'
+import Link from 'next/link'
+import { MainArticle, MainSection } from '@/components/dashboard/main'
+import { Navigation } from '@/components/dashboard/main/navigation'
+import { Card, Submit } from '@/components/features'
+import { HiddenInput } from '@/components/features/Form'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,20 +12,26 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
-import { Separator } from '@/components/ui/separator'
-import { SidebarTrigger } from '@/components/ui/sidebar'
-import { DrawerMenu } from '@/components/layout/sections/Navigation/components/Drawer'
-import Link from 'next/link'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { api } from '@/convex/_generated/api'
+import type { Locale } from '@/i18n-config'
+import { createRoom } from '@/utils/actions/room'
 
-export function Habitacion({ lang }: { lang: Locale }) {
+export async function Habitacion({ lang }: { lang: Locale }) {
+  const categories = await fetchQuery(api.categories.getCategoriesAction)
   return (
-    <>
-      <nav className='flex items-center p-2'>
-        <SidebarTrigger />
-        <Separator
-          orientation='vertical'
-          className='mx-2 data-[orientation=vertical]:h-4'
-        />
+    <MainSection className='flex-1'>
+      <Navigation lang={lang}>
         <Breadcrumb className='mr-auto'>
           <BreadcrumbList>
             <BreadcrumbItem className='hidden md:block'>
@@ -40,11 +51,69 @@ export function Habitacion({ lang }: { lang: Locale }) {
             </Link>
           </BreadcrumbList>
         </Breadcrumb>
-        <div className='block md:hidden'>
-          <DrawerMenu lang={lang} className='ml-auto' />
-        </div>
-      </nav>
-      <section className='p-2'>Habitaciones</section>
-    </>
+      </Navigation>
+      <MainArticle className='flex justify-center items-center flex-1'>
+        <form className='w-full flex justify-center items-center'>
+          <Card
+            Header={
+              <h2 className='text-sm font-semibold font-sans px-3'>
+                Crear Habitación
+              </h2>
+            }
+            className='max-w-2xl'
+            bodyClassName='flex flex-col gap-4 p-6'
+          >
+            {/* Select room categories */}
+            <div>
+              <Label
+                htmlFor='categories'
+                className='font-sans mb-1 text-[0.7rem]  text-muted-foreground'
+              >
+                Select Room Categories
+              </Label>
+              <Select name='roomCategory'>
+                <SelectTrigger id='categories' className='w-full font-sans'>
+                  <SelectValue placeholder='Categorias' />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {categories.map(category => (
+                      <SelectItem
+                        key={category._id}
+                        value={category.labels.title.plural}
+                      >
+                        {category.labels.title.plural}
+                        <HiddenInput
+                          name='category'
+                          defaultValue={JSON.stringify(category)}
+                        />
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            {/* Insert room number */}
+            <div>
+              <Label
+                htmlFor='unit-number'
+                className='font-sans mb-1 text-[0.7rem]  text-muted-foreground'
+              >
+                Unit number
+              </Label>
+              <Input
+                id='unit-number'
+                name='unitNumber'
+                type='number'
+                placeholder='0'
+                required
+              />
+              <HiddenInput name='lang' defaultValue={lang} />
+            </div>
+          </Card>
+          <Submit label='Submit' formAction={createRoom} />
+        </form>
+      </MainArticle>
+    </MainSection>
   )
 }

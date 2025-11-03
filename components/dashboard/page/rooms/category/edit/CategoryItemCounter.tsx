@@ -1,8 +1,8 @@
 'use client'
 
+import { useQuery } from 'convex/react'
 import { Spinner } from '@/components/ui/spinner'
 import { api } from '@/convex/_generated/api'
-import { useQuery } from 'convex/react'
 
 export function CategoryItemsCount() {
   const categories = useQuery(api.categories.getCategoriesAction)

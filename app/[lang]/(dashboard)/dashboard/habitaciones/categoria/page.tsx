@@ -1,13 +1,7 @@
-import type { Locale } from "@/i18n-config";
-import { Category } from "@/components/dashboard/page/rooms";
+import { Category } from '@/components/dashboard/page/rooms/category/new'
+import type { CategoryParams } from '@/types'
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}) {
-const { lang } = await params;
-  return (
-      <Category lang={lang} />
-  );
+export default async function Page({ params }: { params: CategoryParams }) {
+  const { lang } = await params
+  return <Category lang={lang} />
 }

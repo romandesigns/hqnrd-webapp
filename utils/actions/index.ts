@@ -1,5 +1,5 @@
 // Import actions here
-import { createCategory } from '@/utils/actions/categories'
+import { createCategory,updateCategory } from '@/utils/actions/categories'
 
 // Export actions here
-export { createCategory }
+export { createCategory ,updateCategory}

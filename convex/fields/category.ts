@@ -11,5 +11,5 @@ export const CategoryFields = {
         plural: v.string(),
         singular: v.string(),   
     }),
-  max_guests: v.number(),
+  maxGuests: v.number(),
 };

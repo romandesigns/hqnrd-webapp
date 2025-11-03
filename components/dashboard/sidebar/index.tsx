@@ -1,21 +1,68 @@
+import { DashboardBrand } from '@/components/features'
+import {
+  IconBedFilled,
+  IconCirclePlus,
+  IconDoor,
+  IconEdit,
+  IconFrame,
+} from '@/components/icons'
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
-} from '@/components/ui/sidebar'
-import type { Locale } from '@/i18n-config'
-import { RoomsGroup } from './Groups'
-
-import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
-import { DashboardBrand } from '@/components/features'
+import type { Locale } from '@/i18n-config'
+import { RoomsGroup } from './Groups'
 
-export function AppSidebar({ lang }: { lang: Locale }) {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const lang = props.lang as Locale
+  // This is sample data.
+  const data = {
+    rooms: [
+      {
+        title: 'Categorias',
+        url: '#',
+        icon: IconFrame,
+        isActive: false,
+        items: [
+          {
+            title: 'Crear',
+            url: `/${lang}/dashboard/habitaciones/categoria`,
+            icon: IconCirclePlus,
+          },
+        ],
+      },
+      {
+        title: 'Habitaciones',
+        url: '#',
+        icon: IconBedFilled,
+        isActive: false,
+        items: [
+          {
+            title: 'Ver todas',
+            url: `/${lang}/dashboard/habitaciones`,
+            icon: IconDoor,
+          },
+          {
+            title: 'Crear',
+            url: `/${lang}/dashboard/habitaciones/crear`,
+            icon: IconCirclePlus,
+          },
+          {
+            title: 'Editar',
+            url: `/${lang}/dashboard/habitaciones/editar`,
+            icon: IconEdit,
+          },
+        ],
+      },
+    ],
+  }
+
   return (
     <Sidebar variant='floating' collapsible='icon' className='font-sans'>
       <SidebarHeader>
@@ -31,7 +78,7 @@ export function AppSidebar({ lang }: { lang: Locale }) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <RoomsGroup lang={lang} />
+        <RoomsGroup lang={lang} roomsData={data.rooms} />
       </SidebarContent>
       <SidebarFooter />
     </Sidebar>

@@ -1,6 +1,6 @@
-import { Card } from "./Default";
-import { Testimonial } from "./Testimonial";
-import { Category } from "./Category";
-import { Room } from "./Room";
+import { Category } from './Category'
+import { Card } from './Default'
+import { Room } from './Room'
+import { Testimonial } from './Testimonial'
 
-export { Card, Testimonial, Category, Room };
+export { Card, Testimonial, Category, Room }
