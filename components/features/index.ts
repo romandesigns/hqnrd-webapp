@@ -33,5 +33,5 @@ export {
   Delete,
   Heading,
   InstallPrompt,
-  Submit
+  Submit,
 };

@@ -1,12 +1,12 @@
-import { Main } from '@/components/layout'
-import type { Locale } from '@/i18n-config'
+import { Main } from "@/components/layout";
+import type { Locale } from "@/i18n-config";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ lang: Locale }>
+  params: Promise<{ lang: Locale }>;
 }) {
-  const { lang } = await params
+  const { lang } = await params;
 
-  return <Main className='flex-1 flex flex-col'>Crear Habitacion</Main>
+  return <Main className="flex-1 flex flex-col">Crear Habitacion</Main>;
 }

@@ -1,7 +1,8 @@
-'use server'
+"use server";
 
-import clsx from 'clsx'
-import { Button } from '@/components/ui/button'
+import clsx from "clsx";
+import { Button } from "@/components/ui/button";
+import type { Locale } from "@/i18n-config";
 
 export async function Submit({
   className,
@@ -13,14 +14,14 @@ export async function Submit({
   operation,
   formAction,
 }: {
-  className?: string
-  Icon?: React.ComponentType
-  label?: string
-  variant: 'primary' | 'secondary' | 'link'
-  type: 'button' | 'submit' | 'reset'
-  size?: 'icon' | 'block' | 'default'
-  operation?: 'write' | 'delete' | 'update'
-  formAction?: (formData: FormData) => Promise<void>
+  className?: string;
+  Icon?: React.ComponentType;
+  label?: Locale;
+  variant: "primary" | "secondary" | "link";
+  type: "button" | "submit" | "reset";
+  size?: "icon" | "block" | "default";
+  operation?: "write" | "delete" | "update";
+  formAction?: (formData: FormData) => Promise<void>;
 }) {
   return (
     <Button
@@ -28,10 +29,10 @@ export async function Submit({
       type={type}
       size={size}
       variant={variant}
-      className={clsx('', className)}
+      className={clsx("", className)}
     >
       {Icon && <Icon />}
       {label && <span>{label}</span>}
     </Button>
-  )
+  );
 }

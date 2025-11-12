@@ -1,11 +1,14 @@
-import { DashboardBrand } from '@/components/features'
+import { DashboardBrand } from "@/components/features";
 import {
   IconBedFilled,
   IconCirclePlus,
   IconDoor,
   IconEdit,
+  IconFolderDollar,
   IconFrame,
-} from '@/components/icons'
+  IconMapPinDollar,
+  IconTicket,
+} from "@/components/icons";
 import {
   Sidebar,
   SidebarContent,
@@ -15,62 +18,67 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar'
-import type { Locale } from '@/i18n-config'
-import { RoomsGroup } from './Groups'
+} from "@/components/ui/sidebar";
+import type { Locale } from "@/i18n-config";
+import { FinanceGroup, RoomsGroup } from "./Groups";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const lang = props.lang as Locale
+  const lang = props.lang as Locale;
   // This is sample data.
   const data = {
     rooms: [
       {
-        title: 'Categorias',
-        url: '#',
+        title: "Categorias",
         icon: IconFrame,
         isActive: false,
-        items: [
-          {
-            title: 'Crear',
-            url: `/${lang}/dashboard/habitaciones/categoria`,
-            icon: IconCirclePlus,
-          },
-        ],
+        url: `/${lang}/dashboard/habitaciones/categoria`,
       },
       {
-        title: 'Habitaciones',
-        url: '#',
+        title: "Habitaciones",
+        url: "#",
         icon: IconBedFilled,
         isActive: false,
         items: [
           {
-            title: 'Ver todas',
+            title: "Ver todas",
             url: `/${lang}/dashboard/habitaciones`,
             icon: IconDoor,
           },
           {
-            title: 'Crear',
+            title: "Crear",
             url: `/${lang}/dashboard/habitaciones/crear`,
             icon: IconCirclePlus,
           },
           {
-            title: 'Editar',
+            title: "Editar",
             url: `/${lang}/dashboard/habitaciones/editar`,
             icon: IconEdit,
           },
         ],
       },
     ],
-  }
+    finance: [
+      {
+        title: "Tarifas Globales",
+        url: `/${lang}/dashboard/finanzas/tarifas-globales`,
+        icon: IconMapPinDollar,
+      },
+      {
+        title: "Descuentos",
+        url: `/${lang}/dashboard/finanzas/descuentos`,
+        icon: IconTicket,
+      },
+    ],
+  };
 
   return (
-    <Sidebar variant='floating' collapsible='icon' className='font-sans'>
+    <Sidebar variant="floating" collapsible="icon" className="font-sans">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className='data-[slot=sidebar-menu-button]:!p-1.5 hover:bg-transparent active:bg-transparent'
+              className="data-[slot=sidebar-menu-button]:!p-1.5 hover:bg-transparent active:bg-transparent"
             >
               <DashboardBrand lang={lang} />
             </SidebarMenuButton>
@@ -79,8 +87,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <RoomsGroup lang={lang} roomsData={data.rooms} />
+        <FinanceGroup lang={lang} financeData={data.finance} />
       </SidebarContent>
       <SidebarFooter />
     </Sidebar>
-  )
+  );
 }

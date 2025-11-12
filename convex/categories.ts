@@ -1,5 +1,4 @@
 import { v } from "convex/values";
-import { revalidatePath } from "next/cache";
 import { mutation, query } from "./_generated/server";
 import { CategoryFields } from "./fields";
 

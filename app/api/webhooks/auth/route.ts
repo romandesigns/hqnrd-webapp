@@ -1,9 +1,9 @@
 import { verifyWebhook } from "@clerk/nextjs/webhooks";
-import { NextRequest } from "next/server";
 import { fetchMutation } from "convex/nextjs";
+import type { NextRequest } from "next/server";
 import { api } from "@/convex/_generated/api";
-import { HQNRD } from "../../../../constants";
 import { Doc } from "@/convex/_generated/dataModel";
+import { HQNRD } from "../../../../constants";
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     // For this guide, log payload to console
     const eventType = evt.type;
     switch (eventType) {
-      case "user.created":
+      case "user.created": {
         const payload = {
           firstName: evt.data.first_name ?? "",
           lastName: evt.data.last_name ?? "",
@@ -35,6 +35,7 @@ export async function POST(req: NextRequest) {
         await fetchMutation(api.profiles.createProfile, payload);
         console.log("User created:", evt.data);
         break;
+      }
       case "user.updated":
         console.log("User updated:", evt.data);
         break;

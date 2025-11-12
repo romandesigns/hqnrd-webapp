@@ -8,7 +8,9 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: true,
   },
   images: {
-    remotePatterns: [{ protocol:"https",hostname: "lh3.googleusercontent.com" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "lh3.googleusercontent.com" },
+    ],
   },
 };
 
