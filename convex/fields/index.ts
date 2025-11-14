@@ -1,6 +1,6 @@
 import { CategoryFields } from "./category";
-import { DiscountsFields } from "./discount";
+import { DiscountFields } from "./discount";
 import { FinanceFields } from "./finance";
 import { ProfileFields } from "./profile";
 
-export { ProfileFields, CategoryFields, FinanceFields, DiscountsFields };
+export { ProfileFields, CategoryFields, FinanceFields, DiscountFields };

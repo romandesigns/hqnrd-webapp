@@ -9,6 +9,7 @@
  */
 
 import type * as categories from "../categories.js";
+import type * as discounts from "../discounts.js";
 import type * as fees from "../fees.js";
 import type * as fields_category from "../fields/category.js";
 import type * as fields_discount from "../fields/discount.js";
@@ -27,6 +28,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   categories: typeof categories;
+  discounts: typeof discounts;
   fees: typeof fees;
   "fields/category": typeof fields_category;
   "fields/discount": typeof fields_discount;

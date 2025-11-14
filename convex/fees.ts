@@ -13,3 +13,28 @@ export const createGloabalFeesAction = mutation({
     }
   },
 });
+
+export const getGlobalFees = query({
+  handler: async (ctx) => {
+    const fees = await ctx.db.query("fees").collect();
+    return fees;
+  },
+});
+
+export const updateFeesAction = mutation({
+  args: {
+    feesId: v.id("fees"),
+    ...FinanceFields,
+  },
+  handler: async (ctx, { feesId, localGuestFee, foreignGuestFee }) => {
+    try {
+      await ctx.db.patch(feesId, {
+        localGuestFee,
+        foreignGuestFee,
+      });
+    } catch (e) {
+      console.log(e);
+      return new Error("Back end error");
+    }
+  },
+});

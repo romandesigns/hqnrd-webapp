@@ -1,43 +1,21 @@
-import Link from "next/link";
-import { Navigation } from "@/components/dashboard/main";
+import { fetchQuery } from "convex/nextjs";
 import { Card, Submit } from "@/components/features";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-} from "@/components/ui/field";
+import { HiddenInput } from "@/components/features/Form";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { api } from "@/convex/_generated/api";
 import type { Locale } from "@/i18n-config";
+import { createDiscounts } from "@/utils/actions";
 import { MainSection } from "../../main";
 
-export function Discounts({ lang }: { lang: Locale }) {
+export async function Discounts({ lang }: { lang: Locale }) {
+  const discounts = await fetchQuery(api.discounts.getDiscounts);
+  const discount = discounts[discounts.length - 1];
   return (
     <MainSection>
       <article className="font-sans p-2 flex-1 flex items-center justify-center">
         <Card
           Header={<p className="pb-4">Discounts</p>}
-          Footer={
-            <div>
-              <Submit
-                size="block"
-                variant="primary"
-                lang={lang}
-                label="Submit"
-              />
-            </div>
-          }
           className="md:max-w-md lg:max-w-2xl p-4"
           aroundPadding
           headerClassName="px-0 pb-0"
@@ -54,11 +32,12 @@ export function Discounts({ lang }: { lang: Locale }) {
                 </FieldLabel>
                 <Input
                   id="checkout-7j9-card-name-43j"
-                  placeholder="0"
+                  placeholder={discount?.firstDiscount?.toString() || "0"}
                   required
                   type="number"
-                  step={0.25}
-                  name="fiveDaysBooking"
+                  step={1}
+                  name="firstDiscount"
+                  min={0}
                 />
               </Field>
               <Field>
@@ -70,14 +49,25 @@ export function Discounts({ lang }: { lang: Locale }) {
                 </FieldLabel>
                 <Input
                   id="checkout-7j9-card-number-uw1"
-                  placeholder="0"
+                  placeholder={discount?.secondDiscount?.toString() || "0"}
                   required
                   type="number"
-                  step={0.25}
-                  name="moreThanFifteenDaysBooking"
+                  step={1}
+                  min={0}
+                  name="secondDiscount"
                 />
               </Field>
             </FieldGroup>
+            <HiddenInput name="lang" defaultValue={lang} />
+            <div className="mt-4">
+              <Submit
+                size="block"
+                variant="primary"
+                type="submit"
+                label="Submit"
+                formAction={createDiscounts}
+              />
+            </div>
           </form>
         </Card>
       </article>
