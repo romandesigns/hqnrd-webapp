@@ -26,7 +26,7 @@ interface RoomsGroupProps {
     url: string;
     icon: Icon;
     isActive: boolean;
-    items: {
+    items?: {
       title: string;
       url: string;
       icon: Icon;

@@ -41,14 +41,14 @@ function Heading({
 export function ScenicSpaces({ lang }: { lang: Locale }): JSX.Element {
   return (
     <Section>
-      <Content className="flex justify-center w-full !max-w-7xl">
+      <Content className="flex justify-center w-full">
         <SectionHeading
           showBorders
           title="Our Scenic Spaces"
           description="Click the images to learn more"
         />
       </Content>
-      <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-1  flex-1 ">
+      <Content className="grid grid-cols-[50%_25%_25%] grid-rows-2 gap-1 flex-1 ">
         {/* Rooms Section */}
         <Card
           aroundPadding

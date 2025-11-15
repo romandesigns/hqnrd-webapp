@@ -24,12 +24,12 @@ export async function createGlobalFees(formData: FormData) {
   redirect(`/${clientData.lang}/dashboard/finanzas/tarifas-globales`);
 }
 
-// Update  Fees
+// Update Fees
 export async function updateFees(formData: FormData) {
   const clientData = {
     localGuestFee: Number(formData.get("localGuestFee") as string),
     foreignGuestFee: Number(formData.get("foreignGuestFee") as string),
-    feesId: Number(formData.get("feesId") as Id<"fees">),
+    feesId: formData.get("feesId") as Id<"fees">,
     lang: formData.get("lang") as string,
   };
   const convexPayload = {
@@ -42,5 +42,5 @@ export async function updateFees(formData: FormData) {
     `/${clientData.lang}/dashboard/finanzas/tarifas-globales`,
     "layout",
   );
-  redirect(`/${clientData.lang}/dashboard/finanzas/tarifas-globales`);
+  // redirect(`/${clientData.lang}/dashboard/finanzas/tarifas-globales`);
 }

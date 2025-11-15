@@ -1,2 +1,4 @@
 import { HiddenInput } from "./HiddenInput";
-export { HiddenInput };
+import { RateForm } from "./RateForm";
+
+export { HiddenInput, RateForm };

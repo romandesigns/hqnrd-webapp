@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { Locale } from "@/i18n-config";
-import { cn } from "@/lib/utils";
-import { MenuItem } from "@/components/features/Menu";
-import { LocaleDialog } from "@/components/features/LocaleDialog";
+import type { VariantProps } from "class-variance-authority";
+import { Mail, Map, MessageCircle } from "lucide-react";
 import { ExternalLink } from "@/components/features/ExternalLink";
-import { MessageCircle, Map, Mail } from "lucide-react";
+import { LocaleDialog } from "@/components/features/LocaleDialog";
+import { MenuItem } from "@/components/features/Menu";
+import { Button } from "@/components/ui/button";
 import { HQNRD } from "@/constants";
-import { VariantProps } from "class-variance-authority";
+import type { Locale } from "@/i18n-config";
+import { cn } from "@/lib/utils";
 
 export function ContactWidget({
   lang,

@@ -8,3 +8,6 @@ export type CategoryParams = Promise<{ lang: Locale }>;
 export type SearchParams = Promise<{
   [key: string]: string | string[] | undefined;
 }>;
+export type RoomParams = Promise<{
+  params: Promise<{   lang: Locale,unit: string[] }>;  
+}>;

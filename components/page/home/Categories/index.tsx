@@ -6,7 +6,7 @@ import type { Locale } from "@/i18n-config";
 export function Categories({ lang }: { lang: Locale }) {
   return (
     <Section>
-      <Content className="md:px-10">
+      <Content className="px-40">
         <SectionHeading
           showBorders
           title="Select Categories"

@@ -17,8 +17,8 @@ export async function createDiscounts(formData: FormData) {
     secondDiscount: clientData.secondDiscount,
   };
   await fetchMutation(api.discounts.createDiscounts, convexPayload);
-  revalidatePath(`/${clientData.lang}/dashboard/finanzas/descuentos`, "layout");
-  redirect(`/${clientData.lang}/dashboard/finanzas/descuentos`);
+  revalidatePath(`/${clientData.lang}/dashboard/finanzas/descuentos`, "page");
+  // redirect(`/${clientData.lang}/dashboard/finanzas/descuentos`);
 }
 
 // Update  Fees
@@ -35,6 +35,6 @@ export async function udpateFees(formData: FormData) {
     secondDiscount: clientData.secondDiscount,
   };
   await fetchMutation(api.discounts.updateDiscounts, convexPayload);
-  revalidatePath(`/${clientData.lang}/dashboard/finanzas/descuentos`, "layout");
-  redirect(`/${clientData.lang}/dashboard/finanzas/descuentos`);
+  revalidatePath(`/${clientData.lang}/dashboard/finanzas/descuentos`, "page");
+  // redirect(`/${clientData.lang}/dashboard/finanzas/descuentos`);
 }
