@@ -40,13 +40,13 @@ export function Header({ lang }: { lang: Locale }) {
             btnVariant={"bordered"}
             className="hidden md:flex"
           />
-        <div className="text-xs font-medium text-muted-foreground text-center lg:text-left w-full">
-          Showing{" "}
-          <span className="p-0.5 bg-(--brand-warning)/6 text-(--brand-warning) px-2 rounded-md mx-2 font-bold">
-            4
-          </span>{" "}
-          Basic rooms
-        </div>
+          <div className="text-xs font-medium text-muted-foreground text-center lg:text-left w-full">
+            Showing{" "}
+            <span className="p-0.5 bg-(--brand-warning)/6 text-(--brand-warning) px-2 rounded-md mx-2 font-bold">
+              4
+            </span>{" "}
+            Basic rooms
+          </div>
         </div>
         <div className="">
           <div className="bg-linear-to-b from-background/70 via-background/95 to-background absolute inset-0 z-1  rounded-lg backdrop-blur-sm" />

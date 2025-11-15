@@ -9,5 +9,5 @@ export type SearchParams = Promise<{
   [key: string]: string | string[] | undefined;
 }>;
 export type RoomParams = Promise<{
-  params: Promise<{   lang: Locale,unit: string[] }>;  
+  params: Promise<{ lang: Locale; unit: string[] }>;
 }>;
