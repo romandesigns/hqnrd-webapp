@@ -1,4 +1,3 @@
-import React from "react";
 import { twMerge } from "tailwind-merge";
 import { Card } from "@/components/features";
 import { featuresList } from "./featureLis";
@@ -6,8 +5,8 @@ import { featuresList } from "./featureLis";
 export function Features() {
   return (
     <Card
-      className="w-full"
-      Header={<h3 className="font-bold text-xl px-2">Features</h3>}
+      aroundPadding
+      Header={<h3 className="font-bold text-lg px-2">Features</h3>}
     >
       <ul className="flex flex-wrap items-center justify-start gap-2 lg:grid lg:grid-cols-4 lg:grid-rows-2">
         {featuresList.map((feature) => (
