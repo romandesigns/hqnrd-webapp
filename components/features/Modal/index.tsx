@@ -1,11 +1,9 @@
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { IconX } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -14,13 +12,13 @@ import type { Locale } from "@/i18n-config";
 
 interface ModalProps {
   title?: string;
-  cardBodyClassName?: string;
-  formClassName?: string;
+  className?: string;
   triggerLabel: string;
+  slug: string; // <-- obligatorio
   Component: React.ComponentType<{
     lang: Locale;
     className?: string;
-    slug?: string;
+    slug: string;
   }>;
   lang: Locale;
 }
@@ -28,30 +26,33 @@ interface ModalProps {
 export function Modal({
   triggerLabel,
   Component,
-  cardBodyClassName,
-  formClassName,
+  className,
   lang,
   title,
+  slug,
 }: ModalProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full max-w-md">{triggerLabel || "Open Dialog"}</Button>
+        <Button className="w-full max-w-md">
+          {triggerLabel || "Open Dialog"}
+        </Button>
       </DialogTrigger>
+
       <DialogContent className="p-0 gap-0" showCloseButton={false}>
-        <DialogHeader className="items-center justify-between  flex-row p-2 py-1">
-          <DialogTitle className="inline-block text-sm">{title}</DialogTitle>
+        {/* HEADER */}
+        <DialogHeader className="flex flex-row items-center justify-between p-2 py-1">
+          <DialogTitle className="text-sm">{title}</DialogTitle>
+
           <DialogClose asChild>
-            <Button size={"icon"} variant={"ghost"}>
+            <Button size="icon" variant="ghost">
               <IconX />
             </Button>
           </DialogClose>
         </DialogHeader>
-        <Component
-          lang={lang}
-          cardBodyClassName={cardBodyClassName}
-          formClassName={formClassName}
-        />
+
+        {/* RENDER THE INNER COMPONENT */}
+        <Component lang={lang} slug={slug} className={className} />
       </DialogContent>
     </Dialog>
   );

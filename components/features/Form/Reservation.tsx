@@ -10,8 +10,6 @@ import { Card } from "../Cards";
 interface ReservationProps {
   lang: Locale;
   className?: string;
-  formClassName?: string;
-  cardBodyClassName?: string;
   slug: string;
   title?: string;
 }
@@ -31,16 +29,26 @@ interface ReservationProps {
 //   };
 // }
 
-export function ReservationForm({ lang, slug, className, title , cardBodyClassName, formClassName}: ReservationProps) {
+export function ReservationForm({
+  lang,
+  slug,
+  className,
+  title,
+}: ReservationProps) {
   return (
     <Card
-        bodyClassName={cardBodyClassName}
       className={clsx("lg:block lg:sticky lg:top-48", className)}
       Header={
-        title ? <h3 className="text-lg font-semibold font-sans">{title}</h3> : null
+        title ? (
+          <h3 className="text-lg font-semibold font-sans">{title}</h3>
+        ) : null
       }
     >
-      <form className={clsx("p-6 pb-4 flex flex-col gap-6 [@width<300px]:py-2 [@width>230px]:py-4", formClassName)} >
+      <form
+        className={clsx(
+          "p-6 pb-4 flex flex-col gap-6 [@width<300px]:py-2 [@width>230px]:py-4",
+        )}
+      >
         <div className="flex gap-6">
           <InputNumber
             name="adults"

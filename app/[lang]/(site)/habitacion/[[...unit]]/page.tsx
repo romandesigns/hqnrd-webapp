@@ -36,7 +36,6 @@ async function checkIfRoomExists({
 export default async function RoomPage({ params }: { params: RoomParams }) {
   const param = await params;
   const segmentParam = JSON.parse(JSON.stringify(param));
-  console.log(segmentParam);
   await checkIfRoomExists(segmentParam);
 
   return (
@@ -51,21 +50,17 @@ export default async function RoomPage({ params }: { params: RoomParams }) {
               Doble Cama
             </h2>
           </div>
-          <div className="lg:max-w-auto px-3 lg:px-0 flex w-full max-w-6xl items-center justify-center lg:w-auto lg:flex-col lg:justify-between lg:hidden">
-            {/* <Button className="w-full max-w-md lg:hidden">
-              Make Reservation
-            </Button> */}
-            <Modal
-              title="Reservation Form"
-              triggerLabel="Make Reservation"
-              subheading=""
-              lang={segmentParam.lang}
-              leftCTAlabel=""
-              rightCTAlabel=""
-              componentClass="p-0!"
-              formClassName="p-0!"
-              Component={ReservationForm }
-            />
+          <div className="lg:max-w-auto px-3 lg:px-0 flex w-full max-w-6xl items-center justify-center lg:w-auto lg:flex-col lg:justify-between">
+            <div className="w-full lg:hidden">
+              <Modal
+                title="Reservation Form"
+                triggerLabel="Make Reservation"
+                lang={segmentParam.lang}
+                className="p-0! [&_form]:p-2! lg:m-4!"
+                slug="doble-cama"
+                Component={ReservationForm}
+              />
+            </div>
             <ContactWidget
               lang={segmentParam.lang}
               className="hidden lg:block"
@@ -93,8 +88,12 @@ export default async function RoomPage({ params }: { params: RoomParams }) {
             </article>
           </Content>
         </Main>
-        <aside className="pr-10">
-          <ReservationForm  title="Reservation Form" className="hidden" lang={segmentParam.lang} />
+        <aside className="pr-10 hidden lg:block">
+          <ReservationForm
+            title="Reservation Form"
+            lang={segmentParam.lang}
+            slug="doble-cama"
+          />
         </aside>
       </div>
       <Content className="px-2! [&_div]:px-0! py-20">
