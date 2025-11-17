@@ -1,5 +1,5 @@
 import { Card } from "@/components/features";
-import { amenities } from "./ameneties";
+import { amenities } from "./amenities";
 
 export function Amenities() {
   return (

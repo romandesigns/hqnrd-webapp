@@ -5,6 +5,7 @@ import {
   DiscountFields,
   FinanceFields,
   ProfileFields,
+  RoomFields,
 } from "../fields";
 
 export default defineSchema({
@@ -12,4 +13,5 @@ export default defineSchema({
   categories: defineTable(v.object(CategoryFields)),
   fees: defineTable(v.object(FinanceFields)),
   discounts: defineTable(v.object(DiscountFields)),
+  rooms: defineTable(v.object(RoomFields)),
 });

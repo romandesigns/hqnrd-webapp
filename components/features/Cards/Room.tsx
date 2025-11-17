@@ -62,17 +62,17 @@ function CategoryFooter() {
     {
       Icon: IconTeapot,
       iconSize: 15,
-      label: "Coffee Maker",
+      label: "Coffee_Maker",
     },
     {
       Icon: IconAirConditioningDisabled,
       iconSize: 15,
-      label: "Air Conditioning",
+      label: "Air_Conditioning",
     },
     {
       Icon: IconSunElectricity,
       iconSize: 15,
-      label: "Electricity 24/7",
+      label: "Electricity_24/7",
     },
     {
       Icon: IconPropeller,
@@ -101,9 +101,9 @@ function CategoryFooter() {
 
   return (
     <>
-      <div className=" flex flex-col relative gap-1 z-[2] pb-2">
+      <div className=" flex flex-col relative gap-1 z-2 pb-2">
         <div className="flex items-center justify-between">
-          <h3 className="z-[2] text-md lg:text-sm uppercase font-bold  flex flex-col text-(--brand-warning)">
+          <h3 className="text-md lg:text-sm uppercase font-bold  flex flex-col text-(--brand-warning)">
             Deluxe Room
           </h3>
           <p className="font-bold text-sm lg:text-xs text-primary">

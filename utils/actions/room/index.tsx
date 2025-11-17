@@ -7,12 +7,45 @@ import type { Id } from "@/convex/_generated/dataModel";
 
 // Creating  room
 export async function createRoom(formData: FormData) {
+  console.log(formData);
+  const category = JSON.parse(formData.get("category") as string);
   const data = {
-    category: JSON.parse(formData.get("category") as string),
     unitNumber: Number(formData.get("unitNumber") as string),
+    category: {
+      id: category._id as Id<"categories">,
+      maxGuests: category.maxGuests as number,
+      slugs: {
+        singular: category.slugs.singular as string,
+        plural: category.slugs.plural as string,
+      },
+      name: {
+        singular: category.labels.title.singular as string,
+        plural: category.labels.title.plural as string,
+      },
+    },
+    pricePerNight: Number(formData.get("pricePerNight") as string),
     lang: formData.get("lang") as string,
+    features: {
+      privateBathroom: formData.get("privateBathroom") === "on",
+      balcony: formData.get("balcony") === "on",
+      intercom: formData.get("intercom") === "on",
+      sizeSqm: Number(formData.get("sizeSqm") as string),
+      parking: formData.get("parking") === "on",
+      beds: Number(formData.get("beds") as string),
+      bedType: formData.get("bedType") as string,
+      maxOccupancy: Number(formData.get("maxOccupancy") as string),
+      wheelChair: formData.get("wheelChair") === "on",
+      petFriendly: formData.get("petFriendly") === "on",
+      extraBedType: formData.get("extraBedType") as string,
+      extraBed: Number(formData.get("extraBed") as string),
+    },
   };
-  revalidatePath(`/${data.lang}/dashboard/habitaciones/categoria`, "layout");
+
+  // Inset room in database
+  console.log(data);
+  // Revalidate Path
+  revalidatePath(`/${data.lang}/dashboard/habitaciones`, "layout");
+  // Redirect to rooms page
   redirect(`/${data.lang}/dashboard/habitaciones`);
 }
 

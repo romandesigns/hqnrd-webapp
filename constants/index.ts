@@ -1,14 +1,15 @@
-import { locales } from "./locales";
-import { flags } from "./flags";
+import { bedTypes } from "./bedsTypes";
 import { branding } from "./branding";
-import { contact } from "./contact";
-import { social } from "./social";
 import { categories } from "./categories";
+import { contact } from "./contact";
 import { currencies } from "./currencies";
-import { roles } from "./roles";
+import { flags } from "./flags";
 import { languageTag } from "./languageTag";
+import { locales } from "./locales";
 import { mimetypes } from "./mimetypes";
 import { orientation } from "./orientation";
+import { roles } from "./roles";
+import { social } from "./social";
 
 // Main object to be exported
 export const HQNRD = {
@@ -23,4 +24,5 @@ export const HQNRD = {
   ROLES: roles,
   MIMETYPE: mimetypes,
   ORIENTATION: orientation,
+  BEDTYPES: bedTypes,
 };

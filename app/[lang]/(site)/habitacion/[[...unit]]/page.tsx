@@ -4,14 +4,17 @@ import { ContactWidget, Modal } from "@/components/features";
 import { ReservationForm } from "@/components/features/Form";
 import { Container, Content, Main, Section } from "@/components/layout";
 import { Trending } from "@/components/page/home";
+import {
+  Amenities,
+  Description,
+  Features,
+  Gallery,
+  Media,
+} from "@/components/page/room";
 import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import type { Locale } from "@/i18n-config";
 import type { RoomParams } from "@/types";
-import { Amenities } from "./Amenities";
-import { Description } from "./Description";
-import { Features } from "./Features";
-import { Media } from "./Media";
 
 async function checkIfRoomExists({
   lang,
@@ -51,7 +54,7 @@ export default async function RoomPage({ params }: { params: RoomParams }) {
             </h2>
           </div>
           <div className="lg:max-w-auto px-3 lg:px-0 flex w-full max-w-6xl items-center justify-center lg:w-auto lg:flex-col lg:justify-between">
-            <div className="w-full lg:hidden">
+            <div className="w-full lg:hidden flex justify-center">
               <Modal
                 title="Reservation Form"
                 triggerLabel="Make Reservation"
@@ -69,15 +72,8 @@ export default async function RoomPage({ params }: { params: RoomParams }) {
           </div>
         </Content>
       </header>
-      <Content className="px-2! pt-10 lg:px-0!">
-        <div className="grid grid-cols-4 grid-rows-2 gap-1 p-2">
-          <figure className="col-span-2 row-span-2 aspect-square rounded-sm bg-pink-500"></figure>
-          <figure className="col-start-3 col-end-5 rounded-sm bg-purple-500"></figure>
-          <figure className="col-start-3 col-end-4 row-start-2 row-end-3 rounded-sm bg-orange-500"></figure>
-          <figure className="col-start-4 col-end-5 rounded-sm bg-yellow-500"></figure>
-        </div>
-      </Content>
-      <div className="font-sans max-width mx-auto lg:grid lg:grid-cols-[65%_35%] gap-6 lg:px-0 lg:gap-10 py-10 lg:pt-20">
+      <Gallery />
+      <div className="font-sans max-width mx-auto lg:grid lg:grid-cols-[65%_35%] gap-6 lg:px-0 lg:gap-10 py-10">
         <Main>
           <Content className="px-2!">
             <article className="space-y-10">

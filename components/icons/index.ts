@@ -30,6 +30,7 @@ import {
   IconFrame,
   IconFridge,
   IconHanger,
+  IconHazeMoon,
   IconHomeStar,
   IconIroning1,
   IconKey,
@@ -128,4 +129,5 @@ export {
   IconFridge,
   IconTableRow,
   IconX,
+  IconHazeMoon,
 };

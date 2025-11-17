@@ -14,6 +14,7 @@ import { MenuItem } from "./Menu";
 import { Modal } from "./Modal";
 import { RoomsFilter } from "./RoomsFilter";
 import { StarsRating } from "./StarsRating";
+import { TextEditor } from "./TextEditor";
 import { ModeToggle } from "./ThemeToggle";
 // Exporting Modules
 export {
@@ -36,4 +37,5 @@ export {
   InstallPrompt,
   Submit,
   Modal,
+  TextEditor,
 };

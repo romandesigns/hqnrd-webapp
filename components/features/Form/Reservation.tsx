@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { IconHazeMoon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { DateAndTimePicker } from "@/components/ui/DateTimePicker";
 import { InputNumber } from "@/components/ui/InputNumber";
@@ -40,7 +41,13 @@ export function ReservationForm({
       className={clsx("lg:block lg:sticky lg:top-48", className)}
       Header={
         title ? (
-          <h3 className="text-lg font-semibold font-sans">{title}</h3>
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-semibold font-sans">{title}</h3>
+            <span className="flex items-center justify-between gap-1 uppercase p-2 font-bold border border-(--brand-primary)/50 rounded bg-(--brand-primary)/30">
+              3,250<span>/</span>
+              <IconHazeMoon />
+            </span>
+          </div>
         ) : null
       }
     >
