@@ -34,7 +34,8 @@ export async function RateForm({
       footerClassName="space-y-4 mt-4"
     >
       <form>
-        <FieldGroup className="flex md:flex-row">
+        <div className="flex flex-col gap-4">
+        <FieldGroup className="flex md:flex-row border-b pb-8">
           <Field>
             <FieldLabel
               className="text-xs"
@@ -68,8 +69,43 @@ export async function RateForm({
             />
           </Field>
         </FieldGroup>
+        <FieldGroup className="flex md:flex-row">
+          <Field>
+            <FieldLabel
+              className="text-xs"
+              htmlFor="itbs"
+            >
+              ITBS
+            </FieldLabel>
+            <Input
+              id="itbs"
+              placeholder={'0'}
+              required
+              type="number"
+              name={'itbs'}
+              min={0}
+            />
+          </Field>
+          <Field>
+            <FieldLabel
+              className="text-xs"
+              htmlFor="lateCheckoutFee"
+            >
+              Late Checkout Fee
+            </FieldLabel>
+            <Input
+              id="lateCheckoutFee"
+              placeholder={'0'}
+              required
+              type="number"
+              name={'lateCheckoutFee'}
+              min={0}
+            />
+          </Field>
+        </FieldGroup>
+        </div>
         <HiddenInput name="lang" defaultValue={lang} />
-        <div className="mt-4">
+        <div className="mt-8">
           <Submit
             size="block"
             variant="primary"

@@ -2,7 +2,7 @@ import { fetchQuery } from "convex/nextjs";
 import Link from "next/link";
 import { MainArticle, MainSection } from "@/components/dashboard/main";
 import { Navigation } from "@/components/dashboard/main/navigation";
-import { Card, Submit } from "@/components/features";
+import { Card, ImageCropper, Submit } from "@/components/features";
 import { HiddenInput } from "@/components/features/Form";
 import {
   Breadcrumb,
@@ -164,6 +164,7 @@ export async function Room({ lang }: { lang: Locale }) {
             bodyClassName="p-0!"
           >
             <div className="grid grid-cols-4 grid-rows-2 gap-1 p-2">
+              <ImageCropper fileName="foo" aspect={1/1} labelStyle="col-span-2 row-span-2 aspect-square rounded-sm bg-pink-500" placeholder="IMG"/>
               <figure className="col-span-2 row-span-2 aspect-square rounded-sm bg-pink-500"></figure>
               <figure className="col-start-3 col-end-5 rounded-sm bg-purple-500"></figure>
               <figure className="col-start-3 col-end-4 row-start-2 row-end-3 rounded-sm bg-orange-500"></figure>

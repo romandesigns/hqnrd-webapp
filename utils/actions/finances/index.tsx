@@ -10,11 +10,15 @@ export async function createGlobalFees(formData: FormData) {
   const clientData = {
     localGuestFee: Number(formData.get("localGuestFee") as string),
     foreignGuestFee: Number(formData.get("foreignGuestFee") as string),
+    lateCheckoutFee: Number(formData.get("lateCheckoutFee") as string),
+    itbs: Number(formData.get("itbs") as string),
     lang: formData.get("lang") as string,
   };
   const convexPayload = {
     localGuestFee: clientData.localGuestFee,
     foreignGuestFee: clientData.foreignGuestFee,
+    lateCheckoutFee: clientData.lateCheckoutFee,
+    itbs: clientData.itbs,
   };
   await fetchMutation(api.fees.createGloabalFeesAction, convexPayload);
   revalidatePath(
