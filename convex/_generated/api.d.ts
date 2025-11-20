@@ -20,6 +20,7 @@ import type * as fields_room from "../fields/room.js";
 import type * as profiles from "../profiles.js";
 import type * as schema_index from "../schema/index.js";
 import type * as tasks from "../tasks.js";
+import type * as upload from "../upload.js";
 
 import type {
   ApiFromModules,
@@ -40,6 +41,7 @@ declare const fullApi: ApiFromModules<{
   profiles: typeof profiles;
   "schema/index": typeof schema_index;
   tasks: typeof tasks;
+  upload: typeof upload;
 }>;
 
 /**

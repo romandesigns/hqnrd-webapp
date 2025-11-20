@@ -1,5 +1,7 @@
 import type { Icon } from "@tabler/icons-react";
+import type { IconType } from "react-icons/lib";
 import {
+  GrFan,
   IconAirConditioning,
   IconBlender,
   IconBottle,
@@ -16,7 +18,6 @@ import {
   IconIroning1,
   IconKey,
   IconMicrowave,
-  IconPropeller,
   IconSunElectricity,
   IconTableRow,
   IconTeapot,
@@ -24,10 +25,15 @@ import {
   IconWashMachine,
   IconWheelchair,
   IconWifi,
+  MdOutlineDinnerDining,
+  PiTowel,
 } from "@/components/icons";
 import { amenities as baseAmenities } from "../../../../utils/shared/amenities";
 
 export type AmenityKey =
+  | "pi_towel"
+  | "dinning_table"
+  | "gr_fan"
   | "air_conditioning"
   | "table_top"
   | "microwave"
@@ -47,7 +53,6 @@ export type AmenityKey =
   | "laundry"
   | "blender"
   | "smart_tv"
-  | "ceiling_fan"
   | "couch"
   | "rooftop_access"
   | "beverage_included"
@@ -58,7 +63,10 @@ export interface BaseAmenity {
   label: string;
 }
 
-const iconMap: Record<AmenityKey, Icon> = {
+const iconMap: Record<AmenityKey, Icon | IconType> = {
+  dinning_table: MdOutlineDinnerDining,
+  pi_towel: PiTowel,
+  gr_fan: GrFan,
   air_conditioning: IconAirConditioning,
   table_top: IconTableRow,
   microwave: IconMicrowave,
@@ -78,7 +86,6 @@ const iconMap: Record<AmenityKey, Icon> = {
   laundry: IconWashMachine,
   blender: IconBlender,
   smart_tv: IconDeviceTv,
-  ceiling_fan: IconPropeller,
   couch: IconBrandCouchdb,
   rooftop_access: IconHomeStar,
   beverage_included: IconBottle,

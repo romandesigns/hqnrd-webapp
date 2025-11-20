@@ -20,6 +20,7 @@ import {
   IconCirclePlus,
   IconCirclePlusFilled,
   IconCooker,
+  IconCrop,
   IconDeviceFloppy,
   IconDeviceMobile,
   IconDeviceTv,
@@ -40,8 +41,13 @@ import {
   IconMapPinDollar,
   IconMicrowave,
   IconParkingCircle,
+  IconPhoto,
+  IconPhotoPlus,
+  IconPlayerPlayFilled,
   IconProgressCheck,
   IconPropeller,
+  IconRotate,
+  IconRotateClockwise,
   IconRotateClockwise2,
   IconRulerMeasure,
   IconShare,
@@ -62,10 +68,26 @@ import {
   IconWindow,
   IconWorldWww,
   IconX,
+  IconZoomCancel,
+  IconZoomOut,
   IconZoomQuestion,
 } from "@tabler/icons-react";
+import { GrFan } from "react-icons/gr";
+import { MdOutlineDinnerDining } from "react-icons/md";
+import { PiTowel } from "react-icons/pi";
 
 export {
+  IconPhoto,
+  IconCrop,
+  IconPhotoPlus,
+  IconRotate,
+  IconRotateClockwise,
+  IconZoomCancel,
+  IconZoomOut,
+  IconPlayerPlayFilled,
+  MdOutlineDinnerDining,
+  PiTowel,
+  GrFan,
   IconDoor,
   IconBrandAirbnb,
   IconBuildingSkyscraper,

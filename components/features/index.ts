@@ -39,5 +39,5 @@ export {
   Submit,
   Modal,
   TextEditor,
-  ImageCropper
+  ImageCropper,
 };

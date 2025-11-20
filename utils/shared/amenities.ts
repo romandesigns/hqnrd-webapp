@@ -6,6 +6,9 @@ export interface Amenity {
 }
 
 export const amenities: Amenity[] = [
+  { key: "dinning_table", label: "Dinning Area" },
+  { key: "pi_towel", label: "Towel" },
+  { key: "gr_fan", label: "Fan" },
   { key: "air_conditioning", label: "Air Conditioner" },
   { key: "table_top", label: "Table Top" },
   { key: "microwave", label: "Microwave" },
@@ -25,7 +28,6 @@ export const amenities: Amenity[] = [
   { key: "laundry", label: "Laundry" },
   { key: "blender", label: "Blender" },
   { key: "smart_tv", label: "Smart TV" },
-  { key: "ceiling_fan", label: "Ceiling Fan" },
   { key: "couch", label: "Couch" },
   { key: "rooftop_access", label: "Rooftop Access" },
   { key: "beverage_included", label: "Beverage Included" },

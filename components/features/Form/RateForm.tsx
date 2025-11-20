@@ -35,74 +35,68 @@ export async function RateForm({
     >
       <form>
         <div className="flex flex-col gap-4">
-        <FieldGroup className="flex md:flex-row border-b pb-8">
-          <Field>
-            <FieldLabel
-              className="text-xs"
-              htmlFor="checkout-7j9-card-name-43j"
-            >
-              {leftLabel}
-            </FieldLabel>
-            <Input
-              id="checkout-7j9-card-name-43j"
-              placeholder={leftPlaceholder}
-              required
-              type="number"
-              name={leftName}
-              min={0}
-            />
-          </Field>
-          <Field>
-            <FieldLabel
-              className="text-xs"
-              htmlFor="checkout-7j9-card-number-uw1"
-            >
-              {rightLabel}
-            </FieldLabel>
-            <Input
-              id="checkout-7j9-card-number-uw1"
-              placeholder={rightPlaceholder}
-              required
-              type="number"
-              name={rightName}
-              min={0}
-            />
-          </Field>
-        </FieldGroup>
-        <FieldGroup className="flex md:flex-row">
-          <Field>
-            <FieldLabel
-              className="text-xs"
-              htmlFor="itbs"
-            >
-              ITBS
-            </FieldLabel>
-            <Input
-              id="itbs"
-              placeholder={'0'}
-              required
-              type="number"
-              name={'itbs'}
-              min={0}
-            />
-          </Field>
-          <Field>
-            <FieldLabel
-              className="text-xs"
-              htmlFor="lateCheckoutFee"
-            >
-              Late Checkout Fee
-            </FieldLabel>
-            <Input
-              id="lateCheckoutFee"
-              placeholder={'0'}
-              required
-              type="number"
-              name={'lateCheckoutFee'}
-              min={0}
-            />
-          </Field>
-        </FieldGroup>
+          <FieldGroup className="flex md:flex-row border-b pb-8">
+            <Field>
+              <FieldLabel
+                className="text-xs"
+                htmlFor="checkout-7j9-card-name-43j"
+              >
+                {leftLabel}
+              </FieldLabel>
+              <Input
+                id="checkout-7j9-card-name-43j"
+                placeholder={leftPlaceholder}
+                required
+                type="number"
+                name={leftName}
+                min={0}
+              />
+            </Field>
+            <Field>
+              <FieldLabel
+                className="text-xs"
+                htmlFor="checkout-7j9-card-number-uw1"
+              >
+                {rightLabel}
+              </FieldLabel>
+              <Input
+                id="checkout-7j9-card-number-uw1"
+                placeholder={rightPlaceholder}
+                required
+                type="number"
+                name={rightName}
+                min={0}
+              />
+            </Field>
+          </FieldGroup>
+          <FieldGroup className="flex md:flex-row">
+            <Field>
+              <FieldLabel className="text-xs" htmlFor="itbs">
+                ITBS
+              </FieldLabel>
+              <Input
+                id="itbs"
+                placeholder={"0"}
+                required
+                type="number"
+                name={"itbs"}
+                min={0}
+              />
+            </Field>
+            <Field>
+              <FieldLabel className="text-xs" htmlFor="lateCheckoutFee">
+                Late Checkout Fee
+              </FieldLabel>
+              <Input
+                id="lateCheckoutFee"
+                placeholder={"0"}
+                required
+                type="number"
+                name={"lateCheckoutFee"}
+                min={0}
+              />
+            </Field>
+          </FieldGroup>
         </div>
         <HiddenInput name="lang" defaultValue={lang} />
         <div className="mt-8">

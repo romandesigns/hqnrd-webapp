@@ -68,7 +68,7 @@ export async function Room({ lang }: { lang: Locale }) {
                 Basic Information
               </h2>
             }
-            className="w-full max-w-2xl"
+            className="w-full max-w-3xl"
             bodyClassName="flex flex-col gap-4 p-6"
           >
             {/* Unit Number */}
@@ -160,15 +160,74 @@ export async function Room({ lang }: { lang: Locale }) {
             Header={
               <h2 className="text-sm font-semibold font-sans px-3">Gallery</h2>
             }
-            className="h-auto w-full max-w-2xl"
-            bodyClassName="p-0!"
+            className="h-auto w-full max-w-3xl"
+            bodyClassName="p-0! bg-transparent! border-0! shadow-none!"
           >
-            <div className="grid grid-cols-4 grid-rows-2 gap-1 p-2">
-              <ImageCropper fileName="foo" aspect={1/1} labelStyle="col-span-2 row-span-2 aspect-square rounded-sm bg-pink-500" placeholder="IMG"/>
-              <figure className="col-span-2 row-span-2 aspect-square rounded-sm bg-pink-500"></figure>
-              <figure className="col-start-3 col-end-5 rounded-sm bg-purple-500"></figure>
-              <figure className="col-start-3 col-end-4 row-start-2 row-end-3 rounded-sm bg-orange-500"></figure>
-              <figure className="col-start-4 col-end-5 rounded-sm bg-yellow-500"></figure>
+            <div className="grid grid-cols-4 grid-rows-2 gap-1 lg:gap-3 w-full h-82">
+              <div className="w-full h-full row-span-2 col-span-2">
+                <ImageCropper
+                  fileType="image"
+                  fileName="primaryRoomImageGallery"
+                  aspect={1 / 1}
+                  labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
+                  placeholder="Upload Image"
+                />
+              </div>
+              <div className="w-full h-full  col-span-1 col-start-3">
+                <ImageCropper
+                  fileType="image"
+                  fileName="secondaryRoomImageGallery"
+                  aspect={1 / 1}
+                  labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
+                  placeholder="Upload Image"
+                />
+              </div>
+              <div className="w-full h-full  col-span-1 col-start-4">
+                <ImageCropper
+                  fileType="image"
+                  fileName="tertiaryuRoomImageGallery"
+                  aspect={1 / 1}
+                  labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
+                  placeholder="Upload Image"
+                />
+              </div>
+              <div className="w-full h-full col-span-2 col-start-3 row-start-2">
+                <ImageCropper
+                  fileType="image"
+                  fileName="quaternaryRoomImageGallery"
+                  aspect={2 / 1}
+                  labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
+                  placeholder="Upload Image"
+                />
+              </div>
+            </div>
+            <hr className="py-10" />
+            <div className="grid grid-cols-1 mb-6 px-3 gap-3 items-start">
+              {/* Left - 1:1 Square */}
+              <div className="w-full">
+                <div className="aspect-square w-full">
+                  <ImageCropper
+                    fileType="image"
+                    fileName="roomLayoutImage"
+                    aspect={1 / 1}
+                    labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm rounded-md hover:bg-neutral-800/70"
+                    placeholder="Upload Image"
+                  />
+                </div>
+              </div>
+
+              {/* Right - 16:9 (Video) */}
+              <div className="w-full">
+                <div className="aspect-video w-full">
+                  <ImageCropper
+                    fileType="video"
+                    fileName="secondaryRoomImageGallery"
+                    aspect={16 / 9}
+                    labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm rounded-md hover:bg-neutral-800/70"
+                    placeholder="Upload Video"
+                  />
+                </div>
+              </div>
             </div>
           </Card>
 
@@ -178,7 +237,7 @@ export async function Room({ lang }: { lang: Locale }) {
             Header={
               <h2 className="text-sm font-semibold font-sans px-3">Features</h2>
             }
-            className="w-full max-w-2xl"
+            className="w-full max-w-3xl"
             bodyClassName="flex flex-col gap-4 p-6"
           >
             <div className="grid grid-cols-3 gap-3 my-2 border-b pb-8">
@@ -353,7 +412,7 @@ export async function Room({ lang }: { lang: Locale }) {
                 Amenities
               </h2>
             }
-            className="w-full max-w-2xl"
+            className="w-full max-w-3xl"
             bodyClassName="flex flex-col gap-4 p-6"
           >
             <div className="grid grid-cols-3 gap-5 my-2 border-b pb-8">
@@ -380,7 +439,7 @@ export async function Room({ lang }: { lang: Locale }) {
             formAction={createRoom}
             type="submit"
             variant="primary"
-            className="w-full max-w-2xl mt-6"
+            className="w-full max-w-3xl mt-6"
           />
         </form>
       </MainArticle>

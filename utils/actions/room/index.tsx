@@ -23,6 +23,16 @@ export async function createRoom(formData: FormData) {
         plural: category.labels.title.plural as string,
       },
     },
+    mediaFiles: {
+      gallery: {
+        primaryImage: formData.get("primaryRoomImageGallery") as string,
+        secondaryImage: formData.get("secondaryRoomImageGallery") as string,
+        tertiaryImage: formData.get("tertiaryuRoomImageGallery") as string,
+        quaternaryImage: formData.get("quaternaryRoomImageGallery") as string,
+      },
+      layoutImage: formData.get("roomLayoutImage") as string,
+      video: formData.get("roomVideo") as string,
+    },
     pricePerNight: Number(formData.get("pricePerNight") as string),
     lang: formData.get("lang") as string,
     features: {
@@ -42,11 +52,10 @@ export async function createRoom(formData: FormData) {
   };
 
   // Inset room in database
-  console.log(data);
   // Revalidate Path
-  revalidatePath(`/${data.lang}/dashboard/habitaciones`, "layout");
+  // revalidatePath(`/${data.lang}/dashboard/habitaciones`, "layout");
   // Redirect to rooms page
-  redirect(`/${data.lang}/dashboard/habitaciones`);
+  // redirect(`/${data.lang}/dashboard/habitaciones`);
 }
 
 // Deleting Single Room
