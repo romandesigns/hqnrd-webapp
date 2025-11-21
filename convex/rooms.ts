@@ -1,18 +1,17 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
+import { RoomFields } from "./fields/room";
 
-export const generateUploadUrl = mutation({
-  handler: async (ctx) => {
-    return await ctx.storage.generateUploadUrl();
+export const createRoom = mutation({
+  args: RoomFields,
+  handler: async (ctx, args) => {
+     return await ctx.db.insert("rooms", { ...args });
   },
 });
 
-export const getFileUrl = query({
-  args: {
-    storageId: v.id("_storage"),
-  },
-  handler: async (ctx, args) => {
-    return await ctx.storage.getUrl(args.storageId);
+export const getRooms = query({
+  handler: async (ctx) => {
+    return await ctx.db.query("rooms").collect();
   },
 });
 

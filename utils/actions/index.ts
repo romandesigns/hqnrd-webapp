@@ -2,7 +2,7 @@
 import { createCategory, updateCategory } from "@/utils/actions/categories";
 import { createDiscounts, udpateFees } from "@/utils/actions/discounts";
 import { createGlobalFees, updateFees } from "@/utils/actions/finances";
-
+import { createRoom } from "@/utils/actions/room";
 // Export actions here
 export {
   createCategory,
@@ -11,4 +11,5 @@ export {
   udpateFees,
   createGlobalFees,
   updateFees,
+  createRoom
 };

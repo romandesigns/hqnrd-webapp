@@ -2,9 +2,6 @@ import { v } from "convex/values";
 import { amenityValidatorShape } from "../../utils/amenities";
 
 export const RoomFields = {
-  /* ------------------------------------ */
-  /*  BASIC INFO                          */
-  /* ------------------------------------ */
   unitNumber: v.number(),
   category: v.object({
     id: v.string(),
@@ -20,26 +17,15 @@ export const RoomFields = {
   }),
   pricePerNight: v.number(),
   maxGuests: v.number(),
-
-  /* ------------------------------------ */
-  /*  MEDIA FILES                         */
-  /* ------------------------------------ */
-  mediaFiles: v.optional(
-    v.object({
-      layout: v.optional(v.string()),
-      walkthrough: v.optional(v.string()),
-      images: v.object({
-        ratioSquared: v.string(),
-        ratioLandscape: v.string(),
-        ratioSquaredSmL: v.string(),
-        ratioSquaredSmR: v.string(),
-      }),
+  mediaFiles: v.object({
+    gallery: v.object({
+      primaryImage: v.string(),
+      secondaryImage: v.string(),
+      tertiaryImage: v.string(),
+      quaternaryImage: v.string(),
     }),
-  ),
-
-  /* ------------------------------------ */
-  /*  FEATURES (STRUCTURAL DATA)          */
-  /* ------------------------------------ */
+    layoutImage: v.string(),
+  }),
   features: v.object({
     privateBathroom: v.boolean(),
     balcony: v.boolean(),
@@ -54,15 +40,8 @@ export const RoomFields = {
     extraBedType: v.string(),
     extraBed: v.number(),
   }),
-
-  /* ------------------------------------ */
-  /*  AMENITIES (ICONS & SERVICES)        */
-  /* ------------------------------------ */
-  amenities: v.optional(v.object(amenityValidatorShape)),
-
-  /* ------------------------------------ */
-  /*  METADATA                            */
-  /* ------------------------------------ */
-  createdAt: v.number(),
-  authorId: v.string(),
+  amenities: v.object(amenityValidatorShape),
+  // lang: v.string(),
+  // createdAt: v.number(),
+  // authorId: v.string(),
 };

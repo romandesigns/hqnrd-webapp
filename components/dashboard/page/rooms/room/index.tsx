@@ -2,7 +2,7 @@ import { fetchQuery } from "convex/nextjs";
 import Link from "next/link";
 import { MainArticle, MainSection } from "@/components/dashboard/main";
 import { Navigation } from "@/components/dashboard/main/navigation";
-import { Card, ImageCropper, Submit } from "@/components/features";
+import { Card, ImageUpload, Submit, VideoUpload } from "@/components/features";
 import { HiddenInput } from "@/components/features/Form";
 import {
   Breadcrumb,
@@ -105,9 +105,9 @@ export async function Room({ lang }: { lang: Locale }) {
                     {categories.map((category) => (
                       <SelectItem
                         key={category._id}
-                        value={category.labels.title.plural}
+                        value={category.labels.title.singular}
                       >
-                        {category.labels.title.plural}
+                        {category.labels.title.singular}
                         <HiddenInput
                           name="category"
                           defaultValue={JSON.stringify(category)}
@@ -140,7 +140,7 @@ export async function Room({ lang }: { lang: Locale }) {
             <div>
               <Label
                 htmlFor="maxGuests"
-                className="font-sans mb-1 text-[0.7rem]  text-muted-foreground"
+                className="font-sans mb-1 text-[0.7rem] text-muted-foreground"
               >
                 Max Guests Per Unit
               </Label>
@@ -165,8 +165,7 @@ export async function Room({ lang }: { lang: Locale }) {
           >
             <div className="grid grid-cols-4 grid-rows-2 gap-1 lg:gap-3 w-full h-82">
               <div className="w-full h-full row-span-2 col-span-2">
-                <ImageCropper
-                  fileType="image"
+                <ImageUpload
                   fileName="primaryRoomImageGallery"
                   aspect={1 / 1}
                   labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
@@ -174,8 +173,7 @@ export async function Room({ lang }: { lang: Locale }) {
                 />
               </div>
               <div className="w-full h-full  col-span-1 col-start-3">
-                <ImageCropper
-                  fileType="image"
+                <ImageUpload
                   fileName="secondaryRoomImageGallery"
                   aspect={1 / 1}
                   labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
@@ -183,17 +181,15 @@ export async function Room({ lang }: { lang: Locale }) {
                 />
               </div>
               <div className="w-full h-full  col-span-1 col-start-4">
-                <ImageCropper
-                  fileType="image"
-                  fileName="tertiaryuRoomImageGallery"
+                <ImageUpload
+                  fileName="tertiaryRoomImageGallery"
                   aspect={1 / 1}
                   labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
                   placeholder="Upload Image"
                 />
               </div>
               <div className="w-full h-full col-span-2 col-start-3 row-start-2">
-                <ImageCropper
-                  fileType="image"
+                <ImageUpload
                   fileName="quaternaryRoomImageGallery"
                   aspect={2 / 1}
                   labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm  rounded-md hover:bg-neutral-800/70"
@@ -206,8 +202,7 @@ export async function Room({ lang }: { lang: Locale }) {
               {/* Left - 1:1 Square */}
               <div className="w-full">
                 <div className="aspect-square w-full">
-                  <ImageCropper
-                    fileType="image"
+                  <ImageUpload
                     fileName="roomLayoutImage"
                     aspect={1 / 1}
                     labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm rounded-md hover:bg-neutral-800/70"
@@ -218,15 +213,13 @@ export async function Room({ lang }: { lang: Locale }) {
 
               {/* Right - 16:9 (Video) */}
               <div className="w-full">
-                <div className="aspect-video w-full">
-                  <ImageCropper
-                    fileType="video"
-                    fileName="secondaryRoomImageGallery"
-                    aspect={16 / 9}
+                {/* <div className="aspect-video w-full">
+                  <VideoUpload
+                    fileName="walkthroughVideo"
                     labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm rounded-md hover:bg-neutral-800/70"
                     placeholder="Upload Video"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </Card>
@@ -286,12 +279,6 @@ export async function Room({ lang }: { lang: Locale }) {
                 <Label className="text-xs" htmlFor="wheelChair">
                   Wheel Chair Access
                 </Label>
-              </div>
-
-              {/* Parking */}
-              <div className="flex items-center space-x-2  grow">
-                <Switch id="Parking" name="parking" />
-                <Label htmlFor="Parking">Parking</Label>
               </div>
             </div>
 
@@ -417,22 +404,22 @@ export async function Room({ lang }: { lang: Locale }) {
           >
             <div className="grid grid-cols-3 gap-5 my-2 border-b pb-8">
               {amenities.map((amenity) => (
-                <label
-                  key={amenity.key}
-                  className="flex items-center gap-2 cursor-pointer"
-                  htmlFor={amenity.key}
-                >
+                <div key={amenity.key} className="flex items-center gap-2">
+                  {/* Hidden real checkbox that submits the value */}
                   <Switch
                     id={amenity.key}
                     name={amenity.key}
-                    value="true"
                     defaultChecked={false}
                   />
-                  <span className="text-xs">{amenity.label}</span>
-                </label>
+                  {/* Styled switch wrapper (looks like shadcn Switch) */}
+                  <Label htmlFor={amenity.key} className="text-xs">
+                    {amenity.label}
+                  </Label>
+                </div>
               ))}
             </div>
           </Card>
+
           <HiddenInput name="lang" defaultValue={lang} />
           <Submit
             label="Create"

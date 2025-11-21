@@ -7,7 +7,8 @@ import { Carousel } from "./Carousel";
 import { ContactWidget } from "./ContactWidget";
 import { ExternalLink } from "./ExternalLink";
 import * as Heading from "./Heading";
-import { ImageCropper } from "./ImageCropper";
+import { ImageUpload } from "./ImageCropper/image";
+import { VideoUpload } from "./ImageCropper/video";
 import InstallPrompt from "./InstallPrompt";
 import { LocaleDialog } from "./LocaleDialog";
 import { LocaleSwitcher } from "./LocaleSwitcher";
@@ -39,5 +40,6 @@ export {
   Submit,
   Modal,
   TextEditor,
-  ImageCropper,
+  ImageUpload,
+  VideoUpload,
 };

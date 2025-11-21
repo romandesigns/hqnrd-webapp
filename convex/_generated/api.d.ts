@@ -18,6 +18,7 @@ import type * as fields_index from "../fields/index.js";
 import type * as fields_profile from "../fields/profile.js";
 import type * as fields_room from "../fields/room.js";
 import type * as profiles from "../profiles.js";
+import type * as rooms from "../rooms.js";
 import type * as schema_index from "../schema/index.js";
 import type * as tasks from "../tasks.js";
 import type * as upload from "../upload.js";
@@ -39,6 +40,7 @@ declare const fullApi: ApiFromModules<{
   "fields/profile": typeof fields_profile;
   "fields/room": typeof fields_room;
   profiles: typeof profiles;
+  rooms: typeof rooms;
   "schema/index": typeof schema_index;
   tasks: typeof tasks;
   upload: typeof upload;

@@ -1,16 +1,29 @@
 "use server";
-import { fetchMutation, fetchQuery } from "convex/nextjs";
+import { fetchMutation } from "convex/nextjs";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 
-// Creating  room
+// Import your amenities list
+import { amenities } from "@/utils/shared/amenities";
+
+// Creating room
 export async function createRoom(formData: FormData) {
-  console.log(formData);
   const category = JSON.parse(formData.get("category") as string);
+  const AMENITY_KEYS = amenities.map((a) => a.key);
+
+  const selectedAmenities = AMENITY_KEYS.reduce(
+    (acc, key) => {
+      acc[key] = formData.get(key) === "on";
+      return acc;
+    },
+    {} as Record<string, boolean>,
+  );
+  const lang = formData.get("lang") as string;
   const data = {
     unitNumber: Number(formData.get("unitNumber") as string),
+    maxGuests: Number(formData.get("maxGuests") as string),
     category: {
       id: category._id as Id<"categories">,
       maxGuests: category.maxGuests as number,
@@ -27,14 +40,13 @@ export async function createRoom(formData: FormData) {
       gallery: {
         primaryImage: formData.get("primaryRoomImageGallery") as string,
         secondaryImage: formData.get("secondaryRoomImageGallery") as string,
-        tertiaryImage: formData.get("tertiaryuRoomImageGallery") as string,
+        tertiaryImage: formData.get("tertiaryRoomImageGallery") as string,
         quaternaryImage: formData.get("quaternaryRoomImageGallery") as string,
       },
       layoutImage: formData.get("roomLayoutImage") as string,
-      video: formData.get("roomVideo") as string,
     },
     pricePerNight: Number(formData.get("pricePerNight") as string),
-    lang: formData.get("lang") as string,
+    // Existing features — untouched
     features: {
       privateBathroom: formData.get("privateBathroom") === "on",
       balcony: formData.get("balcony") === "on",
@@ -49,26 +61,17 @@ export async function createRoom(formData: FormData) {
       extraBedType: formData.get("extraBedType") as string,
       extraBed: Number(formData.get("extraBed") as string),
     },
+    // 🔥 NEW: Fully dynamic amenities
+    amenities: selectedAmenities,
   };
 
-  // Inset room in database
-  // Revalidate Path
-  // revalidatePath(`/${data.lang}/dashboard/habitaciones`, "layout");
-  // Redirect to rooms page
-  // redirect(`/${data.lang}/dashboard/habitaciones`);
-}
+  console.log("FINAL ROOM PAYLOAD:", data);
 
-// Deleting Single Room
-// export async function deleteRoom(formData: FormData) {
-//   const clientData = {
-//     categoryId: formData.get('categoryId') as Id<'categories'>,
-//     lang: formData.get('lang') as string,
-//   }
-//   await fetchMutation(api.categories.deleteCategoryAction, {
-//     categoryId: clientData.categoryId,
-//   })
-//   revalidatePath(
-//     `/${clientData.lang}/dashboard/habitaciones/categoria`,
-//     'layout',
-//   )
-// }
+  // ---------------------------------------------
+  // 🔥 3. DATABASE INSERT (READY WHEN YOU ARE)
+  // ---------------------------------------------
+  await fetchMutation(api.rooms.createRoom, data);
+
+  revalidatePath(`/${lang}/dashboard/habitaciones`, "layout");
+  redirect(`/${lang}/dashboard/habitaciones`);
+}
