@@ -11,5 +11,5 @@ export {
   udpateFees,
   createGlobalFees,
   updateFees,
-  createRoom
+  createRoom,
 };

@@ -5,7 +5,7 @@ import { RoomFields } from "./fields/room";
 export const createRoom = mutation({
   args: RoomFields,
   handler: async (ctx, args) => {
-     return await ctx.db.insert("rooms", { ...args });
+    return await ctx.db.insert("rooms", { ...args });
   },
 });
 

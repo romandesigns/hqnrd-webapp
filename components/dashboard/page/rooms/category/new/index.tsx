@@ -11,7 +11,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { api } from "@/convex/_generated/api";
-import type { Id } from "@/convex/_generated/dataModel";
 import type { Locale } from "@/i18n-config";
 import { CardFooter } from "./CardFooter";
 import { CategoryItems } from "./CategoryItem";
