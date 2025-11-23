@@ -6,6 +6,7 @@ import { InputNumber } from "@/components/ui/InputNumber";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import type { Locale } from "@/i18n-config";
+import { createReservation } from "@/utils/actions/reservation";
 import { Card } from "../Cards";
 
 interface ReservationProps {
@@ -38,6 +39,7 @@ export function ReservationForm({
 }: ReservationProps) {
   return (
     <Card
+      aroundPadding
       className={clsx("lg:block lg:sticky lg:top-48", className)}
       Header={
         title ? (
@@ -70,7 +72,6 @@ export function ReservationForm({
             inputNumberLabel="Children"
           />
         </div>
-
         <div className="flex gap-6">
           <DateAndTimePicker
             lang={lang}
@@ -98,7 +99,6 @@ export function ReservationForm({
             time={"11:30 AM"}
           />
         </div>
-
         <div>
           <Label htmlFor="message" className="text-muted-foreground">
             Message (Optional)
@@ -109,7 +109,12 @@ export function ReservationForm({
           <input type="hidden" name="unitNumber" />
           <input type="hidden" name="pricePerNight" />
           <input type="hidden" name="category" />
-          <Button type="submit" size="block" className="mt-10">
+          <Button
+            type="submit"
+            size="block"
+            className="mt-10"
+            formAction={createReservation}
+          >
             Add Booking
           </Button>
         </div>

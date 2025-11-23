@@ -58,10 +58,12 @@ export default async function RoomPage({ params }: { params: RoomParams }) {
               <Modal
                 title="Reservation Form"
                 triggerLabel="Make Reservation"
-                lang={segmentParam.lang}
-                className="p-0! [&_form]:p-2! lg:m-4!"
-                slug="doble-cama"
+                className="[&_form]:p-2! lg:m-4! rounded-t-none"
                 Component={ReservationForm}
+                componentProps={{
+                  lang: segmentParam.lang,
+                  slug: "doble-cama",
+                }}
               />
             </div>
             <ContactWidget
@@ -93,7 +95,7 @@ export default async function RoomPage({ params }: { params: RoomParams }) {
         </aside>
       </div>
       <Content className="px-2! [&_div]:px-0! py-20">
-        <Trending lang={segmentParam.lang} className="pb-0!" />
+        {/* <Trending lang={segmentParam.lang} className="pb-0!" /> */}
       </Content>
     </Container>
   );

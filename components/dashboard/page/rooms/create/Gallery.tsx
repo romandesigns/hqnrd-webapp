@@ -13,7 +13,7 @@ export function Gallery() {
         {items.map((item) => (
           <div className={item.className} key={item.fileName}>
             <ImageUpload
-              fileName="roomLayoutImage"
+              fileName={item.fileName}
               aspect={item.aspect}
               labelStyle="flex w-full h-full bg-neutral-800/50 dark:shadow-black dark:shadow-sm rounded-md hover:bg-neutral-800/70"
               placeholder={item.placeholder}
@@ -21,8 +21,7 @@ export function Gallery() {
           </div>
         ))}
       </div>
-      <hr className="py-10" />
-      <div className="grid grid-cols-1 mb-6 px-3 gap-3 items-start">
+      <div className="grid grid-cols-1  mt-3 gap-3 items-start">
         <div className="w-full">
           <div className="aspect-square w-full">
             <ImageUpload

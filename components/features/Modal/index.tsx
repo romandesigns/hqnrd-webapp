@@ -1,3 +1,4 @@
+import type React from "react";
 import { IconX } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,29 +9,23 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import type { Locale } from "@/i18n-config";
+import { Card } from "../Cards";
 
-interface ModalProps {
+interface ModalProps<T extends object> {
   title?: string;
   className?: string;
   triggerLabel: string;
-  slug: string; // <-- obligatorio
-  Component: React.ComponentType<{
-    lang: Locale;
-    className?: string;
-    slug: string;
-  }>;
-  lang: Locale;
+  Component: React.ComponentType<T>;
+  componentProps: T;
 }
 
-export function Modal({
+export function Modal<T extends object>({
   triggerLabel,
   Component,
   className,
-  lang,
+  componentProps,
   title,
-  slug,
-}: ModalProps) {
+}: ModalProps<T>) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -41,18 +36,20 @@ export function Modal({
 
       <DialogContent className="p-0 gap-0" showCloseButton={false}>
         {/* HEADER */}
-        <DialogHeader className="flex flex-row items-center justify-between p-2 py-1">
-          <DialogTitle className="text-sm">{title}</DialogTitle>
+        <Card bodyClassName="p-0! border-0 shadow-none outline-none bg-transparent shadow-none">
+          <DialogHeader className="flex flex-row items-center justify-between p-2 py-1 bg-transparent rounded-b-none">
+            <DialogTitle className="text-sm">{title}</DialogTitle>
 
-          <DialogClose asChild>
-            <Button size="icon" variant="ghost">
-              <IconX />
-            </Button>
-          </DialogClose>
-        </DialogHeader>
+            <DialogClose asChild>
+              <Button size="icon" variant="ghost">
+                <IconX />
+              </Button>
+            </DialogClose>
+          </DialogHeader>
+        </Card>
 
-        {/* RENDER THE INNER COMPONENT */}
-        <Component lang={lang} slug={slug} className={className} />
+        {/* COMPONENTE DINÁMICO */}
+        <Component {...componentProps} className={className} />
       </DialogContent>
     </Dialog>
   );

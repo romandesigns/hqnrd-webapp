@@ -1,19 +1,14 @@
+import type { Icon } from "@tabler/icons-react";
+import { fetchQuery } from "convex/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  IconAirConditioningDisabled,
-  IconBrandNetflix,
-  IconBrandYoutube,
-  IconParkingCircle,
-  IconPropeller,
-  IconSunElectricity,
-  IconTeapot,
-  IconWheelchair,
-  IconWifi,
-} from "@/components/icons";
 import { FeaturedList } from "@/components/layout";
 import { Button } from "@/components/ui/button";
+import { api } from "@/convex/_generated/api";
+import type { Doc, Id } from "@/convex/_generated/dataModel";
+import type { Locale } from "@/i18n-config";
 import images from "@/public/assets/images.json";
+import { getRandomRoomAmenities } from "@/utils/shared/getRandomAmenities";
 import { Share } from "../Buttons";
 import { Card } from "./Default";
 
@@ -32,55 +27,27 @@ function ItemsCounter({ count, label }: { count?: number; label?: string }) {
   );
 }
 
-function CategoryFooter() {
-  const amenities = [
-    {
-      Icon: IconWifi,
-      iconSize: 15,
-      label: "WiFi",
-    },
-    {
-      Icon: IconBrandNetflix,
-      iconSize: 15,
-      label: "NetFlix",
-    },
-    {
-      Icon: IconParkingCircle,
-      iconSize: 15,
-      label: "Parking",
-    },
-    {
-      Icon: IconWheelchair,
-      iconSize: 15,
-      label: "Wheelchair",
-    },
-    {
-      Icon: IconBrandYoutube,
-      iconSize: 15,
-      label: "YouTube",
-    },
-    {
-      Icon: IconTeapot,
-      iconSize: 15,
-      label: "Coffee_Maker",
-    },
-    {
-      Icon: IconAirConditioningDisabled,
-      iconSize: 15,
-      label: "Air_Conditioning",
-    },
-    {
-      Icon: IconSunElectricity,
-      iconSize: 15,
-      label: "Electricity_24/7",
-    },
-    {
-      Icon: IconPropeller,
-      iconSize: 15,
-      label: "Fan",
-    },
-  ];
-
+function CategoryFooter({
+  title,
+  pricePerNight,
+  amenities,
+  totalAmenities,
+  lang,
+  slug,
+  unitNumber,
+}: {
+  title: string;
+  pricePerNight: number;
+  lang: Locale;
+  unitNumber?: string;
+  slug: string;
+  amenities: {
+    label: string;
+    Icon: React.ComponentType<{ size?: number }>;
+    iconSize?: number;
+  }[];
+  totalAmenities: number;
+}) {
   const features = [
     {
       label: "Private Bathroom",
@@ -104,15 +71,18 @@ function CategoryFooter() {
       <div className=" flex flex-col relative gap-1 z-2 pb-2">
         <div className="flex items-center justify-between">
           <h3 className="text-md lg:text-sm uppercase font-bold  flex flex-col text-(--brand-warning)">
-            Deluxe Room
+            {title}
           </h3>
           <p className="font-bold text-sm lg:text-xs text-primary">
-            $3,500/Night
+            {pricePerNight}
+            /Night
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 py-2">
           <FeaturedList items={amenities} />
-          <span className="font-semibold inline-block">..15 +</span>
+          <span className="font-semibold inline-block">
+            ..{totalAmenities - amenities.length} +
+          </span>
         </div>
         <FeaturedList
           gap={1}
@@ -129,18 +99,44 @@ function CategoryFooter() {
         asChild
         className="border-brand-primary font-sans uppercase font-bold shadow"
       >
-        <Link href="#">Explore</Link>
+        <Link href={`/${lang}/habitacion/${slug}/${String(unitNumber)}`}>
+          Explore
+        </Link>
       </Button>
     </>
   );
 }
 
-export function Room() {
+export async function Room({
+  room,
+  lang,
+}: {
+  room: Doc<"rooms"> & { _id: Id<"rooms"> };
+  lang: Locale;
+}) {
+  const { selected: randomAmenities, totalAvailable } = getRandomRoomAmenities(
+    room.amenities,
+    8,
+  );
+  const fileUrl = await fetchQuery(api.upload.getFileUrl, {
+    storageId: room.mediaFiles.gallery.primaryImage,
+  });
+
   return (
     <Card
       bodyClassName="p-0 overflow-hidden"
       className="font-sans keen-slider__slide"
-      Footer={<CategoryFooter />}
+      Footer={
+        <CategoryFooter
+          lang={lang}
+          pricePerNight={room.pricePerNight}
+          title={room.category.name.singular}
+          amenities={randomAmenities}
+          totalAmenities={totalAvailable}
+          slug={room.category.slugs.singular}
+          unitNumber={room.unitNumber}
+        />
+      }
       footerClassName="p-2"
       aroundPadding
     >
@@ -148,12 +144,9 @@ export function Room() {
         <figure className="relative h-52 rounded-sm overflow-hidden flex items-end justify-start">
           <div className="absolute inset-0 bg-linear-0 from-neutral-950/85 via-neutral-950/50 to-neutral-950/20 z-1" />
           <Share className="absolute text-primary-foreground top-2 right-2 z-10 hover:bg-white/20 dark:text-primary" />
-          <Image
-            src={images["images"][0]}
-            alt="Category"
-            className="object-cover"
-            fill
-          />
+          {fileUrl && (
+            <Image src={fileUrl} alt="Category" className="object-cover" fill />
+          )}
         </figure>
       </div>
     </Card>

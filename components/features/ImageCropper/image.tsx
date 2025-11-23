@@ -6,10 +6,10 @@ import { useMutation, useQuery } from "convex/react";
 import type React from "react";
 import { useRef, useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
+
 import {
   IconCrop,
   IconPhotoPlus,
-  IconPlayerPlayFilled,
   IconRotate,
   IconRotateClockwise,
   IconTrash,
@@ -20,7 +20,6 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -35,8 +34,6 @@ type FileToUploadProps = {
   fileId: Id<"_storage"> | null;
 };
 
-const FILETYPES = ["video", "image"];
-
 export const ImageUpload = ({
   labelStyle,
   fileName = "media",
@@ -48,81 +45,97 @@ export const ImageUpload = ({
   placeholder?: string;
   aspect: number;
 }) => {
+  // Cropper states
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
 
-  const [file, setFile] = useState<Blob | null>(null);
-  const [imgString, setImageString] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [imgString, setImageString] = useState<string>("");
   const [croppedImg, setCroppedImg] = useState<string | null>(null);
 
+  const [isDialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const croppedAreaPixelsRef = useRef<Area | null>(null);
+
   const [fileDetails, setFileDetails] = useState<FileToUploadProps>({
     fileId: null,
   });
 
-  const croppedAreaPixelsRef = useRef<Area | null>(null);
-
   const generatedUploadUrl = useMutation(api.upload.generateUploadUrl);
   const deleteFileFromDb = useMutation(api.upload.deleteFileFromStorage);
 
-  const onCropComplete = (_: Area, croppedAreaPixels: Area) => {
-    croppedAreaPixelsRef.current = croppedAreaPixels;
-  };
-
-  // Correct useQuery usage
   const fileUrl = useQuery(
     api.upload.getFileUrl,
     fileDetails.fileId ? { storageId: fileDetails.fileId } : "skip",
   );
 
-  // ✔ HANDLE FILE SELECTION
+  // File Selected
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const localFile = e.target.files?.[0];
     if (!localFile) return;
-    // For IMAGE → load into cropper
+
     setFile(localFile);
+    setDialogOpen(true);
+
     const reader = new FileReader();
     reader.onload = () => setImageString(reader.result as string);
     reader.readAsDataURL(localFile);
   };
 
-  // ✔ CROP + UPLOAD IMAGE
+  // Cropping
+  const onCropComplete = (_: Area, area: Area) => {
+    croppedAreaPixelsRef.current = area;
+  };
+
+  // Apply crop + upload
   const handleCrop = async () => {
-    if (!imgString || !croppedAreaPixelsRef.current || !file) return;
+    if (!imgString || !file || !croppedAreaPixelsRef.current) return;
+
     setLoading(true);
-    const cropped = await getCroppedImg(
-      imgString,
-      croppedAreaPixelsRef.current,
+
+    const croppedBase64 = await getCroppedImg({
+      imageSrc: imgString,
+      pixelCrop: croppedAreaPixelsRef.current,
       rotation,
-      HQNRD.MIMETYPE.image.WEBP,
-    );
-    setCroppedImg(cropped);
-    const croppedBlob = dataURLtoFile(
-      cropped,
-      file.name.replace(/\.[^/.]+$/, "") + ".webp",
-      HQNRD.MIMETYPE.image.WEBP,
-    );
-    const uploadUrl = await generatedUploadUrl();
-    const result = await fetch(uploadUrl, {
-      method: "POST",
-      headers: { "Content-Type": croppedBlob.type },
-      body: croppedBlob,
+      mimeType: "image/webp",
+      quality: 0.9,
+      resizeFactor: 0.6,
     });
-    const response = await result.json();
-    if (response.storageId) {
-      setFileDetails({ fileId: response.storageId });
+
+    setCroppedImg(croppedBase64);
+
+    const croppedFile = dataURLtoFile(
+      croppedBase64,
+      file.name.replace(/\.[^/.]+$/, "") + ".webp",
+      "image/webp",
+    );
+
+    const uploadUrl = await generatedUploadUrl();
+
+    const res = await fetch(uploadUrl, {
+      method: "POST",
+      headers: { "Content-Type": "image/webp" },
+      body: croppedFile,
+    });
+
+    const json = await res.json();
+
+    if (json.storageId) {
+      setFileDetails({ fileId: json.storageId });
     }
+
+    setDialogOpen(false);
     setLoading(false);
   };
 
-  // ✔ CLEAR FILE
+  // Clear image
   const handleClearCrop = async () => {
     if (fileDetails.fileId) {
-      await deleteFileFromDb({
-        storageId: fileDetails.fileId,
-      });
+      await deleteFileFromDb({ storageId: fileDetails.fileId });
     }
+
     setFileDetails({ fileId: null });
     setCroppedImg(null);
     setImageString("");
@@ -131,7 +144,7 @@ export const ImageUpload = ({
     setZoom(1);
   };
 
-  // ✔ Loading overlay
+  // Loading overlay
   if (loading) {
     return (
       <div
@@ -170,7 +183,7 @@ export const ImageUpload = ({
           <input
             type="file"
             id={fileName}
-            accept="image/*,video/*"
+            accept="image/*"
             multiple={false}
             className="hidden"
             onChange={handleFileChange}
@@ -178,80 +191,73 @@ export const ImageUpload = ({
         </Label>
       )}
 
-      {/* IMAGE CROPPER */}
-      {imgString && !croppedImg && (
-        <Dialog open={true}>
-          <DialogContent>
-            <VisuallyHidden>
-              <DialogHeader>
-                <DialogTitle>Edit Image</DialogTitle>
-                <DialogDescription></DialogDescription>
-              </DialogHeader>
-            </VisuallyHidden>
+      {/* CROPPER DIALOG */}
+      <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <VisuallyHidden>
+            <DialogHeader>
+              <DialogTitle>Edit Image</DialogTitle>
+            </DialogHeader>
+          </VisuallyHidden>
 
-            <div className="relative w-full h-[300px]">
-              <Cropper
-                image={imgString}
-                crop={crop}
-                zoom={zoom}
-                rotation={rotation}
-                aspect={aspect}
-                showGrid
-                onCropChange={setCrop}
-                onZoomChange={setZoom}
-                onCropComplete={onCropComplete}
-              />
-            </div>
+          <div className="relative w-full h-[400px] bg-black">
+            <Cropper
+              image={imgString}
+              crop={crop}
+              zoom={zoom}
+              rotation={rotation}
+              aspect={aspect}
+              showGrid
+              onCropChange={setCrop}
+              onZoomChange={setZoom}
+              onCropComplete={onCropComplete}
+            />
+          </div>
 
-            <div className="p-1 gap-2 flex items-center justify-center pt-8">
-              <Button size="icon" variant="outline" onClick={handleCrop}>
-                <IconCrop size={18} />
-              </Button>
-              <Button
-                size="icon"
-                variant="outline"
-                onClick={() =>
-                  setRotation(rotation + HQNRD.ORIENTATION.ROTATION.RATIO)
-                }
-              >
-                <IconRotateClockwise />
-              </Button>
-              <Button
-                size="icon"
-                variant="outline"
-                onClick={() =>
-                  setRotation(rotation - HQNRD.ORIENTATION.ROTATION.RATIO)
-                }
-              >
-                <IconRotate />
-              </Button>
-              <Button
-                size="icon"
-                variant="outline"
-                onClick={() => setZoom(zoom + 0.1)}
-              >
-                <IconZoomCancel />
-              </Button>
-              <Button
-                size="icon"
-                variant="outline"
-                onClick={() => setZoom(zoom - 0.1)}
-              >
-                <IconZoomOut />
-              </Button>
-              <Button
-                size="icon"
-                className="bg-red-800 border border-red-500 hover:bg-red-400"
-                onClick={handleClearCrop}
-              >
-                <IconTrash size={18} />
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
-      )}
+          <div className="p-1 gap-2 flex items-center justify-center pt-6">
+            <Button size="icon" variant="outline" onClick={handleCrop}>
+              <IconCrop size={18} />
+            </Button>
+            <Button
+              size="icon"
+              variant="outline"
+              onClick={() => setRotation(rotation + 90)}
+            >
+              <IconRotateClockwise />
+            </Button>
+            <Button
+              size="icon"
+              variant="outline"
+              onClick={() => setRotation(rotation - 90)}
+            >
+              <IconRotate />
+            </Button>
+            <Button
+              size="icon"
+              variant="outline"
+              onClick={() => setZoom(zoom + 0.1)}
+            >
+              <IconZoomCancel />
+            </Button>
+            <Button
+              size="icon"
+              variant="outline"
+              onClick={() => setZoom(zoom - 0.1)}
+            >
+              <IconZoomOut />
+            </Button>
+            <Button
+              size="icon"
+              className="bg-red-800 border border-red-500 hover:bg-red-400"
+              onClick={handleClearCrop}
+            >
+              <IconTrash size={18} />
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
-      {/* IMAGE PREVIEW */}
+      {/* PREVIEW */}
       {croppedImg && (
         <div className="relative overflow-hidden">
           <img

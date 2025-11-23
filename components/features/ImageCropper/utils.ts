@@ -1,9 +1,11 @@
-// Radiant
+import type { Area } from "react-easy-crop";
+
+// Convert degrees → radians
 function getRadianAngle(deg: number) {
   return (deg * Math.PI) / 180;
 }
 
-// Handling canvas rotation
+// Handle canvas rotation dimensions
 function rotateSize(width: number, height: number, rotation: number) {
   const rotRad = getRadianAngle(rotation);
   return {
@@ -14,13 +16,22 @@ function rotateSize(width: number, height: number, rotation: number) {
   };
 }
 
-// Handling cropping
-export async function getCroppedImg(
-  imageSrc: string,
-  pixelCrop: { x: number; y: number; width: number; height: number },
+// Main crop function (returns BASE64 WebP)
+export async function getCroppedImg({
+  imageSrc,
+  pixelCrop,
   rotation = 0,
-  mimeType: string,
-): Promise<string> {
+  mimeType = "image/webp",
+  quality = 0.8,
+  resizeFactor = 0.5,
+}: {
+  imageSrc: string;
+  pixelCrop: Area;
+  rotation?: number;
+  mimeType?: string;
+  quality?: number;
+  resizeFactor?: number;
+}) {
   const image = await new Promise<HTMLImageElement>((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = "anonymous";
@@ -29,53 +40,78 @@ export async function getCroppedImg(
     img.src = imageSrc;
   });
 
-  const rotRad = getRadianAngle(rotation);
+  const rot = getRadianAngle(rotation);
 
-  // canvas that holds the rotated full image
-  const { width: bW, height: bH } = rotateSize(
+  // 1. Rotate canvas
+  const rotatedCanvas = document.createElement("canvas");
+  const rCtx = rotatedCanvas.getContext("2d")!;
+  const { width: rW, height: rH } = rotateSize(
     image.width,
     image.height,
     rotation,
   );
-  const off = document.createElement("canvas");
-  off.width = Math.floor(bW);
-  off.height = Math.floor(bH);
-  const octx = off.getContext("2d")!;
-  octx.translate(off.width / 2, off.height / 2);
-  octx.rotate(rotRad);
-  octx.drawImage(image, -image.width / 2, -image.height / 2);
+  rotatedCanvas.width = rW;
+  rotatedCanvas.height = rH;
 
-  // canvas for the final crop
-  const out = document.createElement("canvas");
-  out.width = Math.round(pixelCrop.width);
-  out.height = Math.round(pixelCrop.height);
-  const ctx = out.getContext("2d")!;
+  rCtx.translate(rW / 2, rH / 2);
+  rCtx.rotate(rot);
+  rCtx.drawImage(image, -image.width / 2, -image.height / 2);
 
-  // copy the crop area from the rotated canvas
-  ctx.drawImage(
-    off,
-    Math.round(pixelCrop.x),
-    Math.round(pixelCrop.y),
-    Math.round(pixelCrop.width),
-    Math.round(pixelCrop.height),
+  // 2. Crop canvas
+  const cropCanvas = document.createElement("canvas");
+  cropCanvas.width = pixelCrop.width;
+  cropCanvas.height = pixelCrop.height;
+
+  const cCtx = cropCanvas.getContext("2d")!;
+  cCtx.drawImage(
+    rotatedCanvas,
+    pixelCrop.x,
+    pixelCrop.y,
+    pixelCrop.width,
+    pixelCrop.height,
     0,
     0,
-    Math.round(pixelCrop.width),
-    Math.round(pixelCrop.height),
+    pixelCrop.width,
+    pixelCrop.height,
   );
-  return out.toDataURL(mimeType, 1);
+
+  // 3. Resize (optional)
+  const finalCanvas = document.createElement("canvas");
+  finalCanvas.width = Math.floor(pixelCrop.width * resizeFactor);
+  finalCanvas.height = Math.floor(pixelCrop.height * resizeFactor);
+
+  const fCtx = finalCanvas.getContext("2d")!;
+  fCtx.drawImage(
+    cropCanvas,
+    0,
+    0,
+    cropCanvas.width,
+    cropCanvas.height,
+    0,
+    0,
+    finalCanvas.width,
+    finalCanvas.height,
+  );
+
+  // 4. Return Base64 WebP
+  return finalCanvas.toDataURL(mimeType, quality);
 }
 
+// Convert BASE64 → FILE
 export function dataURLtoFile(
   dataUrl: string,
-  filename = "cropped.png",
-  mimetype: string,
+  filename = "cropped.webp",
+  mimetype = "image/webp",
 ): File {
   const arr = dataUrl.split(",");
   const bstr = atob(arr[1]);
   let n = bstr.length;
   const u8arr = new Uint8Array(n);
-  while (n--) u8arr[n] = bstr.charCodeAt(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
   return new File([u8arr], filename, {
     type: mimetype,
     lastModified: Date.now(),

@@ -38,7 +38,6 @@ export function Features() {
           </div>
         ))}
       </div>
-
       <div className="flex items-center justify-between gap-4">
         <div className="flex flex-col grow">
           <Label
