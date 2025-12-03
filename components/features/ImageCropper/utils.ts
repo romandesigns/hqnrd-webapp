@@ -1,4 +1,5 @@
 import type { Area } from "react-easy-crop";
+import { HQNRD } from "@/constants";
 
 // Convert degrees → radians
 function getRadianAngle(deg: number) {
@@ -16,12 +17,12 @@ function rotateSize(width: number, height: number, rotation: number) {
   };
 }
 
-// Main crop function (returns BASE64 WebP)
+// Main crop function (returns BASE64)
 export async function getCroppedImg({
   imageSrc,
   pixelCrop,
   rotation = 0,
-  mimeType = "image/webp",
+  mimeType = HQNRD.MIMETYPE.image.AVIF,
   quality = 0.8,
   resizeFactor = 0.5,
 }: {
@@ -34,10 +35,9 @@ export async function getCroppedImg({
 }) {
   const image = await new Promise<HTMLImageElement>((resolve, reject) => {
     const img = new Image();
-    img.crossOrigin = "anonymous";
+    img.src = imageSrc; // No need for crossOrigin on base64 images
     img.onload = () => resolve(img);
     img.onerror = reject;
-    img.src = imageSrc;
   });
 
   const rot = getRadianAngle(rotation);
@@ -93,27 +93,37 @@ export async function getCroppedImg({
     finalCanvas.height,
   );
 
-  // 4. Return Base64 WebP
-  return finalCanvas.toDataURL(mimeType, quality);
+  // 4. Try AVIF — verify properly
+  let base64 = finalCanvas.toDataURL(HQNRD.MIMETYPE.image.AVIF, quality);
+
+  if (!base64.startsWith("data:image/avif")) {
+    console.warn("AVIF not supported, falling back to WebP.");
+    base64 = finalCanvas.toDataURL("image/webp", quality);
+  }
+
+  return base64;
 }
 
 // Convert BASE64 → FILE
-export function dataURLtoFile(
-  dataUrl: string,
-  filename = "cropped.webp",
-  mimetype = "image/webp",
-): File {
+export function dataURLtoFile(dataUrl: string, filename: string) {
+  const mimeType = dataUrl.substring(
+    dataUrl.indexOf(":") + 1,
+    dataUrl.indexOf(";"),
+  );
+
   const arr = dataUrl.split(",");
   const bstr = atob(arr[1]);
-  let n = bstr.length;
-  const u8arr = new Uint8Array(n);
+  const u8arr = new Uint8Array(bstr.length);
 
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
+  for (let i = 0; i < bstr.length; i++) {
+    u8arr[i] = bstr.charCodeAt(i);
   }
 
-  return new File([u8arr], filename, {
-    type: mimetype,
+  const isAvif = mimeType === HQNRD.MIMETYPE.image.AVIF;
+  const ext = isAvif ? "avif" : "webp";
+
+  return new File([u8arr], `${filename}.${ext}`, {
+    type: mimeType,
     lastModified: Date.now(),
   });
 }

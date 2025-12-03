@@ -10,5 +10,8 @@ export const mimetypes = {
     JPG: "image/jpg",
     PNG: "image/png",
     WEBP: "image/webp",
+    AVIF: "image/avif",
   },
+  imageQuality: 0.85,
+  resizeFactor: 0.5,
 };

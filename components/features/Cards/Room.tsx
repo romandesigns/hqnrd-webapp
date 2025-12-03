@@ -78,12 +78,12 @@ function CategoryFooter({
             /Night
           </p>
         </div>
-        <div className="flex items-center gap-2 py-2">
+        {/* <div className="flex items-center gap-2 py-2">
           <FeaturedList items={amenities} />
           <span className="font-semibold inline-block">
             ..{totalAmenities - amenities.length} +
           </span>
-        </div>
+        </div> */}
         <FeaturedList
           gap={1}
           theme="label-badge"
@@ -114,13 +114,14 @@ export async function Room({
   room: Doc<"rooms"> & { _id: Id<"rooms"> };
   lang: Locale;
 }) {
-  const { selected: randomAmenities, totalAvailable } = getRandomRoomAmenities(
-    room.amenities,
-    8,
-  );
-  const fileUrl = await fetchQuery(api.upload.getFileUrl, {
-    storageId: room.mediaFiles.gallery.primaryImage,
-  });
+  // const { selected: randomAmenities, totalAvailable } = getRandomRoomAmenities(
+  //   room.amenities,
+  //   8,
+  // );
+
+  // const fileUrl = await fetchQuery(api.upload.getFileUrl, {
+  //   storageId: room.mediaFiles.gallery.primaryImage,
+  // });
 
   return (
     <Card
@@ -129,12 +130,12 @@ export async function Room({
       Footer={
         <CategoryFooter
           lang={lang}
-          pricePerNight={room.pricePerNight}
-          title={room.category.name.singular}
-          amenities={randomAmenities}
-          totalAmenities={totalAvailable}
-          slug={room.category.slugs.singular}
-          unitNumber={room.unitNumber}
+          pricePerNight={1200}
+          title={"Doble Cama"}
+          amenities={[]}
+          totalAmenities={0}
+          slug={"doble-cama"}
+          unitNumber={"205"}
         />
       }
       footerClassName="p-2"
@@ -144,9 +145,9 @@ export async function Room({
         <figure className="relative h-52 rounded-sm overflow-hidden flex items-end justify-start">
           <div className="absolute inset-0 bg-linear-0 from-neutral-950/85 via-neutral-950/50 to-neutral-950/20 z-1" />
           <Share className="absolute text-primary-foreground top-2 right-2 z-10 hover:bg-white/20 dark:text-primary" />
-          {fileUrl && (
+          {/* {fileUrl && (
             <Image src={fileUrl} alt="Category" className="object-cover" fill />
-          )}
+          )} */}
         </figure>
       </div>
     </Card>

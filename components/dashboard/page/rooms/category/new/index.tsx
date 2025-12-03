@@ -52,12 +52,19 @@ export async function Category({ lang }: { lang: Locale }) {
           showElevatedSurface={preloadedCategories._valueJSON.length > 0}
         >
           {preloadedCategories._valueJSON.length !== 0 ? (
-            <ul className="flex flex-col gap-4">
-              <CategoryItems
-                preloadedCategories={preloadedCategories}
-                lang={lang}
-              />
-            </ul>
+            <>
+              <div className="grid grid-cols-3">
+                <p className="bg-red-500">Category</p>
+                <p className="bg-purple-500">Guest Count</p>
+                <p className="bg-yellow-500">Cover</p>
+              </div>
+              <ul className="flex flex-col gap-4">
+                <CategoryItems
+                  preloadedCategories={preloadedCategories}
+                  lang={lang}
+                />
+              </ul>
+            </>
           ) : (
             <div className="flex flex-col items-center justify-center bg-muted/10 rounnded-md border border-border-dashed text-muted-foreground p-8">
               <IconTagOff />

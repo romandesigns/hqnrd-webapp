@@ -3,10 +3,8 @@
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { clsx } from "clsx";
 import { useMutation, useQuery } from "convex/react";
-import type React from "react";
 import { useRef, useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
-
 import {
   IconCrop,
   IconPhotoPlus,
@@ -27,7 +25,9 @@ import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { HQNRD } from "@/constants";
 import { api } from "@/convex/_generated/api";
+
 import type { Id } from "@/convex/_generated/dataModel";
+import { HiddenInput } from "../Form";
 import { dataURLtoFile, getCroppedImg } from "./utils";
 
 type FileToUploadProps = {
@@ -36,7 +36,7 @@ type FileToUploadProps = {
 
 export const ImageUpload = ({
   labelStyle,
-  fileName = "media",
+  fileName,
   placeholder = "Choose File",
   aspect,
 }: {
@@ -45,18 +45,17 @@ export const ImageUpload = ({
   placeholder?: string;
   aspect: number;
 }) => {
-  // Cropper states
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
 
   const [file, setFile] = useState<File | null>(null);
   const [imgString, setImageString] = useState<string>("");
+
   const [croppedImg, setCroppedImg] = useState<string | null>(null);
-
   const [isDialogOpen, setDialogOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
 
+  const [loading, setLoading] = useState(false);
   const croppedAreaPixelsRef = useRef<Area | null>(null);
 
   const [fileDetails, setFileDetails] = useState<FileToUploadProps>({
@@ -71,7 +70,7 @@ export const ImageUpload = ({
     fileDetails.fileId ? { storageId: fileDetails.fileId } : "skip",
   );
 
-  // File Selected
+  // File chosen
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const localFile = e.target.files?.[0];
     if (!localFile) return;
@@ -84,39 +83,37 @@ export const ImageUpload = ({
     reader.readAsDataURL(localFile);
   };
 
-  // Cropping
+  // Crop dims
   const onCropComplete = (_: Area, area: Area) => {
     croppedAreaPixelsRef.current = area;
   };
 
-  // Apply crop + upload
+  // Finalize upload
   const handleCrop = async () => {
     if (!imgString || !file || !croppedAreaPixelsRef.current) return;
 
     setLoading(true);
 
+    // Convert to AVIF/WebP
     const croppedBase64 = await getCroppedImg({
       imageSrc: imgString,
       pixelCrop: croppedAreaPixelsRef.current,
       rotation,
-      mimeType: "image/webp",
-      quality: 0.9,
+      mimeType: HQNRD.MIMETYPE.image.AVIF,
+      quality: 0.85,
       resizeFactor: 0.6,
     });
 
     setCroppedImg(croppedBase64);
 
-    const croppedFile = dataURLtoFile(
-      croppedBase64,
-      file.name.replace(/\.[^/.]+$/, "") + ".webp",
-      "image/webp",
-    );
+    const baseName = file.name.replace(/\.[^/.]+$/, "");
+    const croppedFile = dataURLtoFile(croppedBase64, baseName);
 
+    // Upload processed file
     const uploadUrl = await generatedUploadUrl();
-
     const res = await fetch(uploadUrl, {
       method: "POST",
-      headers: { "Content-Type": "image/webp" },
+      headers: { "Content-Type": croppedFile.type },
       body: croppedFile,
     });
 
@@ -130,7 +127,7 @@ export const ImageUpload = ({
     setLoading(false);
   };
 
-  // Clear image
+  // Clear
   const handleClearCrop = async () => {
     if (fileDetails.fileId) {
       await deleteFileFromDb({ storageId: fileDetails.fileId });
@@ -144,7 +141,7 @@ export const ImageUpload = ({
     setZoom(1);
   };
 
-  // Loading overlay
+  // If uploading
   if (loading) {
     return (
       <div
@@ -161,39 +158,61 @@ export const ImageUpload = ({
 
   return (
     <div className="h-full w-full overflow-hidden rounded-md">
-      {/* INPUT BUTTON */}
+      {/* BUTTON BEFORE CROPPING */}
       {!imgString && !croppedImg && !fileDetails.fileId && (
-        <Label
-          className={clsx(
-            "w-full p-2 border flex items-center justify-center relative cursor-pointer",
-            labelStyle,
-          )}
-          htmlFor={fileName}
-        >
-          <Button
-            className="absolute right-2 bottom-2 pointer-events-none"
-            size="icon"
-            variant="default"
+        <>
+          <Label
+            className={clsx(
+              "w-full p-2 border flex items-center justify-center relative cursor-pointer",
+              labelStyle,
+            )}
+            htmlFor={fileName}
           >
-            <IconPhotoPlus size={18} />
-          </Button>
+            <Button
+              className="absolute right-2 bottom-2 pointer-events-none"
+              size="icon"
+              variant="default"
+            >
+              <IconPhotoPlus size={18} />
+            </Button>
 
-          <p className="text-xs text-muted-foreground">{placeholder}</p>
+            <p className="text-xs text-muted-foreground">{placeholder}</p>
 
-          <input
-            type="file"
-            id={fileName}
-            accept="image/*"
-            multiple={false}
-            className="hidden"
-            onChange={handleFileChange}
-          />
-        </Label>
+            {/* File picker (never hold a value!) */}
+            <input
+              type="file"
+              id={fileName}
+              accept="image/*"
+              multiple={false}
+              className="hidden"
+              onChange={handleFileChange}
+            />
+          </Label>
+
+          {/* Hidden storage ID input */}
+        </>
       )}
 
+      <input
+        type="text"
+        readOnly
+        name={fileName}
+        value={fileDetails.fileId || ""}
+        className="hidden"
+      />
+
       {/* CROPPER DIALOG */}
-      <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent>
+      <Dialog
+        open={isDialogOpen}
+        onOpenChange={(open) => {
+          if (!croppedImg) return;
+          setDialogOpen(open);
+        }}
+      >
+        <DialogContent
+          onInteractOutside={(e) => e.preventDefault()}
+          onEscapeKeyDown={(e) => e.preventDefault()}
+        >
           <VisuallyHidden>
             <DialogHeader>
               <DialogTitle>Edit Image</DialogTitle>
@@ -257,20 +276,13 @@ export const ImageUpload = ({
         </DialogContent>
       </Dialog>
 
-      {/* PREVIEW */}
-      {croppedImg && (
+      {/* PREVIEW AFTER CROPPING */}
+      {fileUrl && (
         <div className="relative overflow-hidden">
           <img
             src={fileUrl}
-            alt="Cropped"
-            className="rounded-md w-full h-full object-cover block"
-          />
-
-          <input
-            className="hidden"
-            name={fileName}
-            value={fileDetails.fileId ?? ""}
-            readOnly
+            alt="Preview"
+            className="rounded-md w-full h-full object-cover"
           />
 
           <div className="absolute right-1 top-1">

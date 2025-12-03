@@ -16,8 +16,10 @@ import { MenuItem } from "./Menu";
 import { Modal } from "./Modal";
 import { RoomsFilter } from "./RoomsFilter";
 import { StarsRating } from "./StarsRating";
+import { TextArea } from "./TextArea";
 import { TextEditor } from "./TextEditor";
 import { ModeToggle } from "./ThemeToggle";
+
 // Exporting Modules
 export {
   ModeToggle,
@@ -42,4 +44,5 @@ export {
   TextEditor,
   ImageUpload,
   VideoUpload,
+  TextArea,
 };

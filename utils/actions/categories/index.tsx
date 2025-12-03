@@ -23,11 +23,19 @@ const formatCategoryStr = (
 export async function createCategory(formData: FormData) {
   const clientData = {
     categoryName: formData.get("categoryName") as string,
+    cover: {
+      coverUrl: formData.get("coverUrl") as string,
+      coverAlt: formData.get("coverAlt") as string,
+    },
     maxGuests: Number(formData.get("maxGuests") as string),
     lang: formData.get("lang") as string,
   };
   const convexPayload = {
     maxGuests: clientData.maxGuests,
+    cover: {
+      coverUrl: clientData.cover.coverUrl,
+      coverAlt: clientData.cover.coverAlt,
+    },
     labels: {
       title: {
         plural: formatCategoryStr(clientData.categoryName, "title", true),
@@ -39,11 +47,13 @@ export async function createCategory(formData: FormData) {
       singular: formatCategoryStr(clientData.categoryName, "kebab", false),
     },
   };
+
   await fetchMutation(api.categories.createCategoryAction, convexPayload);
   revalidatePath(
     `/${clientData.lang}/dashboard/habitaciones/categoria`,
     "layout",
   );
+  redirect(`/${clientData.lang}/dashboard/habitaciones/categoria`);
 }
 
 // Update  Category

@@ -7,6 +7,10 @@ export const CategoryFields = {
       singular: v.string(),
     }),
   }),
+  cover: v.object({
+    coverUrl: v.string(),
+    coverAlt: v.string(),
+  }),
   slugs: v.object({
     plural: v.string(),
     singular: v.string(),
