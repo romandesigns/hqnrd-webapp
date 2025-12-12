@@ -9,10 +9,10 @@ function ItemsCounter({ count, label }: { count?: number; label?: string }) {
   return (
     <div className="flex gap-2 text-xs font-sans items-center justify-between">
       <div className="flex text-[0.6rem]">
-        <span className="text-muted-foreground dark:text-(--brand-warning) font-bold rounded-full bg-muted dark:bg-(--brand-warning)/6 w-7 h-7 flex items-center justify-center">
+        <span className="text-muted-foreground dark:text-(--brand-warning) font-bold rounded-full bg-muted dark:bg-(--brand-warning)/20 w-6 h-6 flex items-center justify-center">
           {count}
         </span>
-        <span className="p-0.5 px-2 rounded-full bg-muted dark:bg-(--brand-warning)/6 text-muted-foreground dark:text-(--brand-warning) font-semibold flex items-center">
+        <span className="p-0.5 px-2 rounded-full bg-muted dark:bg-(--brand-warning)/20 text-muted-foreground dark:text-(--brand-warning) font-semibold flex items-center">
           {label}
         </span>
       </div>
@@ -20,16 +20,16 @@ function ItemsCounter({ count, label }: { count?: number; label?: string }) {
   );
 }
 
-function CategoryHeader({maxGuests}:{maxGuests:number}) {
+function CategoryHeader({ maxGuests }: { maxGuests: number }) {
   return (
-    <div className="flex items-center justify-start gap-4">
+    <div className="flex items-center justify-start gap-4 z-2">
       <ItemsCounter count={4} label="Units Available" />
       <ItemsCounter count={maxGuests} label="Guests per Unit" />
     </div>
   );
 }
 
-function CategoryFooter({slug, lang}:{slug:string, lang:Locale}) {
+function CategoryFooter({ slug, lang }: { slug: string; lang: Locale }) {
   return (
     <Button
       variant={"primary"}
@@ -61,19 +61,21 @@ export function Category({
     <Card
       bodyClassName="p-0 overflow-hidden"
       className="font-sans"
-      Header={<CategoryHeader maxGuests={maxGuests} />}
-      Footer={<CategoryFooter lang={lang} slug={slug}/>}
+      Footer={<CategoryFooter lang={lang} slug={slug} />}
       aroundPadding
       footerClassName="p-4"
     >
       <figure className="relative h-52 rounded-md overflow-hidden flex items-end justify-start">
-        <h3 className="relative z-2 text-2xl uppercase font-bold font-sans text-white p-4">
-          {title}
-        </h3>
+        <div className="flex flex-col items-start z-2 p-2 px-4">
+          <h3 className="relative  text-lg uppercase font-black font-sans text-white">
+            {title}
+          </h3>
+          <CategoryHeader maxGuests={maxGuests} />
+        </div>
         <div className="absolute inset-0 bg-linear-0 from-neutral-950/95 via-neutral-950/60 to-neutral-950/40 z-1" />
         <Image
           src={coverUrl}
-          alt="Category"
+          alt={coverAlt || "No image"}
           className="object-cover"
           fill
         />

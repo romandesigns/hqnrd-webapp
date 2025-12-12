@@ -23,9 +23,9 @@ export async function Categories({ lang }: { lang: Locale }) {
         coverUrl,
         coverAlt: category.cover.coverAlt,
       };
-    })
+    }),
   );
-console.log(categories)
+  console.log(categories);
   return (
     <Section>
       <Content className="px-40">
